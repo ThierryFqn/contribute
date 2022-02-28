@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  has_many_attached :photos
   belongs_to :asso
   has_many :participations, dependent: :destroy
   has_many :participants, through: :participations, source: :user
