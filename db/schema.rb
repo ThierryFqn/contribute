@@ -41,14 +41,14 @@ ActiveRecord::Schema.define(version: 2022_02_28_152011) do
     t.index ["asso_id"], name: "index_events_on_asso_id"
   end
 
-  create_table "paticipations", force: :cascade do |t|
+  create_table "participations", force: :cascade do |t|
     t.integer "status", default: 0
     t.bigint "event_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_id"], name: "index_paticipations_on_event_id"
-    t.index ["user_id"], name: "index_paticipations_on_user_id"
+    t.index ["event_id"], name: "index_participations_on_event_id"
+    t.index ["user_id"], name: "index_participations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,6 +68,6 @@ ActiveRecord::Schema.define(version: 2022_02_28_152011) do
 
   add_foreign_key "assos", "users"
   add_foreign_key "events", "assos"
-  add_foreign_key "paticipations", "events"
-  add_foreign_key "paticipations", "users"
+  add_foreign_key "participations", "events"
+  add_foreign_key "participations", "users"
 end
