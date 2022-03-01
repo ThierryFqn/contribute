@@ -4,5 +4,24 @@ class AssoPolicy < ApplicationPolicy
     # def resolve
     #   scope.all
     # end
+    def resolve
+      scope.all
+    end
+  end
+
+  def show?
+    true
+  end
+
+  def new?
+    create?
+  end
+
+  def create?
+    true
+  end
+
+  def dashboard?
+    true
   end
 end

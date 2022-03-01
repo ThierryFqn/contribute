@@ -12,4 +12,5 @@ class Event < ApplicationRecord
   validates :cause, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validates :number_volunteers, numericality: { only_integer: true }
 end
