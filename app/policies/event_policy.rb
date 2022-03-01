@@ -4,5 +4,9 @@ class EventPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+
+    def new
+      asso.user == current_user
+    end
   end
 end

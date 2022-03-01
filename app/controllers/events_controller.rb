@@ -8,8 +8,25 @@ class EventsController < ApplicationController
   end
 
   def new
+    @event = Event.new
+    authorize @event
   end
 
   def create
+    @event = Event.create(params_event)
+    @event.user = current_user
+    authorize @event
+    if @event.save
+      redirect_to event_path(@event)
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def params_event
+    params.require(:event).permit(:name, :description, :cause, :status, :start_date, :end_date, :address, :latitude,
+                                  :longitude, :number_volunteers, :asso_id)
   end
 end
