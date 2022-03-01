@@ -12,5 +12,4 @@ class User < ApplicationRecord
   # validates :day_birth, presence: true
 
   has_one_attached :photo
-
 end

@@ -18,6 +18,12 @@ class AssosController < ApplicationController
     @asso.save ? (redirect_to asso_path(@asso)) : (render :new)
   end
 
+  def dashboard
+    @asso = Asso.find(params[:id])
+    @events = @asso.events
+    authorize @asso
+  end
+
   private
 
   def asso_params
