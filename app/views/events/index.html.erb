@@ -1,2 +1,27 @@
 <h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<p>List of events</p>
+
+<div class="container">
+  <% if @events.any? %>
+      <% @events.each do |event| %>
+        <div>
+          <%= link_to event_path(event) do %>
+            <p>Nom: <%= event.name %></p>
+          <% end %>
+          <p>Description: <%= event.description %></p>
+          <p>Cause: <%= event.cause %></p>
+          <p>Adresse: <%= event.address %></p>
+          <p>From <%= event.start_date %> to <%= event.end_date %> </p>
+          <p>Association: <%= event.asso.name %></p>
+          <p>Responsable: <%= event.asso.user.first_name %></p>
+        </div>
+      <% end %>
+    <% else %>
+      <div>
+        <p>There is no event for the moments</p>
+      </div>
+  <% end %>
+</div>
+
+
+<%#= link_to pokemon, class: "link-no-deco" do %>
