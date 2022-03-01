@@ -15,7 +15,7 @@ class AssosController < ApplicationController
     @asso = Asso.new(asso_params)
     @asso.user = current_user
     authorize @asso
-    @asso.save ? (redirect_to asso_path) : (render :new)
+    @asso.save ? (redirect_to asso_path(@asso)) : (render :new)
   end
 
   private
