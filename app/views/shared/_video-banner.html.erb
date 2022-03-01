@@ -1,0 +1,19 @@
+<div class="home-banner">
+  <!-- This div is  intentionally blank. It creates the transparent black overlay over the video which you can modify in the CSS -->
+  <div class="overlay"></div>
+
+  <!-- The HTML5 video element that will create the background video on the header -->
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="https://res.cloudinary.com/dlwr1bikm/video/upload/v1646080678/development/pexels-julia-m-cameron-6893983_dbg5qr.mp4" type="video/mp4">
+  </video>
+
+  <!-- The header content -->
+  <div class="container h-100">
+    <div class="d-flex h-100 text-center align-items-center">
+      <div class="w-100 text-white">
+        <h1 id="home-title" class="pb-5">Offrons de notre <span id="time-title">temps</span></h1>
+        <%= render 'shared/search-form' %>
+      </div>
+    </div>
+  </div>
+</div>
