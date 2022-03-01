@@ -4,6 +4,8 @@ class Event < ApplicationRecord
   has_many :participations, dependent: :destroy
   has_many :participants, through: :participations, source: :user
 
+  EVENT_CAUSES = ["la jeunesse", "la protection de l'environnement", "la transmission des savoirs", "l'égalité", "la prévention et la santé", "la pauvreté et l'isolement"]
+
   validates :address, presence: true
   validates :name, presence: true
   validates :description, presence: true
