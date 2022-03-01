@@ -12,7 +12,7 @@
 .cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 16px;
+  grid-gap: 20px;
   flex-grow: 3;
   padding: 16px;
 }
@@ -27,7 +27,6 @@
   color: $gray;
   height: 380px;
   transition: 0.5s opacity ease, 0.5s box-shadow ease;
-
   &:hover {
     opacity:0.8;
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
@@ -100,7 +99,7 @@
 .card-event-infos .card-event-asso  {
   position: absolute;
   right: 16px;
-  top: -45px;
+  top: -40px;
   width: 70px;
   height: 70px;
   background-color:white;
