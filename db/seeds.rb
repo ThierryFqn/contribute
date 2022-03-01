@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'faker'
 require "open-uri"
 require "nokogiri"
+require "faker"
 
 puts 'Destroy All Users'
 User.destroy_all
