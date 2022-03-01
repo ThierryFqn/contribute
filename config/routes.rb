@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'events/index'
+  get 'events/show'
+  get 'events/new'
+  get 'events/create'
   devise_for :users
   root to: 'pages#home'
   resources :assos, only: %i[show new create] do
