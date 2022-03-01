@@ -8,6 +8,7 @@
           <%= link_to event_path(event) do %>
             <p>Nom: <%= event.name %></p>
           <% end %>
+          <%= cl_image_tag event.asso.photo.key, height: 300, width: 400, crop: :fill %>
           <p>Description: <%= event.description %></p>
           <p>Cause: <%= event.cause %></p>
           <p>Adresse: <%= event.address %></p>
