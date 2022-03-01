@@ -13,4 +13,11 @@ class Event < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :number_volunteers, numericality: { only_integer: true }
+
+  before_save :attach_photo
+
+  def attach_photo
+    return if photo.attached?
+    self.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/default-image.jpeg')), filename: 'default image')
+  end
 end
