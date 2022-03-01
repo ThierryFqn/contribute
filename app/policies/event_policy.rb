@@ -11,7 +11,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    asso.user == current_user
   end
 
   def new?
