@@ -16,6 +16,6 @@ class User < ApplicationRecord
 
   def attach_photo
     return if photo.attached?
-    self.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/default-avatar.jpeg')), filename: 'poke')
+    self.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/default-avatar.jpeg')), filename: 'avatar')
   end
 end
