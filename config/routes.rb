@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :assos, only: %i[show new create] do
     get :dashboard, on: :member
+    resources :events, only: [ :new, :create ]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :events, only: [ :new, :create ]
+
 end

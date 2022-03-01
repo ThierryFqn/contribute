@@ -9,15 +9,19 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @asso = Asso.find(params[:asso_id])
     authorize @event
+    authorize @asso
   end
 
   def create
-    @event = Event.create(params_event)
-    @event.user = current_user
+    @event = Event.new(params_event)
+    @asso = Asso.find(params[:asso_id])
+    @event.asso = @asso
     authorize @event
+    authorize @asso
     if @event.save
-      redirect_to event_path(@event)
+      redirect_to root_path
     else
       render :new
     end
@@ -26,7 +30,6 @@ class EventsController < ApplicationController
   private
 
   def params_event
-    params.require(:event).permit(:name, :description, :cause, :status, :start_date, :end_date, :address, :latitude,
-                                  :longitude, :number_volunteers, :asso_id)
+    params.require(:event).permit(:name, :description, :cause, :status, :start_date, :end_date, :address, :number_volunteers)
   end
 end
