@@ -4,4 +4,6 @@ class Asso < ApplicationRecord
   has_many :events, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
+
+  # Add enum status
 end

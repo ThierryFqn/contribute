@@ -4,5 +4,12 @@ class AssoPolicy < ApplicationPolicy
     # def resolve
     #   scope.all
     # end
+    def resolve
+      scope.all
+    end
+  end
+
+  def show?
+    true
   end
 end
