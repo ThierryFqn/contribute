@@ -17,7 +17,7 @@ class Event < ApplicationRecord
   before_save :attach_photo
 
   def attach_photo
-    return if photo.attached?
-    self.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/default-image.jpeg')), filename: 'default image')
+    return if photos.attached?
+    self.photos.attach(io: File.open(File.join(Rails.root,'app/assets/images/default-image.jpeg')), filename: 'default image')
   end
 end
