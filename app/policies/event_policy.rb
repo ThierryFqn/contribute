@@ -5,4 +5,12 @@ class EventPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def create?
+    true
+  end
+
+  def new?
+    create?
+  end
 end
