@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
 
   has_many :participations, dependent: :destroy
+  has_many :assos, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
