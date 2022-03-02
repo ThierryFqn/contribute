@@ -10,11 +10,11 @@ class EventPolicy < ApplicationPolicy
     true
   end
 
-  def create?
-    asso.user == current_user
-  end
-
   def new?
     create?
+  end
+
+  def create?
+    record.asso.user == user
   end
 end
