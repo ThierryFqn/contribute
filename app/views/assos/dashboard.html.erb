@@ -6,8 +6,8 @@
     <%= e.user.first_name %>
     <%= e.status %>
     <% if e.pending? %>
-      <%= link_to 'Accept', accepted_participation_path(e), method: :patch %>
-      <%= link_to 'Denied', denied_participation_path(e), method: :patch %>
+      <%= link_to 'Accepter', accepted_participation_path(e), method: :patch %>
+      <%= link_to 'Refuser', denied_participation_path(e), method: :patch %>
     <% end %>
   <% end %>
 <% end %>
