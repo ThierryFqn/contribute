@@ -17,7 +17,7 @@
             <div class="card-event-header" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<%= cl_image_path event.photos.first.key %>')">
               <div>
               <h2><%= event.name.capitalize %></h2>
-              <p class="pt-3"><i class="fa-solid fa-user-group"></i> 0/<%= event.number_volunteers %></p>
+              <p class="pt-3"><i class="fa-solid fa-user-group"></i> <%= event.participations.count %>/<%= event.number_volunteers %></p>
               </div>
             </div>
             <div class="card-event-infos">
