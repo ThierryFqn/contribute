@@ -2,10 +2,10 @@
 <br>
 <br>
   <% @participations.each do |participation| %>
-    <%= part.status %>
-    <%= part.event.name %>
+    <%= participation.status %>
+    <%= participation.event.name %>
     <br>
-    <% if part.pending? %>
+    <% if participation.pending? %>
       <%= link_to 'Annuler', cancelled_participation_path(participation), method: :patch %>
     <% end %>
   <% end %>
