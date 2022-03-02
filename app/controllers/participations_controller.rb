@@ -22,7 +22,7 @@ class ParticipationsController < ApplicationController
 
   def cancelled
     @participation = Participation.find(params[:id])
-    @participation.canceled!
+    @participation.cancelled!
     authorize @participation
   end
 end
