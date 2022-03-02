@@ -1,4 +1,7 @@
 class Event < ApplicationRecord
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   has_many_attached :photos
   belongs_to :asso
   has_many :participations, dependent: :destroy
@@ -13,7 +16,6 @@ class Event < ApplicationRecord
   validates :end_date, presence: true
   validates :number_volunteers, numericality: { only_integer: true }
   validates :address, presence: true
-  after_validation :geocode, if: :will_save_change_to_address?
 
   before_save :attach_photo
 
