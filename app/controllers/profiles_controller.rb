@@ -4,4 +4,9 @@ class ProfilesController < ApplicationController
     @participations = current_user.participations
     @events = @participations.map(&:event)
   end
+
+  def cancelled
+    @participation = Participation.find(params[:id])
+    @participation.cancelled!
+  end
 end

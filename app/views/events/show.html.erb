@@ -8,3 +8,4 @@
 <p><%= @event.description %></p>
 <p><%= @event.number_volunteers %></p>
 <p><%= @event.asso.name %></p>
+<%= link_to "Je participe !", participations_path(@participation, event_id: @event.id), method: :post %>

@@ -25,7 +25,7 @@
   margin-bottom: 10px;
   border-radius: 5px;
   color: $gray;
-  height: 380px;
+  height: 370px;
   transition: 0.5s opacity ease, 0.5s box-shadow ease;
   &:hover {
     opacity:0.8;
@@ -55,7 +55,7 @@
     font-weight: 500;
   }
   p {
-    font-size: 18px;
+    font-size: 20px;
   }
   i {
     color: $c-lightgreen;
@@ -108,7 +108,7 @@
 
 .card-event-infos .cause-card {
   font-style: italic;
-  padding-top: 15px;
+  padding-top: 20px;
 }
 
 .card-event-infos .nb-hours {

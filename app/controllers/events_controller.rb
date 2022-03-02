@@ -3,9 +3,16 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event).order(created_at: :desc)
+    # if params.dig(:search, :address).present?
 
-    if params.dig(:search, :address).present?
-      
+    @markers = @events.geocoded.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { event: event }),
+        image_url: helpers.asset_url("mimi.jpeg")
+      }
+
     end
   end
 
