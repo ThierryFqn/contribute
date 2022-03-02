@@ -17,4 +17,5 @@ class EventPolicy < ApplicationPolicy
   def create?
     record.asso.user == user
   end
+
 end
