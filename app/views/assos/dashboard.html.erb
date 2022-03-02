@@ -33,3 +33,17 @@
     </div>
 
 </div>
+
+<h1><%= @asso.name %> </h1>
+<p>Nombre d'event = <%= @events.count%></p>
+<% @events.each do |event| %>
+  <%= event.name %><br>
+  <% event.participations.select do |e|%>
+    <%= e.user.first_name %>
+    <%= e.status %>
+    <% if e.pending? %>
+      <%= link_to 'Accepter', accepted_participation_path(e), method: :patch %>
+      <%= link_to 'Refuser', denied_participation_path(e), method: :patch %>
+    <% end %>
+  <% end %>
+<% end %>

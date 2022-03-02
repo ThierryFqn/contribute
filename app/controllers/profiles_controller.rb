@@ -5,8 +5,4 @@ class ProfilesController < ApplicationController
     @events = @participations.map(&:event)
   end
 
-  def cancelled
-    @participation = Participation.find(params[:id])
-    @participation.cancelled!
-  end
 end
