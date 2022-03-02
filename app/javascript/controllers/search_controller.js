@@ -11,9 +11,14 @@ import flatpickr from "flatpickr";
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "output" ]
+  static targets = [ "distance" ]
 
   connect() {
     flatpickr(".datepicker", {})
+    this.distanceTarget.innerText = 30
+  }
+
+  change(evt) {
+    this.distanceTarget.innerText = evt.target.value
   }
 }

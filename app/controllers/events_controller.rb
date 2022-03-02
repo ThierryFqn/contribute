@@ -3,7 +3,10 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event).order(created_at: :desc)
-    # if params.dig(:search, :address).present?
+
+    if params.dig(:search, :address).present?
+      @events = @events.near(params.dig(:search, :address), params.dig(:search, :distance) || 30)
+    end
 
     @markers = @events.geocoded.map do |event|
       {
