@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 
   resources :events, only: %i[index show]
   resources :assos, only: %i[show new create] do
