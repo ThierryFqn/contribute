@@ -3,6 +3,10 @@
 <% @events.each do |event| %>
   <%= event.name %><br>
   <% event.participations.select do |e|%>
-    <%= e.user.first_name if e.pending? %>
+    <%= e.user.first_name %>
+    <%= e.status %>
+    <% if e.pending? %>
+      <%= link_to 'Accept', accepted_participation_path(e), method: :patch, class: "btn-green link-no-deco mx-3 my-2" %>
+    <% end %>
   <% end %>
 <% end %>

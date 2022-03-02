@@ -17,4 +17,12 @@ class ParticipationPolicy < ApplicationPolicy
   def new?
     create?
   end
+
+  def accepted?
+    true
+  end
+
+  def denied?
+    true
+  end
 end

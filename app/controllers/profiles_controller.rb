@@ -8,5 +8,6 @@ class ProfilesController < ApplicationController
   def cancelled
     @participation = Participation.find(params[:id])
     @participation.cancelled!
+    authorize @participation
   end
 end

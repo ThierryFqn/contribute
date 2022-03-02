@@ -11,10 +11,12 @@ class ParticipationsController < ApplicationController
   def accepted
     @participation = Participation.find(params[:id])
     @participation.accepted!
+    authorize @participation
   end
 
   def denied
     @participation = Participation.find(params[:id])
     @participation.denied!
+    authorize @participation
   end
 end
