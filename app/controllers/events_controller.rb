@@ -12,7 +12,6 @@ class EventsController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: { event: event }),
         image_url: helpers.asset_url("mimi.jpeg")
       }
-
     end
   end
 
@@ -27,26 +26,27 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @asso = Asso.find(params[:asso_id])
+    @event.asso = @asso
+
     authorize @event
-    authorize @asso
   end
 
   def create
     @event = Event.new(params_event)
     @asso = Asso.find(params[:asso_id])
     @event.asso = @asso
+    @event.number_hours = sum_hours(@event)
     authorize @event
-    authorize @asso
-    if @event.save
-      redirect_to root_path
-    else
-      render :new
-    end
+    @event.save ? (redirect_to root_path) : (render :new)
   end
 
   private
 
   def params_event
     params.require(:event).permit(:name, :description, :cause, :status, :start_date, :end_date, :address, :number_volunteers)
+  end
+
+  def sum_hours(event)
+    ((event.end_date.to_time - event.start_date.to_time) / 1.hours).round
   end
 end
