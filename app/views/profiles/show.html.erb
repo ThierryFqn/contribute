@@ -1,12 +1,12 @@
 <div class="container">
 <br>
 <br>
-  <% @participations.each do |part| %>
+  <% @participations.each do |participation| %>
     <%= part.status %>
     <%= part.event.name %>
     <br>
     <% if part.pending? %>
-      <%= link_to 'Annuler', cancelled_participation_path(part), method: :patch %>
+      <%= link_to 'Annuler', cancelled_participation_path(participation), method: :patch %>
     <% end %>
   <% end %>
 </div>
