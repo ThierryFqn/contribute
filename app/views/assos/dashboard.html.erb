@@ -1,2 +1,8 @@
 <h1><%= @asso.name %> </h1>
 <p>Nombre d'event = <%= @events.count%></p>
+<% @events.each do |event| %>
+  <%= event.name %><br>
+  <% event.participations.select do |e|%>
+    <%= e.user.first_name if e.pending? %>
+  <% end %>
+<% end %>
