@@ -17,4 +17,5 @@ class EventPolicy < ApplicationPolicy
   def new?
     create?
   end
+
 end

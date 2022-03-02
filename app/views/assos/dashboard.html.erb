@@ -1,2 +1,35 @@
-<h1><%= @asso.name %> </h1>
-<p>Nombre d'event = <%= @events.count%></p>
+<div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3><%= @asso.name %></h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p id="menu-display">MENU</p>
+            <li>
+                <a href="#homeSubmenu"><i class="icon-menu fa-solid fa-house"></i>Home</a>
+            </li>
+            <li>
+                <a href="#homeSubmenu"><i class="icon-menu fa-solid fa-plus"></i></i>Créer un évènement</a>
+            </li>
+            <li>
+                <a href="#homeSubmenu"><i class="icon-menu fa-solid fa-message"></i></i>Messagerie</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div>
+      <h1>Evènements à venir </h1>
+      <% @pending_events.each do |event| %>
+        <%= event.name %>
+        <%= event.number_volunteers%>
+      <% end %>
+      <h1>Evènements passés </h1>
+      <% @done_events.each do |event| %>
+        <%= event.name %>
+        <%= event.number_volunteers%>
+      <% end %>
+    </div>
+
+</div>
