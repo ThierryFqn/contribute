@@ -12,4 +12,9 @@ class ParticipationsController < ApplicationController
     @participation = Participation.find(params[:id])
     @participation.accepted!
   end
+
+  def denied
+    @participation = Participation.find(params[:id])
+    @participation.denied!
+  end
 end
