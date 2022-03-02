@@ -3,10 +3,10 @@
 <div class="container">
   <div class="row">
     <h1><%= @event.name %></h1>
-    <h3><%= @event.cause %></h3>
-    <p><%= @event.description %></p>
-    <p>Nombre de volontaire nécessaire : <strong><%= @event.number_volunteers %></strong></p>
-    <p><%= @event.asso.name %></p>
+    <h3> Cause : <%= @event.cause %></h3>
+    <p> Description : <%= @event.description %></p>
+    <p>Nombre de volontaire nécessaire : <strong><%= @event.participations.count %></strong> / <strong><%= @event.number_volunteers %></strong></p>
+    <p>Nom de l'association : <%= @event.asso.name %></p>
     <%= link_to "Je participe !", participations_path(@participation, event_id: @event.id), method: :post %>
   </div>
 </div>
