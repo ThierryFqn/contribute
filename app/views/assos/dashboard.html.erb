@@ -7,6 +7,7 @@
     <%= e.status %>
     <% if e.pending? %>
       <%= link_to 'Accept', accepted_participation_path(e), method: :patch %>
+      <%= link_to 'Denied', denied_participation_path(e), method: :patch %>
     <% end %>
   <% end %>
 <% end %>
