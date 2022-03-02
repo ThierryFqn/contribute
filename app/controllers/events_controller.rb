@@ -3,6 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event).order(created_at: :desc)
+    # @events = Event.geocoded
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
