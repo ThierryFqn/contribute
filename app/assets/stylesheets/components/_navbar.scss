@@ -16,3 +16,21 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.space-navbar {
+  height:80px;
+}
+
+.navbar-lewagon-classique {
+  justify-content: space-between;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.navbar-lewagon-classique  .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon-classique  .navbar-brand img {
+  width: 40px;
+}
