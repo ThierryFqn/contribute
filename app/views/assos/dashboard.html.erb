@@ -6,7 +6,7 @@
     <%= e.user.first_name %>
     <%= e.status %>
     <% if e.pending? %>
-      <%= link_to 'Accept', accepted_participation_path(e), method: :patch, class: "btn-green link-no-deco mx-3 my-2" %>
+      <%= link_to 'Accept', accepted_participation_path(e), method: :patch %>
     <% end %>
   <% end %>
 <% end %>

@@ -25,4 +25,8 @@ class ParticipationPolicy < ApplicationPolicy
   def denied?
     true
   end
+
+  def cancelled?
+    true
+  end
 end

@@ -19,4 +19,10 @@ class ParticipationsController < ApplicationController
     @participation.denied!
     authorize @participation
   end
+
+  def cancelled
+    @participation = Participation.find(params[:id])
+    @participation.canceled!
+    authorize @participation
+  end
 end

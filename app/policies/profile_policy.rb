@@ -9,8 +9,4 @@ class ProfilePolicy < ApplicationPolicy
   def show?
     true
   end
-
-  def cancelled?
-    true
-  end
 end
