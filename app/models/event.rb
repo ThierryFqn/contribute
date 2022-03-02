@@ -6,13 +6,14 @@ class Event < ApplicationRecord
 
   EVENT_CAUSES = ["la jeunesse", "la protection de l'environnement", "la transmission des savoirs", "l'égalité", "la prévention et la santé", "la pauvreté et l'isolement"]
 
-  validates :address, presence: true
   validates :name, presence: true
   validates :description, presence: true
   validates :cause, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :number_volunteers, numericality: { only_integer: true }
+  validates :address, presence: true
+  after_validation :geocode, if: :will_save_change_to_address?
 
   before_save :attach_photo
 
