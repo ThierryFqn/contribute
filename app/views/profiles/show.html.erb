@@ -1,2 +1,7 @@
-<%= @events %>
-<%= @participations %>
+<div class="container">
+  <% @participations.each do |part| %>
+    <%= part.status %>
+    <%= part.event.name %>
+    <%# <%= link_to 'Annuler', cancelled_participation_path %> %>
+  <% end %>
+</div>

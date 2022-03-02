@@ -7,4 +7,9 @@ class ParticipationsController < ApplicationController
     authorize @participation
     @participation.save ? (redirect_to profiles_path) : (render :new)
   end
+
+  def accepted
+    @participation = Participation.find(params[:id])
+    @participation.accepted!
+  end
 end
