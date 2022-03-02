@@ -17,7 +17,7 @@
               <div class="card-event-infos">
                 <div>
                   <p><i class="fa-solid fa-calendar"></i> <%= event.start_date.strftime("%d/%m/%y") %> | <%= event.start_date.strftime("%H:%M") %></p>
-                  <p><i class="fa-solid fa-location-dot"></i> <%= event.address %></p>
+                  <p><i class="fa-solid fa-location-dot"></i> <%= event.address.match(/\d{5}\s\w*/) %></p>
                   <p class="cause-card">Action pour <span><%= event.cause %></span></p>
                 </div>
                 <h2 class="nb-hours"><%= ((event.end_date.to_time - event.start_date.to_time)/ 1.hours).round %>H</h2>
