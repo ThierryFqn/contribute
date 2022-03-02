@@ -10,30 +10,20 @@
 <div class="list-container">
   <% if @events.any? %>
     <div class="cards-grid ">
-        <% @events.each do |event| %>
-           <%= link_to event_path(event), class:"no-link-deco" do %>
-            <div class="card-event">
-              <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> %>
-              <div class="card-event-header" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<%= cl_image_path event.photos.first.key %>')">
-                <div>
-                <h2><%= event.name.capitalize %></h2>
-                <p class="pt-3"><i class="fa-solid fa-user-group"></i> 0/<%= event.number_volunteers %></p>
-                </div>
-              </div>
-              <div class="card-event-infos">
-                <div>
-                  <p><i class="fa-solid fa-calendar"></i> <%= event.start_date.strftime("%d/%m/%y") %> | <%= event.start_date.strftime("%H:%M") %></p>
-                  <p><i class="fa-solid fa-location-dot"></i> <%= event.address.match(/\d{5}\s\w*/) %></p>
-                  <p class="cause-card">Action pour <span><%= event.cause %></span></p>
-                </div>
-                <h2 class="nb-hours"><%= ((event.end_date.to_time - event.start_date.to_time)/ 1.hours).round %>H</h2>
-                <%= cl_image_tag event.asso.photo.key, class: "card-event-asso avatar-bordered" %>
+      <% @events.each do |event| %>
+        <%= link_to event_path(event), class:"no-link-deco" do %>
+          <div class="card-event">
+            <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> %>
+            <div class="card-event-header" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<%= cl_image_path event.photos.first.key %>')">
+              <div>
+              <h2><%= event.name.capitalize %></h2>
+              <p class="pt-3"><i class="fa-solid fa-user-group"></i> 0/<%= event.number_volunteers %></p>
               </div>
             </div>
             <div class="card-event-infos">
               <div>
                 <p><i class="fa-solid fa-calendar"></i> <%= event.start_date.strftime("%d/%m/%y") %> | <%= event.start_date.strftime("%H:%M") %></p>
-                <p><i class="fa-solid fa-location-dot"></i> <%= event.address %></p>
+                <p><i class="fa-solid fa-location-dot"></i> <%= event.address.match(/\d{5}\s\w*/) %></p>
                 <p class="cause-card">Action pour <span><%= event.cause %></span></p>
               </div>
               <h2 class="nb-hours"><%= ((event.end_date.to_time - event.start_date.to_time)/ 1.hours).round %>H</h2>
@@ -49,14 +39,8 @@
     </div>
   <% end %>
     <div id="map"
-    data-controller="mapbox"
-    data-mapbox-markers-value="<%= @markers.to_json %>"
-    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
 </div>
-
- <div style="width: 100%; height: 600px;"
-  data-controller="mapbox"
-  data-mapbox-markers-value="<%= @markers.to_json %>"
-  data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
