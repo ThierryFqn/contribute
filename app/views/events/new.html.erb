@@ -26,10 +26,11 @@
           </div>
           <%= f.input :description %>
           <%= f.input :address,
-              input_html: { data: { geocoder_target: "address" } },
+              placeholder: 'Localisation',
+              input_html: { data: { geocoder_target: "address" }, class: 'd-none'},
               wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
           <%= f.input :photo, as: :file %>
-          <%= f.submit %>
+          <%= f.button :submit, class: 'btn btn-primary' %>
       </div>
     <% end %>
   </div>
