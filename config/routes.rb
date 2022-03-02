@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     get :dashboard, on: :member
     resources :events, only: [ :new, :create ]
   end
+  resources :participations, only: %i[create] do
+    
+  end
   get :profiles, to: 'profiles#show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
