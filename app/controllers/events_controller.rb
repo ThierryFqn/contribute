@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   def index
     @events = policy_scope(Event).order(created_at: :desc)
     # if params.dig(:search, :address).present?
-    # update_status(@events)
+    update_status(@events)
 
     @markers = @events.geocoded.map do |event|
       {
