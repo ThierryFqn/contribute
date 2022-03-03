@@ -9,3 +9,4 @@
 <p><%= @event.number_volunteers %></p>
 <p><%= @event.asso.name %></p>
 <%= link_to "Je participe !", participations_path(@participation, event_id: @event.id), method: :post %>
+<%= link_to "Chat with #{@event.asso.name}", asso_chatrooms_path(@event.asso), method: :post %>

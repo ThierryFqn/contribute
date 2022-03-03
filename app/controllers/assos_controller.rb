@@ -24,6 +24,12 @@ class AssosController < ApplicationController
     authorize @asso
   end
 
+  def chatbox
+    @asso = Asso.find(params[:id])
+    @chatroom = @asso.chatroom
+    authorize @asso
+  end
+
   private
 
   def asso_params
