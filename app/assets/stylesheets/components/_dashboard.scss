@@ -178,5 +178,62 @@ input[id="radio-3"] {
 
 .dash-key-infos {
   width: 93%;
-  background: red;
+}
+
+.dash-key-infos .key-info1 {
+  flex-grow: 0;
+  padding-right: 85px;
+  .background-info {
+    background: linear-gradient(119deg, rgba(13,58,66,1) 0%, rgba(53,133,139,1) 50%, rgba(79,189,186,1) 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 140px;
+    padding: 10px 40px;
+
+    p {
+      color: white;
+      line-height: 16px;
+      strong {
+        font-size:36px;
+        font-family: 'Fira Sans';
+        padding-right: 5px;
+      }
+    }
+  }
+}
+
+.dash-key-infos .key-info2 {
+  flex-grow: 0;
+  padding-right: 90px;
+  .background-action {
+    background: linear-gradient(119deg, rgba(205,212,214,1) 0%, rgba(205,212,214,1) 58%, rgba(205,212,214,1) 100%);
+    opacity: 0.5;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 140px;
+    padding: 10px 30px;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    #count-pending-volunteers {
+      color: $c-red;
+    }
+
+    p {
+      color: black;
+      line-height: 18px;
+      text-align:center;
+      strong {
+        font-size:36px;
+        font-family: 'Fira Sans';
+        padding-right: 5px;
+      }
+    }
+  }
 }
