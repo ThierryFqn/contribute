@@ -1,5 +1,9 @@
 <%= render 'shared/space-navbar' %>
 
+
+<h1>Events#show</h1>
+<p>Find me in app/views/events/show.html.erb</p>
+
 <div class="container">
   <div class="row">
     <h1><%= @event.name %></h1>
@@ -8,5 +12,7 @@
     <p>Nombre de volontaire nécessaire : <strong><%= @event.participations.count %></strong> / <strong><%= @event.number_volunteers %></strong></p>
     <p>Nom de l'association : <%= @event.asso.name %></p>
     <%= link_to "Je participe !", participations_path(@participation, event_id: @event.id), method: :post %>
+    <%= link_to "Chat with #{@event.asso.name}", asso_chatrooms_path(@event.asso), method: :post %>
   </div>
 </div>
+
