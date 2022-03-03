@@ -3,7 +3,47 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event).order(created_at: :desc)
-    # if params.dig(:search, :address).present?
+
+    if params.dig(:search, :address).present?
+      @events = @events.near(params.dig(:search, :address), params.dig(:search, :distance) || 30)
+    end
+
+    if params.dig(:search, :cause).reject(&:empty?)&.any?
+      @events = @events.where(cause: params.dig(:search, :cause).reject(&:empty?))
+    end
+
+    if params.dig(:search, :start_date).present?
+      @events = @events.where("start_date >= ?", DateTime.parse(params.dig(:search, :start_date)))
+    end
+
+    if params.dig(:search, :end_date).present?
+      @events = @events.where("end_date <= ?", DateTime.parse(params.dig(:search, :end_date)))
+    end
+
+    if params.dig(:search, :address).present? && params.dig(:search, :cause).reject(&:empty?)&.any?
+      @events = @events.near(params.dig(:search, :address), params.dig(:search, :distance) || 30) && @events.where(cause: params.dig(:search, :cause).reject(&:empty?))
+    end
+
+    if params.dig(:search, :address).present? && params.dig(:search, :cause).reject(&:empty?)&.any? && params.dig(:search, :start_date).present?
+      @events = @events.near(params.dig(:search, :address), params.dig(:search, :distance) || 30) && @events.where(cause: params.dig(:search, :cause).reject(&:empty?)) && @events.where("start_date >= ?", DateTime.parse(params.dig(:search, :start_date)))
+    end
+
+    if params.dig(:search, :address).present? && params.dig(:search, :cause).reject(&:empty?)&.any? && params.dig(:search, :start_date).present? && params.dig(:search, :end_date).present?
+      @events = @events.near(params.dig(:search, :address), params.dig(:search, :distance) || 30) && @events.where(cause: params.dig(:search, :cause).reject(&:empty?)) && @events.where("start_date >= ?", DateTime.parse(params.dig(:search, :start_date))) && @events.where("end_date <= ?", DateTime.parse(params.dig(:search, :end_date)))
+    end
+
+    if params.dig(:search, :cause).reject(&:empty?)&.any? && params.dig(:search, :start_date).present?
+      @events = @events.where(cause: params.dig(:search, :cause).reject(&:empty?)) && @events.where("start_date >= ?", DateTime.parse(params.dig(:search, :start_date)))
+    end
+
+    if params.dig(:search, :cause).reject(&:empty?)&.any? && params.dig(:search, :start_date).present? && params.dig(:search, :end_date).present?
+      @events = @events.where(cause: params.dig(:search, :cause).reject(&:empty?)) && @events.where("start_date >= ?", DateTime.parse(params.dig(:search, :start_date))) && @events.where("end_date <= ?", DateTime.parse(params.dig(:search, :end_date)))
+    end
+
+    if params.dig(:search, :start_date).present? && params.dig(:search, :end_date).present?
+      @events = @events.where("start_date >= ?", DateTime.parse(params.dig(:search, :start_date))) && @events.where("end_date <= ?", DateTime.parse(params.dig(:search, :end_date)))
+    end
+
     update_status(@events)
 
     @markers = @events.geocoded.map do |event|
