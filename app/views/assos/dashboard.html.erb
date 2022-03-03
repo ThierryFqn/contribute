@@ -20,7 +20,19 @@
     </nav>
 
     <div class= "container padding_navbar">
-      <h4 class="pb-3">Evènements à venir (<%= @pending_events.count%>)</h4>
+      <h4 class="pb-3">Hello <%= @asso.user.first_name%> 👋🏼</h4>
+      <div class="row dash-key-infos">
+          <div class="col-sm-12 col-lg-6 key-info1">
+          <h1>H1</h1>
+          </div>
+          <div class="col-sm-12 col-lg-3 key-info2">
+           <h1>H2</h1>
+          </div>
+          <div class="col-sm-12 col-lg-3 key-info3">
+           <h1>H3</h1>
+          </div>
+      </div>
+      <h4 class="py-3">Evènements à venir (<%= @pending_events.count%>)</h4>
       <div class="row">
           <div class="col-sm-12 col-lg-2 dashboard-event">
             <img src="https://res.cloudinary.com/dlwr1bikm/image/upload/v1646259498/development/Saly-42_oi5fwi.png" class="img-header-row" alt="header">
