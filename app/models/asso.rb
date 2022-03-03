@@ -1,6 +1,7 @@
 class Asso < ApplicationRecord
   has_one_attached :photo
   belongs_to :user
+  has_many :chatroom,  dependent: :destroy
 
   # has_many :memberships, dependent: :destroy
   # has_many :members, through: :memberships, source: :user
