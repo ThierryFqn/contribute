@@ -7,7 +7,7 @@ class Asso < ApplicationRecord
   # has_many :members, through: :memberships, source: :user
 
   has_many :events, dependent: :destroy
-
+  has_many :participations, through: :events
   validates :name, presence: true, uniqueness: true
 
   # def member?(user)
