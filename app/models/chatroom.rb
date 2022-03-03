@@ -2,5 +2,5 @@ class Chatroom < ApplicationRecord
   belongs_to :user
   belongs_to :asso
 
-  has_many :messages
+  has_many :messages, dependent: :destroy
 end
