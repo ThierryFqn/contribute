@@ -12,6 +12,8 @@ class ParticipationsController < ApplicationController
     @participation = Participation.find(params[:id])
     @participation.accepted!
     authorize @participation
+
+    UserMailer.send_confirmation(@participation.user).deliver_now
   end
 
   def denied
