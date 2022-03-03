@@ -40,6 +40,12 @@ def assign_photo(asso, url)
   asso.save!
 end
 
+def sum_hours(event)
+  event.number_hours = ((event.end_date.to_time - event.start_date.to_time) / 1.hours).round
+  event.save!
+  puts "Create #{event.name}"
+end
+
 puts 'create fisrt asso'
 asso_1 = Asso.new(name: 'Surfrider', description: 'Association devenue une référence dans le combat pour la protection de l océan et de ses usagers.', user: presidents[0])
 assign_photo(asso_1, "https://upload.wikimedia.org/wikipedia/fr/f/ff/Logo_surfrider_fondation2020.png")
@@ -73,15 +79,24 @@ assign_photo(asso_10, "https://upload.wikimedia.org/wikipedia/fr/thumb/8/80/Seco
 
 puts "Creating Events..."
 
-Event.create!(name: 'Collecte de déchets', description: 'Nettoyer nos quais, départ depuis le lieu de rdv. Vous pouvez partir dès que votre sac est plein ;)', address:'Pl. Valhubert, 75000 Paris', cause: Event::EVENT_CAUSES[1], start_date:'Sun, 22 May 2022 14:00:00 +0100', end_date:'Sun, 22 May 2022 18:00:00 +0100', number_volunteers: 50, asso: Asso.find_by(name: 'Surfrider'))
-Event.create!(name: 'Nettoyage Canal Saint-Martin', description: 'Ramasser avec des émants ou à l épuisette les déchets de nos compatriotes qui ont oublié leur éducation le temps d un instant' , address: '1 Bd Jules Ferry, 75011 Paris', cause:  Event::EVENT_CAUSES[1], start_date:'Sat, 16 Apr 2022 09:00:00 +0100', end_date:'Sat, 16 Apr 2022 13:00:00 +0100', number_volunteers: 30, asso: Asso.find_by(name: 'Sea Sheperd'))
-Event.create!(name: 'Atelier restauration vélos', description: 'Venez nous aider à remettre en état des vélo', address: '58 Rue Damesme, 75013 Paris', cause:  Event::EVENT_CAUSES[2], start_date: 'Wed, 18 May 2022 10:00:00 +0100', end_date:'Wed, 18 May 2022 17:00:00 +0100', number_volunteers: 10, asso: Asso.find_by(name: 'Le Petit Biclou'))
-Event.create!(name: 'Cours de français', description: 'Apprendre à parler français à un groupe de 10 personnes', address: '23 Rue Clovis, 75005 Paris', cause:  Event::EVENT_CAUSES[2], start_date:'Fri, 22 Apr 2022 11:00:00 +0100', end_date: 'Fri, 22 Apr 2022 13:00:00 +0100', number_volunteers: 1, asso: Asso.find_by(name: 'Atouts Cours'))
-Event.create!(name: 'Fete de Noël', description: 'Venez distribuer des cadeaux et animer une journée', address: '149 Rue de Sèvres, 75015 Paris', cause:  Event::EVENT_CAUSES[0], start_date:'Wed, 21 Dec 2022 13:00:00 +0100', end_date: 'Wed, 21 Dec 2022 19:00:00 +0100', number_volunteers: 8, asso: Asso.find_by(name: 'Petits Princes'))
-Event.create!(name: 'Fete de fin d année', description: 'Volontaires pour aider au bar à bonbons/boissons/gâteaux de la fête avant les grandes vacances' , address: '5 Pl. Paul Verlaine, 75013 Paris', cause:  Event::EVENT_CAUSES[0], start_date: 'Sat, 21 Jun 2022 18:30:00 +0100' , end_date: 'Sat, 21 Jun 2022 20:30:00 +0100', number_volunteers: 3, asso: Asso.find_by(name: 'Association Sportive et Culturelle de Montsouris'))
-Event.create!(name: 'Village Odysséa', description:'Besoin de volontaires pour aider dans la team organisation de la vie de l événement de la course Odysséa Paris', address:'2 Rte de la Ferme, 75012 Paris', cause:  Event::EVENT_CAUSES[4], start_date:'Sat, 01 Oct 2022 08:00:00 +0100', end_date:'Sun, 02 Oct 2022 20:00:00 +0100', number_volunteers: 100, asso: Asso.find_by(name: 'Odysséa'))
-Event.create!(name: 'Animation atelier roller/skate', description: 'Volontaires pour encadrer une journée autour des roulettes à Paris. Au programme des ateliers d apprentissage et de jeux', address: 'Place de la République, 75011 Paris', cause:  Event::EVENT_CAUSES[0], start_date:'Sun, 01 May 2022 09:00:00 +0100', end_date: 'Sun, 01 May 2022 20:00:00 +0100', number_volunteers: 15, asso: Asso.find_by(name: 'RSI - Roller Squad Institut'))
-Event.create!(name: 'Atelier de sensibiliation contre les violences', description: 'Venez échanger sur votre expérience et vos démarches judiciaires', address: '2 Rue Aristide Maillol, 75015 Paris', cause:  Event::EVENT_CAUSES[3], start_date:'Sat, 12 Mar 2022 15:00:00 +0100' , end_date: 'Sat, 12 Mar 2022 19:00:00 +0100', number_volunteers: 20, asso: Asso.find_by(name: 'Fondation des Femmes'))
-Event.create!(name: "Maraude", description: 'distribution de repas', address: '10 bis Av. Trudaine, 75009 Paris', cause:  Event::EVENT_CAUSES[5], start_date:'Fri, 25 Mar 2022 18:00:00 +0100', end_date: 'Fri, 25 Mar 2022 23:00:00 +0100', number_volunteers: 20, asso: Asso.find_by(name: 'Secours Populaire de Paris'))
-
+event_1 = Event.new(name: 'Collecte de déchets', description: 'Nettoyer nos quais, départ depuis le lieu de rdv. Vous pouvez partir dès que votre sac est plein ;)', address:'Pl. Valhubert, 75000 Paris', cause: Event::EVENT_CAUSES[1], start_date:'Sun, 22 May 2022 14:00:00 +0100', end_date:'Sun, 22 May 2022 18:00:00 +0100', number_volunteers: 50, asso: Asso.find_by(name: 'Surfrider'))
+sum_hours(event_1)
+event_2 = Event.new(name: 'Nettoyage Canal Saint-Martin', description: 'Ramasser avec des émants ou à l épuisette les déchets de nos compatriotes qui ont oublié leur éducation le temps d un instant' , address: '1 Bd Jules Ferry, 75011 Paris', cause:  Event::EVENT_CAUSES[1], start_date:'Sat, 16 Apr 2022 09:00:00 +0100', end_date:'Sat, 16 Apr 2022 13:00:00 +0100', number_volunteers: 30, asso: Asso.find_by(name: 'Sea Sheperd'))
+sum_hours(event_2)
+event_3 = Event.new(name: 'Atelier restauration vélos', description: 'Venez nous aider à remettre en état des vélo', address: '58 Rue Damesme, 75013 Paris', cause:  Event::EVENT_CAUSES[2], start_date: 'Wed, 18 May 2022 10:00:00 +0100', end_date:'Wed, 18 May 2022 17:00:00 +0100', number_volunteers: 10, asso: Asso.find_by(name: 'Le Petit Biclou'))
+sum_hours(event_3)
+event_4 = Event.new(name: 'Cours de français', description: 'Apprendre à parler français à un groupe de 10 personnes', address: '23 Rue Clovis, 75005 Paris', cause:  Event::EVENT_CAUSES[2], start_date:'Fri, 22 Apr 2022 11:00:00 +0100', end_date: 'Fri, 22 Apr 2022 13:00:00 +0100', number_volunteers: 1, asso: Asso.find_by(name: 'Atouts Cours'))
+sum_hours(event_4)
+event_5 = Event.new(name: 'Fete de Noël', description: 'Venez distribuer des cadeaux et animer une journée', address: '149 Rue de Sèvres, 75015 Paris', cause:  Event::EVENT_CAUSES[0], start_date:'Wed, 21 Dec 2022 13:00:00 +0100', end_date: 'Wed, 21 Dec 2022 19:00:00 +0100', number_volunteers: 8, asso: Asso.find_by(name: 'Petits Princes'))
+sum_hours(event_5)
+event_6 = Event.new(name: 'Fete de fin d année', description: 'Volontaires pour aider au bar à bonbons/boissons/gâteaux de la fête avant les grandes vacances' , address: '5 Pl. Paul Verlaine, 75013 Paris', cause:  Event::EVENT_CAUSES[0], start_date: 'Sat, 21 Jun 2022 18:30:00 +0100' , end_date: 'Sat, 21 Jun 2022 20:30:00 +0100', number_volunteers: 3, asso: Asso.find_by(name: 'Association Sportive et Culturelle de Montsouris'))
+sum_hours(event_6)
+event_7 = Event.new(name: 'Village Odysséa', description:'Besoin de volontaires pour aider dans la team organisation de la vie de l événement de la course Odysséa Paris', address:'2 Rte de la Ferme, 75012 Paris', cause:  Event::EVENT_CAUSES[4], start_date:'Sat, 01 Oct 2022 08:00:00 +0100', end_date:'Sun, 02 Oct 2022 20:00:00 +0100', number_volunteers: 100, asso: Asso.find_by(name: 'Odysséa'))
+sum_hours(event_7)
+event_8 = Event.new(name: 'Animation atelier roller/skate', description: 'Volontaires pour encadrer une journée autour des roulettes à Paris. Au programme des ateliers d apprentissage et de jeux', address: 'Place de la République, 75011 Paris', cause:  Event::EVENT_CAUSES[0], start_date:'Sun, 01 May 2022 09:00:00 +0100', end_date: 'Sun, 01 May 2022 20:00:00 +0100', number_volunteers: 15, asso: Asso.find_by(name: 'RSI - Roller Squad Institut'))
+sum_hours(event_8)
+event_9 = Event.new(name: 'Atelier de sensibiliation contre les violences', description: 'Venez échanger sur votre expérience et vos démarches judiciaires', address: '2 Rue Aristide Maillol, 75015 Paris', cause:  Event::EVENT_CAUSES[3], start_date:'Sat, 12 Mar 2022 15:00:00 +0100' , end_date: 'Sat, 12 Mar 2022 19:00:00 +0100', number_volunteers: 20, asso: Asso.find_by(name: 'Fondation des Femmes'))
+sum_hours(event_9)
+event_10 = Event.new(name: "Maraude", description: 'distribution de repas', address: '10 bis Av. Trudaine, 75009 Paris', cause:  Event::EVENT_CAUSES[5], start_date:'Fri, 25 Mar 2022 18:00:00 +0100', end_date: 'Fri, 25 Mar 2022 23:00:00 +0100', number_volunteers: 20, asso: Asso.find_by(name: 'Secours Populaire de Paris'))
+sum_hours(event_10)
 puts "Finished!"

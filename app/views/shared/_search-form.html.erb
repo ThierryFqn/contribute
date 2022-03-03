@@ -1,4 +1,4 @@
-<form action="" method="get">
+<%# <form action="" method="get">
   <div class="product-search">
       <div class="search-element">
         <label class="search-label">Où?</label>
@@ -10,4 +10,17 @@
       </div>
       <a type="submit" class="search-button"><i class="fa-solid fa-magnifying-glass"></i></a>
   </div>
-</form>
+</form> %>
+
+ <div class="search-form-control form-group" data-controller="search">
+  <%= simple_form_for :search, url: events_path, method: :get do |f| %>
+    <div class="d-flex query-selectors">
+      <%= f.input :address, placeholder: "Localisation", autocomplete: "on", class: "form-control string required", label: false %>
+      <%#= f.input :start_date, as: :string, required: false, input_html: { class: "datepicker"} %>
+
+      <button type="submit" class="btn btn-flat" name="commit" data-disable-with="Search" >
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  <% end %>
+</div>

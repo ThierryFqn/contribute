@@ -4,6 +4,7 @@ class Event < ApplicationRecord
 
   has_many_attached :photos
   belongs_to :asso
+
   has_many :participations, dependent: :destroy
   has_many :participants, through: :participations, source: :user
 
@@ -18,6 +19,8 @@ class Event < ApplicationRecord
   validates :address, presence: true
 
   before_save :attach_photo
+
+  enum status: { coming: 0, done: 1 }
 
   def attach_photo
     return if photos.attached?

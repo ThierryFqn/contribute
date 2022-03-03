@@ -22,6 +22,8 @@ class AssosController < ApplicationController
     @asso = Asso.find(params[:id])
     @events = @asso.events
     authorize @asso
+    @pending_events = @events.select {|event| event.coming?}
+    @done_events = @events.select {|event| event.done?}
   end
 
   def chatbox
