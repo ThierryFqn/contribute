@@ -51,6 +51,8 @@ class EventsController < ApplicationController
     #   @events = policy_scope(Event).order(created_at: :desc)
     #                                 .where("created_at >= :end_date AND created_at <= :end_date", { start_date: params[:end_date], end_date: params[:end_date] } )
     # end
+    # if params.dig(:search, :address).present?
+    update_status(@events)
 
     @markers = @events.geocoded.map do |event|
       {
@@ -73,26 +75,33 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @asso = Asso.find(params[:asso_id])
+    @event.asso = @asso
+
     authorize @event
-    authorize @asso
   end
 
   def create
     @event = Event.new(params_event)
     @asso = Asso.find(params[:asso_id])
     @event.asso = @asso
+    @event.number_hours = sum_hours(@event)
     authorize @event
-    authorize @asso
-    if @event.save
-      redirect_to root_path
-    else
-      render :new
-    end
+    @event.save ? (redirect_to root_path) : (render :new)
   end
 
   private
 
+  def update_status(events)
+    events.each do |event|
+      event.done! if event.end_date < DateTime.now
+    end
+  end
+
   def params_event
     params.require(:event).permit(:name, :description, :cause, :status, :start_date, :end_date, :address, :number_volunteers)
+  end
+
+  def sum_hours(event)
+    ((event.end_date.to_time - event.start_date.to_time) / 1.hours).round
   end
 end

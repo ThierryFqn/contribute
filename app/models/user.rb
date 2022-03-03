@@ -4,9 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
+  has_many :chatroom,  dependent: :destroy
   has_many :participations, dependent: :destroy
   has_many :assos, dependent: :destroy
+  has_many :messages
 
   validates :first_name, presence: true
   validates :last_name, presence: true

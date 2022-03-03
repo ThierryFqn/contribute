@@ -22,6 +22,6 @@ class AssoPolicy < ApplicationPolicy
   end
 
   def dashboard?
-    true
+    record.user == user
   end
 end
