@@ -3,6 +3,7 @@ class AssosController < ApplicationController
   def show
     @asso = Asso.find(params[:id])
     @user = @asso.user
+    @chatrooms = current_user.chatrooms
     authorize @asso
   end
 
