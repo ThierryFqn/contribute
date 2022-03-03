@@ -41,22 +41,30 @@
               </div>
               <div>
               <div class="card-event-dash-participations d-none" data-display-participants-target="participants">
-                <% event.participations.select do |participant|%>
                   <div class="container-tab">
                     <div class="tabs">
                       <input type="radio" id="radio-1" name="tabs" checked />
-                      <label class="tab" for="radio-1">En attente<span class="notification"><%= event.participations.select{|p| p.pending?}.count %></span></label>
+                      <label class="tab" for="radio-1">En attente<span class="notification-part"><%= event.participations.select{|p| p.pending?}.count %></span></label>
                       <input type="radio" id="radio-2" name="tabs" />
-                      <label class="tab" for="radio-2">Validés<span class="notification"><%= event.participations.select{|p| p.accepted?}.count %></span></label>
+                      <label class="tab" for="radio-2">Validés<span class="notification-part"><%= event.participations.select{|p| p.accepted?}.count %></span></label>
                       <span class="glider"></span>
                     </div>
                   </div>
-                  <%= participant.user.first_name %>
-                  <%= participant.status %>
-                  <% if participant.pending? %>
-                    <%= link_to 'Accepter', accepted_participation_path(participant), method: :patch %>
-                    <%= link_to 'Refuser', denied_participation_path(participant), method: :patch %>
-                  <% end %>
+                <% event.participations.each do |participant|%>
+                  <div class="card-participants-dashboard mt-3">
+                    <img src="<%= cl_image_path participant.user.photo.key %>" class="avatar-large" />
+                    <div class="card-participants-dashboard-content">
+                      <p><small>14th January</small></p>
+                      <p><strong><%= participant.user.first_name %> <%= participant.user.last_name %></strong></p>
+                    </div>
+
+                    <div class="card-participants-dashboard-actions">
+                       <% if participant.pending? %>
+                          <%= link_to 'Accepter', accepted_participation_path(participant), method: :patch %>
+                          <%= link_to 'Refuser', denied_participation_path(participant), method: :patch %>
+                      <% end %>
+                    </div>
+                  </div>
                 <% end %>
               </div>
             </div>

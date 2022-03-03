@@ -1,0 +1,41 @@
+.card-participants-dashboard {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid rgb(235,235,235);
+}
+
+.card-participants-dashboard .card-participants-dashboard-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.card-participants-dashboard p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.card-participants-dashboard small {
+  color: #999999;
+  font-weight: bold;
+}
+.card-participants-dashboard .card-participants-dashboard-actions {
+  opacity: 1;
+  display: flex;
+  transition: ease .3s;
+  a {
+    text-decoration:none;
+  }
+}
+
+.card-participants-dashboard .card-participants-dashboard-actions a {
+  color: #999999;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.card-participants-dashboard .card-participants-dashboard-actions a:hover {
+  color: #555555;
+}
