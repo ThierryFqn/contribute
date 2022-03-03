@@ -1,0 +1,41 @@
+<div class="index-container">
+  <div class="search-form-control form-group" data-controller="search">
+    <%= simple_form_for :search, url: events_path, method: :get do |f| %>
+     <div class="row search-index my-5">
+          <div class="searchindexelements p-4 col-sm-6 col-lg-2 px-4 d-flex justify-content-center align-content-center">
+            <div>
+              <label class="search-label py-1">Où?</label>
+              <%= f.input :address,
+                    label: false,
+                    input_html: { data: { geocoder_target: "address" }, class: 'd-none' },
+                    wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
+            </div>
+          </div>
+          <% unless action_name == 'home' %>
+            <div class="searchindexelements p-4 col-sm-6 col-lg-2 d-flex justify-content-center align-content-center">
+              <div>
+                <label class="search-label py-1">Distance? </label>
+                <label for="search_distance" class="form-label"><span data-search-target="distance" class="distancecounter"></span><span class="distancecounter">km</span></label>
+                <input data-action="input->search#change" type="range" class="form-range" min="0" max="60" step="1" name="search[distance]" id="search_distance">
+              </div>
+            </div>
+          <% end %>
+
+          <div class="searchindexelements col-sm-6 col-lg-2">
+            <label class="search-label py-1">Quand? </label>
+            <%= f.input :start_date, as: :datetime, html5: true, label: false%>
+            <%= f.input :end_date, as: :datetime, html5: true, label: false%>
+          </div>
+          <div class="searchindexelements col-sm-12 col-lg-4 d-flex justify-content-center align-content-center">
+            <div>
+              <label class="search-label pt-1 pb-4">Agir pour? </label>
+              <%= f.input :cause, as: :check_boxes, collection: Event::EVENT_CAUSES, label_method: lambda { |cause| render 'shared/check_box', cause: cause } %>
+            </div>
+          </div>
+          <div class="col-sm-12 col-lg-2 p-5 d-flex justify-content-center align-content-center">
+            <%= f.submit class:"btn-ghost", value: "Rechercher"%>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</div>
