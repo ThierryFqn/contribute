@@ -11,6 +11,7 @@
   <% if @events.any? %>
     <div class="cards-grid ">
       <% @events.each do |event| %>
+      <% if event.coming? %>
         <%= link_to event_path(event), class:"no-link-deco" do %>
           <div class="card-event">
             <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> %>
@@ -30,6 +31,7 @@
               <%= cl_image_tag event.asso.photo.key, class: "card-event-asso avatar-bordered" %>
             </div>
           </div>
+        <% end %>
         <% end %>
       <% end %>
     </div>
