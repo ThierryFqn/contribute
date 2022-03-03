@@ -21,6 +21,7 @@ class AssosController < ApplicationController
   def dashboard
     @asso = Asso.find(params[:id])
     @events = @asso.events
+    @pending_participations = @asso.participations.where(status: 0)
     authorize @asso
     @pending_events = @events.select {|event| event.coming?}
     @done_events = @events.select {|event| event.done?}
