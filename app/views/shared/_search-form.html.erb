@@ -12,10 +12,13 @@
           <input data-action="input->search#change" type="range" class="form-range" min="0" max="60" step="1" name="search[distance]" id="search_distance">
         </div>
       <% end %>
+      <%= "Agir pour :" %>
+      <%= f.input :cause, as: :check_boxes, collection: Event::EVENT_CAUSES, label_method: lambda { |cause| render 'shared/check_box', cause: cause } %>
+      <%#= f.input :cause, class: "js-example-placeholder-single form-control",label: false, collection: Event::EVENT_CAUSES, input_html:  {multiple: true, data: { placeholder: "Causes préférées", controller: 'select2', select2_options_value: {tags: true}}} %>
+      <%= f.input :start_date, as: :datetime, html5: true %>
+      <%= f.input :end_date, as: :datetime, html5: true %>
       <%= f.submit %>
       <%#= f.input :start_date,  %>
       <%#= f.input :end_date,  %>
-
   <% end %>
 </div>
-

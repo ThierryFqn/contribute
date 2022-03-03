@@ -8,6 +8,50 @@ class EventsController < ApplicationController
       @events = @events.near(params.dig(:search, :address), params.dig(:search, :distance) || 30)
     end
 
+    # if params.dig(:search, :cause).present?
+    #   @events = @events.where(cause: params.dig(:search, :cause).reject(&:empty?))
+    # end
+
+    if params.dig(:search, :start_date).present?
+      @events = @events.where("start_date >= ?", DateTime.parse(params.dig(:search, :start_date)))
+    end
+
+    if params.dig(:search, :end_date).present?
+      @events = @events.where("end_date >= ?", DateTime.parse(params.dig(:search, :start_date)))
+    end
+
+
+    # if params.dig(:search, :address).present? && params.dig(:search, :cause).present?
+    #   @events = @events.near(params.dig(:search, :address), params.dig(:search, :distance) || 30) && policy_scope(Event).order(created_at: :desc).where(cause: params.dig(:search, :cause).reject(&:empty?))
+    # end
+
+    # if params.dig(:search, :address).present? && params.dig(:search, :cause).present? && params.dig(:search, :start_date).present?
+    #   @events = @events.near(params.dig(:search, :address), params.dig(:search, :distance) || 30) && policy_scope(Event).order(created_at: :desc).where(cause: params.dig(:search, :cause).reject(&:empty?)) && policy_scope(Event).order(created_at: :desc).where("created_at >= :start_date AND created_at <= :end_date", {start_date: params.dig(:search, :start_date), end_date: params.dig(:search, :end_date)})
+    # end
+      # if params[:search].present?
+    #   if search_params[:personalities].reject(&:empty?).present? && search_params[:address].present?
+    #     @pokemons = policy_scope(Pokemon).order(created_at: :desc)
+    #                                      .where(personality: search_params[:personalities].reject(&:empty?))
+    #                                      .and(policy_scope(Pokemon).where("address ILIKE ?", "%#{search_params[:address]}%"))
+
+    #   elsif search_params[:personalities].reject(&:empty?).present? && !search_params[:address].present?
+    #     @pokemons = policy_scope(Pokemon).order(created_at: :desc)
+    #                                      .where(personality: search_params[:personalities].reject(&:empty?))
+
+    #   elsif !search_params[:personalities].reject(&:empty?).present? && search_params[:address].present?
+    #     @pokemons = policy_scope(Pokemon).order(created_at: :desc)
+    #                                      .where("address ILIKE ?", "%#{search_params[:address]}%")
+    #   end
+
+    # else
+    #   @pokemons = policy_scope(Pokemon).order(created_at: :desc)
+    # end
+
+    # if params.dig(:search, :end_date).present?
+    #   @events = policy_scope(Event).order(created_at: :desc)
+    #                                 .where("created_at >= :end_date AND created_at <= :end_date", { start_date: params[:end_date], end_date: params[:end_date] } )
+    # end
+
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
@@ -15,7 +59,6 @@ class EventsController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: { event: event }),
         image_url: helpers.asset_url("mimi.jpeg")
       }
-
     end
   end
 

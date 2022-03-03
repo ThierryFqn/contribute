@@ -57,3 +57,20 @@
   background-color: $c-darkgreen;
   color: white;
 }
+
+fieldset {
+  display: flex;
+
+  legend {
+    display: none;
+  }
+
+  input {
+    display: none;
+  }
+
+  input:checked + label {
+    background-color: red;
+  }
+
+}
