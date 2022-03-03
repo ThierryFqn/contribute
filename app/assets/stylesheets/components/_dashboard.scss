@@ -1,0 +1,182 @@
+.container-tab {
+
+}
+
+.tabs {
+	display: flex;
+	position: relative;
+	background-color: #fff;
+	box-shadow: 0 0 1px 0 rgba($c-green, 0.15), 0 6px 12px 0 rgba($c-green, 0.15);
+	padding: 0.75rem;
+	border-radius: 99px; // just a high number to create pill effect
+  width: 330px;
+	* {
+		z-index: 2;
+	}
+}
+
+input[type="radio"] {
+	display: none;
+}
+
+.tab {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 24px;
+	width: 160px;
+	font-size: 1rem;
+	font-weight: 500;
+	border-radius: 99px; // just a high number to create pill effect
+	cursor: pointer;
+	transition: color 0.15s ease-in;
+}
+
+.notification-part {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+	margin-left: 0.75rem;
+	border-radius: 50%;
+	background-color: $c-green;
+	transition: 0.15s ease-in;
+  color: white;
+}
+
+input[type="radio"] {
+	&:checked {
+		& + label {
+			color: $c-green;
+			& > .notification {
+				background-color: $c-green;
+				color: #fff;
+			}
+		}
+	}
+}
+
+input[id="radio-1"] {
+	&:checked {
+		& ~ .glider {
+			transform: translateX(0);
+		}
+	}
+}
+
+input[id="radio-2"] {
+	&:checked {
+		& ~ .glider {
+			transform: translateX(100%);
+		}
+	}
+}
+
+input[id="radio-3"] {
+	&:checked {
+		& ~ .glider {
+			transform: translateX(200%);
+		}
+	}
+}
+
+.glider {
+	position: absolute;
+	display: flex;
+	top: 4px;
+  left: 12px;
+  height: 40px;
+  width: 150px;
+	background-color: rgba(53, 133, 139, 0.2);
+	z-index: 1;
+	border-radius: 99px; // just a high number to create pill effect
+	transition: 0.25s ease-out;
+}
+
+@media (max-width: 700px) {
+	.tabs {
+		transform: scale(0.6);
+	}
+}
+
+.img-header-row {
+  width: 80%;
+  padding-left: 35px;
+}
+
+
+.card-event-dash {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  width: 90%;
+  border-radius: 10px;
+}
+
+.card-event-dash img {
+  height: 100%;
+  width: 250px;
+  object-fit: cover;
+}
+
+.card-event-dash h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-event-dash p {
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: .9;
+  margin-bottom: 0;
+  margin-top: 8px;
+  .volunteers-count {
+    color: white;
+    background-color: $c-green;
+    padding: 5px;
+    font-weight: 600;
+  }
+}
+
+.card-event-dash .card-event-dash-infos {
+  padding: 24px;
+  flex-grow: 3;
+}
+
+.card-event-dash .card-event-dash-arrow {
+  padding: 10px 60px;
+
+  .drop-validation {
+    font-size: 20px;
+    color: $c-green;
+    background-color: rgba(220,220,220, 0.6);
+    padding: 8px 12px;
+    border-radius: 50%;
+  }
+
+  .up-validation {
+    font-size: 20px;
+    color: $c-red;
+    background-color: rgba(220,220,220, 0.6);
+    padding: 8px 12px;
+    border-radius: 50%;
+  }
+}
+
+.card-event-dash-participations {
+  width: 90%;
+  border-radius: 10px;
+  padding: 30px 40px;
+  border:solid 1px rgba(220,220,220, 0.6);
+  background-color: rgba(220,220,220, 0.2);
+}
+
+.dash-key-infos {
+  width: 93%;
+  background: red;
+}

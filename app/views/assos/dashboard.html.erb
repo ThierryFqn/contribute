@@ -19,31 +19,78 @@
         </ul>
     </nav>
 
-    <div>
-      <h1>Evènements à venir </h1>
-      <% @pending_events.each do |event| %>
-        <%= event.name %>
-        <%= event.number_volunteers%>
-      <% end %>
-      <h1>Evènements passés </h1>
-      <% @done_events.each do |event| %>
-        <%= event.name %>
-        <%= event.number_volunteers%>
-      <% end %>
-    </div>
+    <div class= "container padding_navbar">
+      <h4 class="pb-3">Hello <%= @asso.user.first_name%> 👋🏼</h4>
+      <div class="row dash-key-infos">
+          <div class="col-sm-12 col-lg-6 key-info1">
+          <h1>H1</h1>
+          </div>
+          <div class="col-sm-12 col-lg-3 key-info2">
+           <h1>H2</h1>
+          </div>
+          <div class="col-sm-12 col-lg-3 key-info3">
+           <h1>H3</h1>
+          </div>
+      </div>
+      <h4 class="py-3">Evènements à venir (<%= @pending_events.count%>)</h4>
+      <div class="row">
+          <div class="col-sm-12 col-lg-2 dashboard-event">
+            <img src="https://res.cloudinary.com/dlwr1bikm/image/upload/v1646259498/development/Saly-42_oi5fwi.png" class="img-header-row" alt="header">
+          </div>
+          <% @pending_events.each do |event| %>
+            <div class="col-sm-12 col-lg-10" data-controller="display-participants">
+              <div class="card-event-dash">
+                <img src="<%= cl_image_path event.photos.first.key %>" />
+                <div class="card-event-dash-infos">
+                  <h2><%= event.name %></h2>
+                  <p>Nombre de volontaires: <span class="volunteers-count"><%= event.participations.select{|p| p.accepted?}.count%>/<%= event.number_volunteers%></strong></p>
+                  <p><strong><%= event.participations.select{|p| p.pending?}.count%></strong> volontaire(s) en attente</p>
+                </div>
+                <div class="card-event-dash-arrow">
+                  <i class="fa-solid fa-caret-down drop-validation" data-display-participants-target="down" data-action="click->display-participants#displayDiv"></i>
+                  <i class="fa-solid fa-caret-up up-validation d-none" data-display-participants-target="up" data-action="click->display-participants#hideDiv"></i>
+                </div>
+              </div>
+              <div>
+              <div class="card-event-dash-participations d-none" data-display-participants-target="participants">
+                  <div class="container-tab">
+                    <div class="tabs">
+                      <input type="radio" id="radio-1" name="tabs" checked />
+                      <label class="tab" for="radio-1">En attente<span class="notification-part"><%= event.participations.select{|p| p.pending?}.count %></span></label>
+                      <input type="radio" id="radio-2" name="tabs" />
+                      <label class="tab" for="radio-2">Validés<span class="notification-part"><%= event.participations.select{|p| p.accepted?}.count %></span></label>
+                      <span class="glider"></span>
+                    </div>
+                  </div>
+                <% event.participations.each do |participant|%>
+                  <div class="card-participants-dashboard mt-3">
+                    <img src="<%= cl_image_path participant.user.photo.key %>" class="avatar-large" />
+                    <div class="card-participants-dashboard-content">
+                      <p><small>14th January</small></p>
+                      <p><strong><%= participant.user.first_name %> <%= participant.user.last_name %></strong></p>
+                    </div>
 
+                    <div class="card-participants-dashboard-actions">
+                       <% if participant.pending? %>
+                          <%= link_to 'Accepter', accepted_participation_path(participant), method: :patch %>
+                          <%= link_to 'Refuser', denied_participation_path(participant), method: :patch %>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+      </div>
+
+
+        <h4>Evènements passés </h4>
+        <% @done_events.each do |event| %>
+          <%= event.name %>
+          <%= event.number_volunteers%>
+        <% end %>
+    </div>
 </div>
 
-<h1><%= @asso.name %> </h1>
-<p>Nombre d'event = <%= @events.count%></p>
-<% @events.each do |event| %>
-  <%= event.name %><br>
-  <% event.participations.select do |e|%>
-    <%= e.user.first_name %>
-    <%= e.status %>
-    <% if e.pending? %>
-      <%= link_to 'Accepter', accepted_participation_path(e), method: :patch %>
-      <%= link_to 'Refuser', denied_participation_path(e), method: :patch %>
-    <% end %>
-  <% end %>
-<% end %>
+
+  </div>
