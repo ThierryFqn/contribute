@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   def index
     @events = policy_scope(Event).order(created_at: :desc)
     # if params.dig(:search, :address).present?
+    update_status(@events)
 
     @markers = @events.geocoded.map do |event|
       {
@@ -41,6 +42,12 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def update_status(events)
+    events.each do |event|
+      event.done! if event.end_date < DateTime.now
+    end
+  end
 
   def params_event
     params.require(:event).permit(:name, :description, :cause, :status, :start_date, :end_date, :address, :number_volunteers)
