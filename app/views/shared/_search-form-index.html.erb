@@ -2,13 +2,14 @@
   <div class="search-form-control form-group" data-controller="search">
     <%= simple_form_for :search, url: events_path, method: :get do |f| %>
      <div class="row search-index my-5">
-          <div class="searchindexelements p-4 col-sm-6 col-lg-2 px-4 d-flex justify-content-center align-content-center">
+          <div class="searchindexelements p-4 col-sm-6 col-lg-2 px-4 d-flex justify-content-center align-content-center" data-controller="places">
             <div>
               <label class="search-label py-1">Où?</label>
-              <%= f.input :address,
+              <%#= f.input :address,
                     label: false,
-                    input_html: { data: { geocoder_target: "address" }, class: 'd-none' },
+                    input_html: { data: { geocoder_target: "address" }, class: 'd-none', input_html: { value: params.dig(:search, :address) } },
                     wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
+              <%= f.input :address, label: false, placeholder: "Localisation", input_html: { value: params.dig(:search, :address) } %>
             </div>
           </div>
 
@@ -24,8 +25,8 @@
 
           <div class="searchindexelements col-sm-6 col-lg-2">
             <label class="search-label py-1">Quand? </label>
-            <%= f.input :start_date, as: :datetime, html5: true, label: false%>
-            <%= f.input :end_date, as: :datetime, html5: true, label: false%>
+            <%= f.input :start_date, as: :datetime, html5: true, label: false, input_html: { value: params.dig(:search, :start_date) } %>
+            <%= f.input :end_date, as: :datetime, html5: true, label: false, input_html: { value: params.dig(:search, :end_date) }%>
           </div>
           <div class="searchindexelements col-sm-12 col-lg-4 d-flex justify-content-center align-content-center">
             <div>

@@ -3,7 +3,7 @@
       <%#= f.input :start_date, as: :string, required: false, input_html: { class: "datepicker"} %>
       <%= f.input :address,
             label: false,
-            input_html: { data: { geocoder_target: "address" }, class: 'd-none' },
+            input_html: { data: { geocoder_target: "address" }, class: 'd-none', value: params.dig(:search, :address) },
             wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
 
       <% unless action_name == 'home' %>
@@ -15,8 +15,8 @@
       <%= "Agir pour :" %>
       <%= f.input :cause, as: :check_boxes, collection: Event::EVENT_CAUSES, label_method: lambda { |cause| render 'shared/check_box', cause: cause } %>
       <%#= f.input :cause, class: "js-example-placeholder-single form-control",label: false, collection: Event::EVENT_CAUSES, input_html:  {multiple: true, data: { placeholder: "Causes préférées", controller: 'select2', select2_options_value: {tags: true}}} %>
-      <%= f.input :start_date, as: :datetime, html5: true %>
-      <%= f.input :end_date, as: :datetime, html5: true %>
+      <%= f.input :start_date, as: :datetime, html5: true, input_html: { value: params.dig(:search, :start_date) } %>
+      <%= f.input :end_date, as: :datetime, html5: true, input_html: { value: params.dig(:search, :end_date) } %>
       <%= f.submit %>
       <%#= f.input :start_date,  %>
       <%#= f.input :end_date,  %>
