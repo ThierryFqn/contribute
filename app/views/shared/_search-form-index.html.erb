@@ -9,7 +9,7 @@
                     label: false,
                     input_html: { data: { geocoder_target: "address" }, class: 'd-none', input_html: { value: params.dig(:search, :address) } },
                     wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
-              <%= f.input :address %>
+              <%= f.input :address, label: false, placeholder: "Localisation", input_html: { value: params.dig(:search, :address) } %>
             </div>
           </div>
 
