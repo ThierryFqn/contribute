@@ -24,6 +24,6 @@ class Event < ApplicationRecord
 
   def attach_photo
     return if photos.attached?
-    self.photos.attach(io: File.open(File.join(Rails.root,'app/assets/images/default-image.jpeg')), filename: 'default image')
+    self.photos.attach(io: File.open(File.join(Rails.root,'app/assets/images/default-image.jpg')), filename: 'default image')
   end
 end
