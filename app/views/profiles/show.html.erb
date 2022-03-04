@@ -1,20 +1,39 @@
+<div class="banner-profile" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('http://www.vsocanada.org/wp-content/uploads/sites/19/2020/03/volunteering-australia-people-linked-together.jpg')">
+  <div class="container">
+    <h1>Bienvenue sur ton profil, <span class="time-title"><%= current_user.first_name.capitalize %></span></h1>
+  </div>
+</div>
+
+
 <div class="container">
-  <br>
-  <br>
-  <h1> PROFILE </h1>
-  <% @participations.each do |participation| %>
-    <%= participation.status %>
-    <%= participation.event.name %>
-    <br>
-    <% if participation.pending? %>
-      <%= link_to 'Annuler', cancelled_participation_path(participation), method: :patch %>
+
+<div class="card-profile">
+  <div class="card-participationprofil text-center" style="width: 18rem;">
+    <div class="card-profil">
+      <h5 class="card-title">Évènement</h5>
+      <p class="card-text">Suivez le statut de votre demande de participation à évènement </p>
+    <% @participations.each do |participation| %>
+      <%= participation.status %>
+      <%= participation.event.name %>
+      <br>
+      <% if participation.pending? %>
+       <button class='annuler-participation'> <%= link_to 'Annuler', cancelled_participation_path(participation), method: :patch %></button>
+      <% end %>
     <% end %>
-  <% end %>
+
+    </div>
+  </div>
 
 
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapsechatrooms" aria-expanded="false" aria-controls="collapsechatrooms">
-    Messagerie
-  </button>
+
+    <div class="card-message text-center" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Messagerie</h5>
+      <p class="card-text">Prenez contact avec les membres de l'association</p>
+
+      <button class="btn-profile" type="button" data-bs-toggle="collapse" data-bs-target="#collapsechatrooms" aria-expanded="false" aria-controls="collapsechatrooms">
+      Messagerie
+      </button>
 
 
   <div class="collapse" id="collapsechatrooms">
@@ -64,6 +83,12 @@
     </div>
   </div>
 
-  <%= link_to 'Back', :back, class:'btn btn-primary' %>
+
+
+    </div>
+  </div>
+
+</div>
+  <%= link_to 'Back', :back, class:'btn btn-dark ' %>
 
 </div>
