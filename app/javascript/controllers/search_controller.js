@@ -14,7 +14,7 @@ export default class extends Controller {
   static targets = [ "distance" ]
 
   connect() {
-    flatpickr(".datepicker", {})
+    // flatpickr(".datepicker", {})
     this.distanceTarget.innerText = 30
   }
 
