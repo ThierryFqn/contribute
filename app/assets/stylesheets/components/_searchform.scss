@@ -9,7 +9,6 @@
   box-shadow: rgba(0,0,0,.172549) 0 6px 12px 0;
   cursor: pointer;
   width: 75%;
-  overflow: hidden;
 }
 
 .search-element {
@@ -18,6 +17,12 @@
   flex-direction: column;
   border-right: 1px solid rgba(10,10,10,.1);
   padding: 0 1em;
+  .search-date {
+    display: flex;
+  }
+}
+.button-div {
+  overflow: hidden;
 }
 
 .search-label {
@@ -43,18 +48,21 @@
 .search-button {
   display: inline-block;
   height: 100%;
-  line-height: 70px;
+  line-height: 86px;
   text-align: center;
   font-size: 1.2em;
-  font-weight: 100;
+  font-weight: 500;
   color: white;
-  background-color: $c-green;
+  background-color: $c-orange;
   transition: background-color 0.5s ease;
-  padding: 0 1.5em;
+  padding: 0 1.2em;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .search-button:hover {
-  background-color: $c-darkgreen;
+  background-color: $c-bluegreen;
   color: white;
 }
 
@@ -70,7 +78,33 @@ fieldset {
   }
 
   input:checked + label {
-    background-color: red;
+    .icons-index {
+      background-color: $c-bluegreen;
+   }
   }
 
 }
+
+.mapboxgl-ctrl-geocoder--icon-search {
+  display:none;
+}
+
+.mapboxgl-ctrl-geocoder {
+  box-shadow: none;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+  width: 100%;
+  font-size: 1em;
+  line-height: 1.2em;
+  font-family: "Lato";
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+}
+
+.suggestions-wrapper {
+  text-align:left;
+}
+
+.form-select {
+  width:80%;
+ }

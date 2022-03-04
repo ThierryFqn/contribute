@@ -1,0 +1,33 @@
+.search-index {
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-around;
+}
+
+.index-container {
+  padding: 0 26px;
+}
+
+.form-range {
+  width: 80%;
+}
+
+ .searchindexelements {
+  border-right: 1px solid rgba(10, 10, 10, 0.1);
+
+ }
+
+ .distancecounter {
+  font-style: italic;
+ }
+
+ .icons-index {
+  color: white;
+  font-size: 32px;
+  background-color: $c-orange;
+  padding: 10px 10px;
+  border-radius: 50px;
+  &:hover {
+    background-color: $c-bluegreen;
+  }
+ }

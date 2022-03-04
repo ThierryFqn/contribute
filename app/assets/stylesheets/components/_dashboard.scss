@@ -113,7 +113,7 @@ input[id="radio-3"] {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  width: 90%;
+  // width: 90%;
   border-radius: 10px;
 }
 
@@ -177,12 +177,12 @@ input[id="radio-3"] {
 }
 
 .dash-key-infos {
-  width: 93%;
+  // width: 93%;
 }
 
 .dash-key-infos .key-info1 {
   flex-grow: 0;
-  padding-right: 85px;
+  // padding-right: 85px;
   .background-info {
     background: linear-gradient(119deg, rgba(13,58,66,1) 0%, rgba(53,133,139,1) 50%, rgba(79,189,186,1) 100%);
     border-radius: 10px;
@@ -206,7 +206,7 @@ input[id="radio-3"] {
 
 .dash-key-infos .key-info2 {
   flex-grow: 0;
-  padding-right: 90px;
+  // padding-right: 90px;
   .background-action {
     background: linear-gradient(119deg, rgba(205,212,214,1) 0%, rgba(205,212,214,1) 58%, rgba(205,212,214,1) 100%);
     opacity: 0.6;
