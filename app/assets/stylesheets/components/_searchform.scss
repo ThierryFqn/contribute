@@ -79,7 +79,8 @@ fieldset {
 
   input:checked + label {
     .icons-index {
-      background-color: $c-bluegreen;
+      background-color: $c-turquoise;
+      color: black;
    }
   }
 

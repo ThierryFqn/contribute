@@ -1,18 +1,32 @@
-<%= render 'shared/space-navbar' %>
-
-
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
-
-<div class="container">
-  <div class="row">
+<div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @event.photos.first.key, crop: :fill %>')">
+  <div class="container">
     <h1><%= @event.name %></h1>
-    <h3> Cause : <%= @event.cause %></h3>
-    <p> Description : <%= @event.description %></p>
-    <p>Nombre de volontaire nécessaire : <strong><%= @event.participations.count %></strong> / <strong><%= @event.number_volunteers %></strong></p>
-    <p>Nom de l'association : <%= @event.asso.name %></p>
-    <%= link_to "Je participe !", participations_path(@participation, event_id: @event.id), method: :post %>
-    <%= link_to "Chat with #{@event.asso.name}", asso_chatrooms_path(@event.asso), method: :post %>
+    <p>Agir pour <span class="time-title"><%= @event.cause %></span></p>
+  </div>
+  <div class="nb-hours">
+    <h2 ><i class="fa-solid fa-hourglass"></i> <%= ((@event.end_date.to_time - @event.start_date.to_time)/ 1.hours).round %>h</h2>
+    <h2 ><i class="fa-solid fa-users"></i> <strong><%= @event.participations.count %></strong> / <strong><%= @event.number_volunteers %></h2>
   </div>
 </div>
-
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-sm-12 p-5">
+      <div class="asso-show-intro">
+        <%= cl_image_tag @event.asso.photo.key, class: "avatar-asso-show dropdown-toggle" %>
+        <h6><%= @event.asso.name %></h6>
+      </div>
+      <div class="event-show-infos py-3">
+        <p><i class="fa-solid fa-calendar"></i> <%= @event.start_date.strftime("%d/%m/%y") %> | <%= @event.start_date.strftime("%H:%M") %></p>
+        <p><i class="fa-solid fa-location-dot"></i> <%= @event.address %></p>
+        <p><i class="fa-solid fa-handshake-angle"></i>  Pourquoi avons-nous besoin de toi ?</p>
+        <h5><%= @event.description.capitalize %></h5>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-12 p-4 mt-4 CTA-show">
+      <p>Prêt à s'engager?</p>
+      <%= link_to "Je participe !", participations_path(@participation, event_id: @event.id), class: "btn-orange no-link-deco", method: :post %>
+      <p>Des questions?</p>
+      <%= link_to "Envoyer un message", asso_chatrooms_path(@event.asso), class: "btn-bluegreen no-link-deco", method: :post %>
+    <div class="col-lg-8 col-sm-12">
+  </div>
+</div>

@@ -52,3 +52,16 @@
   opacity: 0.7;
   color: white;
 }
+
+.btn-bluegreen {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $c-bluegreen;
+  transition: opacity 0.3s ease;
+}
+
+.btn-bluegreen:hover {
+  opacity: 0.7;
+  color: white;
+}

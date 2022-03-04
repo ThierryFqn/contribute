@@ -23,11 +23,13 @@
 
  .icons-index {
   color: white;
-  font-size: 32px;
-  background-color: $c-orange;
-  padding: 10px 10px;
-  border-radius: 50px;
+    font-size: 22px;
+    background-color: $c-lightbluegreen;
+    padding: 10px 9px;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
   &:hover {
-    background-color: $c-bluegreen;
+    background-color: $c-turquoise;
   }
  }
