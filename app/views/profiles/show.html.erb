@@ -13,8 +13,15 @@
       <h5 class="card-title">Évènement</h5>
       <p class="card-text">Suivez le statut de votre demande de participation à évènement </p>
     <% @participations.each do |participation| %>
-      <%= participation.status %>
-      <%= participation.event.name %>
+      <strong><%= participation.event.name %> :</strong>
+        <%if participation.pending? %>
+           <span> En attente</span>
+        <% elsif participation.accepted? %>
+          <span> Accepté </span>
+        <% elsif participation.cancelled? %>
+        <% else %>
+          <span> Refusé</span>
+        <% end %>
       <br>
       <% if participation.pending? %>
        <button class='annuler-participation'> <%= link_to 'Annuler', cancelled_participation_path(participation), method: :patch %></button>
