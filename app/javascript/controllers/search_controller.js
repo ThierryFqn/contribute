@@ -7,14 +7,13 @@
 //   <h1 data-target="hello.output"></h1>
 // </div>
 
-import flatpickr from "flatpickr";
+
 import { Controller } from "stimulus"
 
 export default class extends Controller {
   static targets = [ "distance" ]
 
   connect() {
-    // flatpickr(".datepicker", {})
     this.distanceTarget.innerText = 30
   }
 
