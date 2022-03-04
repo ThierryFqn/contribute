@@ -1,0 +1,55 @@
+.banner-profile {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  height: 40vh;
+}
+
+.banner-profile h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 42px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 25px;
+  & > .time-title {
+    background-color: $c-bluegreen;
+    padding: 5px;
+    font-weight: 600;
+  }
+}
+
+.banner-profile p {
+  font-size: 18px;
+  color: white;
+  text-align: center;
+}
+
+
+.card-participationprofil {
+  padding-top: 10%;
+  border-radius: 8%;
+  background-color: #e9ecef;
+  font-weight: 200
+}
+
+.card-message {
+  padding-top: 10%;
+  border-radius: 8%;
+  background-color: #e9ecef;
+  height: 8%;
+  font-weight: 200
+}
+
+.btn-profile {
+  background-color: $c-orange;
+  color: white;
+  border-radius: 10%;
+}
+
+.annuler-participation {
+  background-color: $c-orange;
+  color: white;
+  border-radius: 10%;
+}
