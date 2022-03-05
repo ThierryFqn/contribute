@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   resources :events, only: %i[index show]
   resources :assos, only: %i[show new create] do
+    member do
+      get '/index_asso', to: 'chatrooms#index_asso'
+    end
     get :dashboard, on: :member
     resources :chatrooms, only: :create
     resources :events, only: [ :new, :create ]
