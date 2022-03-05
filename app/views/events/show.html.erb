@@ -4,7 +4,7 @@
     <p>Agir pour <span class="time-title"><%= @event.cause %></span></p>
   </div>
   <div class="nb-hours">
-    <h2 ><i class="fa-solid fa-hourglass"></i> <%= ((@event.end_date.to_time - @event.start_date.to_time)/ 1.hours).round %>h</h2>
+    <h2 ><i class="fa-solid fa-hourglass"></i> <%= @event.hours_calcul.round %>h</h2>
     <h2 ><i class="fa-solid fa-users"></i> <strong><%= @event.participations.count %></strong> / <strong><%= @event.number_volunteers %></h2>
   </div>
 </div>
