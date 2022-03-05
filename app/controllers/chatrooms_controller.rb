@@ -4,7 +4,7 @@ class ChatroomsController < ApplicationController
   def index_asso
     @asso = Asso.find(params[:id])
     @chatrooms = Chatroom.select { |chatroom| chatroom.asso_id = @asso.id }
-    authorize @chatrooms
+    skip_authorization
   end
 
   def show

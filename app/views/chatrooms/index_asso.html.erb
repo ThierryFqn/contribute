@@ -1,3 +1,6 @@
-<% @chatrooms.each do |chatroom| %>
-  <%= chatroom.name %>
-<% end %>
+<br><br><br><br><br>
+<div class="container">
+  <% @chatrooms.each do |chatroom| %>
+    <%= link_to "#{chatroom.user.first_name}", chatroom_path(chatroom) %>
+  <% end %>
+</div>
