@@ -30,8 +30,10 @@
         <%= link_to "Je participe !", participations_path(@participation, event_id: @event.id), class: "btn-orange no-link-deco", method: :post %>
       </div>
       <div class="event-show-discussion my-4">
-        <p>Des questions?</p>
-        <%= link_to "Envoyer un message", asso_chatrooms_path(@event.asso), class: "btn-bluegreen no-link-deco", method: :post %>
+        <%= cl_image_tag @event.asso.user.photo.key, class: "avatar-large avatar-asso-contact dropdown-toggle img-asso-show mb-2" %>
+        <p>Contact: <strong><%= @event.asso.user.first_name %></strong></p>
+        <p class="event-show-discussion-intro">Pour toute question, n'hésite pas à la contacter.</p>
+        <%= link_to "Envoyer un message", asso_chatrooms_path(@event.asso), class: "btn-white no-link-deco", method: :post %>
       </div>
     <div class="col-lg-8 col-sm-12">
   </div>
