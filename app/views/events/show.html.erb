@@ -23,11 +23,16 @@
         <p class= "event-show-description-content"><%= @event.description.capitalize %></p>
       </div>
     </div>
-    <div class="col-lg-4 col-sm-12 p-4 mt-4 CTA-show">
-      <p>Prêt à s'engager?</p>
-      <%= link_to "Je participe !", participations_path(@participation, event_id: @event.id), class: "btn-orange no-link-deco", method: :post %>
-      <p>Des questions?</p>
-      <%= link_to "Envoyer un message", asso_chatrooms_path(@event.asso), class: "btn-bluegreen no-link-deco", method: :post %>
+    <div class="col-lg-4 col-sm-12 p-4">
+      <div class="event-show-participation my-4">
+        <p>Volontaires: <strong><%= @event.participations.count %></strong>/<%= @event.number_volunteers %></p>
+        <p>Prêt à s'engager?</p>
+        <%= link_to "Je participe !", participations_path(@participation, event_id: @event.id), class: "btn-orange no-link-deco", method: :post %>
+      </div>
+      <div class="event-show-discussion my-4">
+        <p>Des questions?</p>
+        <%= link_to "Envoyer un message", asso_chatrooms_path(@event.asso), class: "btn-bluegreen no-link-deco", method: :post %>
+      </div>
     <div class="col-lg-8 col-sm-12">
   </div>
 </div>
