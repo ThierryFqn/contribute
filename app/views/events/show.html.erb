@@ -1,25 +1,26 @@
-<div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @event.photos.first.key, crop: :fill %>')">
+<div class="banner-show">
   <div class="container">
-    <h1><%= @event.name %></h1>
+    <h1 class="banner-event-name"><%= @event.name.upcase %></h1>
     <p>Agir pour <span class="time-title"><%= @event.cause %></span></p>
+  <%= cl_image_tag @event.asso.photo.key, class: "avatar-asso-show dropdown-toggle img-asso-show" %>
   </div>
   <div class="nb-hours">
     <h2 ><i class="fa-solid fa-hourglass"></i> <%= @event.hours_calcul.round %>h</h2>
-    <h2 ><i class="fa-solid fa-users"></i> <strong><%= @event.participations.count %></strong> / <strong><%= @event.number_volunteers %></h2>
+    <%# <h2 ><i class="fa-solid fa-users"></i> <strong><%= @event.participations.count %><%#= @event.number_volunteers %>
   </div>
 </div>
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-sm-12 p-5">
-      <div class="asso-show-intro">
-        <%= cl_image_tag @event.asso.photo.key, class: "avatar-asso-show dropdown-toggle" %>
-        <h6><%= @event.asso.name %></h6>
+      <h6 class="asso-show-intro"><%= @event.asso.name %></h6>
+      <div class="event-show-infos py-2">
+        <p class="event-show-infos-padding-right"><i class="fa-solid fa-calendar"></i> <%= @event.start_date.strftime("%d/%m/%y") %></p>
+        <p class="event-show-infos-padding-right event-show-infos-padding-left"><i class="fa-solid fa-clock"></i> <%= @event.start_date.strftime("%H:%M") %></p>
+        <p class="event-show-infos-padding-left"><i class="fa-solid fa-location-dot"></i> <%= @event.address %></p>
       </div>
-      <div class="event-show-infos py-3">
-        <p><i class="fa-solid fa-calendar"></i> <%= @event.start_date.strftime("%d/%m/%y") %> | <%= @event.start_date.strftime("%H:%M") %></p>
-        <p><i class="fa-solid fa-location-dot"></i> <%= @event.address %></p>
-        <p><i class="fa-solid fa-handshake-angle"></i>  Pourquoi avons-nous besoin de toi ?</p>
-        <h5><%= @event.description.capitalize %></h5>
+      <div class="event-show-description">
+        <p class="event-show-description-title">Pourquoi avons-nous <span class="need-description">besoin de toi ?</span> <span class="interogation-description">______</span> </p>
+        <p class= "event-show-description-content"><%= @event.description.capitalize %></p>
       </div>
     </div>
     <div class="col-lg-4 col-sm-12 p-4 mt-4 CTA-show">

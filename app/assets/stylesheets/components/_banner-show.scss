@@ -1,18 +1,26 @@
 .banner-show {
-  background-size: cover;
-  background-position: center;
   padding: 150px 0;
   height: 40vh;
+  position: relative;
+  background: linear-gradient(119deg, rgba(13,58,66,1) 0%, rgba(53,133,139,1) 50%, rgba(79,189,186,1) 100%);
+    .img-asso-show {
+      position:absolute;
+      bottom:-40px;
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      object-fit: contain;
+    }
 }
 
 .banner-show h1 {
   margin: 0;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 42px;
-  font-weight: bold;
+  // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 2em;
   text-align: center;
   padding-bottom: 25px;
+  font-weight: 300;
 }
 
 .banner-show p {
@@ -23,5 +31,7 @@
     background-color: $c-bluegreen;
     padding: 5px;
     font-weight: 600;
+    background-color: $c-yellow;
+    color: black;
   }
 }

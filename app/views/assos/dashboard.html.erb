@@ -93,7 +93,7 @@
                             <div class="card-participants-dashboard mt-3">
                               <img src="<%= cl_image_path participant.user.photo.key %>" class="avatar-large" />
                               <div class="card-participants-dashboard-content">
-                                <p><small>Taux de participation: <%= participant.user.participation_rate ? "#{participant.user.participation_rate}%" : "Aucune participation pour le moment" %></small></p>
+                                <p><small>Taux de participation: <span class="nb-participation-rate"><%= participant.user.participation_rate ? "#{participant.user.participation_rate}%" : "aucune participation pour le moment" %></span></small></p>
                                 <p><strong><%= participant.user.first_name %> <%= participant.user.last_name %></strong></p>
                               </div>
 
