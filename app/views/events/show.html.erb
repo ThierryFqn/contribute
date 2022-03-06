@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="banner-event-name"><%= @event.name.upcase %></h1>
     <p>Agir pour <span class="time-title"><%= @event.cause %></span></p>
-  <%= cl_image_tag @event.asso.photo.key, class: "avatar-asso-show dropdown-toggle img-asso-show" %>
+    <%= cl_image_tag @event.asso.photo.key, class: "avatar-asso-show dropdown-toggle img-asso-show" %>
   </div>
   <div class="nb-hours">
     <h2 ><i class="fa-solid fa-hourglass"></i> <%= @event.hours_calcul.round %>h</h2>
@@ -61,6 +61,6 @@
         <p class="event-show-discussion-intro">Pour toute question, n'hésite pas à contacter <%= @event.asso.user.first_name.capitalize  %>.</p>
         <%= link_to "Envoyer un message", asso_chatrooms_path(@event.asso), class: "btn-white no-link-deco", method: :post %>
       </div>
-    <div class="col-lg-8 col-sm-12">
+    </div>
   </div>
 </div>
