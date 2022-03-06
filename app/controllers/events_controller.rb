@@ -72,7 +72,7 @@ class EventsController < ApplicationController
   end
 
   def params_event
-    params.require(:event).permit(:name, :description, :cause, :status, :start_date, :end_date, :address, :number_volunteers)
+    params.require(:event).permit(:name, :description, :cause, :status, :start_date, :end_date, :address, :number_volunteers, photos:[])
   end
 
   def sum_hours(event)

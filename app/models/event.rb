@@ -31,4 +31,12 @@ class Event < ApplicationRecord
   def hours_calcul
     (end_date.to_time - start_date.to_time) / 1.hours
   end
+
+  def pending_participants
+    participations.select(&:pending?)
+  end
+
+  def accepted_participants
+    participations.select(&:accepted?)
+  end
 end

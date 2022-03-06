@@ -62,75 +62,75 @@
           <div class="col-sm-12 col-lg-2 dashboard-event">
             <img src="https://res.cloudinary.com/dlwr1bikm/image/upload/v1646259498/development/Saly-42_oi5fwi.png" class="img-header-row" alt="header">
           </div>
-          <% @pending_events.each do |event| %>
-            <div class="col-sm-12 col-lg-10" data-controller="display-participants">
-              <div class="card-event-dash">
-                <img src="<%= cl_image_path event.photos.first.key %>" />
-                <div class="card-event-dash-infos">
-                  <h2><%= event.name %></h2>
-                  <p>Nombre de volontaires: <span class="volunteers-count"><%= event.participations.select{|p| p.accepted?}.count%>/<%= event.number_volunteers%></strong></p>
-                  <p><strong><%= event.participations.select{|p| p.pending?}.count%></strong> volontaire(s) en attente</p>
-                </div>
-                <div class="card-event-dash-arrow">
-                  <i class="fa-solid fa-caret-down drop-validation" data-display-participants-target="down" data-action="click->display-participants#displayDiv"></i>
-                  <i class="fa-solid fa-caret-up up-validation d-none" data-display-participants-target="up" data-action="click->display-participants#hideDiv"></i>
-                </div>
-              </div>
-              <div>
-              <div class="card-event-dash-participations d-none" data-display-participants-target="participants">
-                  <div class="container-tab">
-                    <div class="tabs">
-                      <input type="radio" id="radio-1" name="tabs" checked data-action="click->display-participants#displayPending"/>
-                      <label class="tab" for="radio-1">En attente<span class="notification-part"><%= event.participations.select{|p| p.pending?}.count %></span></label>
-                      <input type="radio" id="radio-2" name="tabs" data-action="click->display-participants#displayAccepted"/>
-                      <label class="tab" for="radio-2">Validés<span class="notification-part"><%= event.participations.select{|p| p.accepted?}.count %></span></label>
-                      <span class="glider"></span>
+            <div class="col-sm-12 col-lg-10">
+              <% @pending_events.each do |event| %>
+                <div class="mb-3" data-controller="display-participants">
+                  <div class="card-event-dash">
+                    <img src="<%= cl_image_path event.photos.first.key %>" />
+                    <div class="card-event-dash-infos">
+                      <h2><%= event.name %></h2>
+                      <p>Nombre de volontaires: <span class="volunteers-count"><%= event.accepted_participants.count%>/<%= event.number_volunteers%></strong></p>
+                      <p><strong><%= event.pending_participants.count%></strong> volontaire(s) en attente</p>
+                    </div>
+                    <div class="card-event-dash-arrow">
+                      <i class="fa-solid fa-caret-down drop-validation" data-display-participants-target="down" data-action="click->display-participants#displayDiv"></i>
+                      <i class="fa-solid fa-caret-up up-validation d-none" data-display-participants-target="up" data-action="click->display-participants#hideDiv"></i>
                     </div>
                   </div>
-                    <div class="participants-pending" data-display-participants-target="pending">
-                      <% event.participations.each do |participant|%>
-                        <% if participant.pending? %>
-                            <div class="card-participants-dashboard mt-3">
-                              <img src="<%= cl_image_path participant.user.photo.key %>" class="avatar-large" />
-                              <div class="card-participants-dashboard-content">
-                                <p><small>Taux de participation: <span class="nb-participation-rate"><%= participant.user.participation_rate ? "#{participant.user.participation_rate}%" : "aucune participation pour le moment" %></span></small></p>
-                                <p><strong><%= participant.user.first_name %> <%= participant.user.last_name %></strong></p>
-                              </div>
-
-                              <div class="card-participants-dashboard-actions">
-                                    <%= link_to 'Accepter', accepted_participation_path(participant), method: :patch %>
-                                    <%= link_to 'Refuser', denied_participation_path(participant), method: :patch %>
-                              </div>
-                            </div>
-                        <% end %>
-                      <% end %>
-                    </div>
-                    <div class="participants-accepted d-none" data-display-participants-target="accepted">
-                      <% event.participations.each do |participant|%>
-                        <% if participant.accepted?  %>
+                  <div class="card-event-dash-participations d-none" data-display-participants-target="participants">
+                      <div class="container-tab">
+                        <div class="tabs">
+                          <input type="radio" id="radio-1" name="tabs" checked data-action="click->display-participants#displayPending"/>
+                          <label class="tab" for="radio-1">En attente<span class="notification-part"><%= event.pending_participants.count %></span></label>
+                          <input type="radio" id="radio-2" name="tabs" data-action="click->display-participants#displayAccepted"/>
+                          <label class="tab" for="radio-2">Validés<span class="notification-part"><%= event.accepted_participants.count %></span></label>
+                          <span class="glider"></span>
+                        </div>
+                      </div>
+                      <div class="participants-pending" data-display-participants-target="pending">
+                        <% event.participations.each do |participant|%>
+                          <% if participant.pending? %>
                               <div class="card-participants-dashboard mt-3">
                                 <img src="<%= cl_image_path participant.user.photo.key %>" class="avatar-large" />
                                 <div class="card-participants-dashboard-content">
-                                  <p><small>14th January</small></p>
+                                  <p><small>Taux de participation: <span class="nb-participation-rate"><%= participant.user.participation_rate ? "#{participant.user.participation_rate}%" : "aucune participation pour le moment" %></span></small></p>
                                   <p><strong><%= participant.user.first_name %> <%= participant.user.last_name %></strong></p>
                                 </div>
+
+                                <div class="card-participants-dashboard-actions">
+                                      <%= link_to 'Accepter', accepted_participation_path(participant), method: :patch %>
+                                      <%= link_to 'Refuser', denied_participation_path(participant), method: :patch %>
+                                </div>
                               </div>
+                          <% end %>
                         <% end %>
-                      <% end %>
-                    </div>
-              </div>
+                      </div>
+                      <div class="participants-accepted d-none" data-display-participants-target="accepted">
+                        <% event.participations.each do |participant|%>
+                          <% if participant.accepted?  %>
+                                <div class="card-participants-dashboard mt-3">
+                                  <img src="<%= cl_image_path participant.user.photo.key %>" class="avatar-large" />
+                                  <div class="card-participants-dashboard-content">
+                                    <p><small>Taux de participation: <span class="nb-participation-rate"><%= participant.user.participation_rate ? "#{participant.user.participation_rate}%" : "aucune participation pour le moment" %></span></small></p>
+                                    <p><strong><%= participant.user.first_name %> <%= participant.user.last_name %></strong></p>
+                                  </div>
+                                </div>
+                          <% end %>
+                        <% end %>
+                      </div>
+                  </div>
+                </div>
+              <% end %>
             </div>
-          <% end %>
       </div>
 
 
-        <h4 class="py-4">Evènements passés </h4>
-        <% @done_events.each do |event| %>
-          <%= event.name %>
-          <%= event.number_volunteers%>
-        <% end %>
+      <h4 class="py-4">Evènements passés </h4>
+      <% @done_events.each do |event| %>
+        <%= event.name %>
+        <%= event.number_volunteers%>
+      <% end %>`
     </div>
-  </div>
 </div>
 
 <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapsechatrooms" aria-expanded="false" aria-controls="collapsechatrooms">
