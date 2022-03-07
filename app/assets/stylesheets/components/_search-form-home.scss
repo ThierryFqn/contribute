@@ -1,0 +1,133 @@
+.home-search {
+  width: 55%;
+  border-radius:20px;
+
+  .search_address {
+    margin-bottom: 0 !important;
+  }
+
+  .search_dates {
+    margin-bottom: 0 !important;
+  }
+
+  .form-control {
+    padding: 0.375rem 0rem;
+    border: none;
+    background-color: transparent;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+
+  .form-control:focus {
+    box-shadow: none;
+}
+}
+
+.product-search {
+  display: flex;
+  align-items: center;
+  background: white;
+  margin: 0 auto;
+  box-shadow: rgba(0,0,0,.172549) 0 6px 12px 0;
+  cursor: pointer;
+}
+
+.search-element {
+  display: flex;
+  flex-grow: 2;
+  flex-direction: column;
+  border-right: 1px solid rgba(10,10,10,.1);
+  padding: 0 1em;
+  .search-date {
+    display: flex;
+  }
+}
+.button-div {
+  overflow: hidden;
+}
+
+.search-label {
+  font-weight: 700;
+  color: $c-green;
+  text-align: left;
+}
+
+.search-input {
+  border: none;
+  appearance: none;
+  outline: none;
+  width: 100%;
+  font-size: 1em;
+  line-height: 1.2em;
+  margin-top: 5px;
+}
+
+.search-input:focus {
+  box-shadow: 0px 2px 0px 0px $c-green;
+}
+
+.search-button {
+  display: inline-block;
+  height: 100%;
+  line-height: 70px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: white;
+  background-color: $c-orange;
+  transition: background-color 0.5s ease;
+  padding: 0 1.2em;
+  border: none;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.search-button:hover {
+  background-color: $c-bluegreen;
+  color: white;
+}
+
+fieldset {
+  display: flex;
+
+  legend {
+    display: none;
+  }
+
+  input {
+    display: none;
+  }
+
+  input:checked + label {
+    .icons-index {
+      background-color: $c-turquoise;
+      color: black;
+   }
+  }
+
+}
+
+.mapboxgl-ctrl-geocoder--icon-search {
+  display:none;
+}
+
+.mapboxgl-ctrl-geocoder {
+  box-shadow: none;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+  width: 100%;
+  font-size: 1em;
+  line-height: 1.2em;
+  font-family: "Lato";
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+}
+
+.suggestions-wrapper {
+  text-align:left;
+}
+
+.form-select {
+  width:80%;
+ }

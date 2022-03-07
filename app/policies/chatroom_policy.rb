@@ -8,8 +8,4 @@ class ChatroomPolicy < ApplicationPolicy
   def show?
     true
   end
-
-  def index_asso?
-    true
-  end
 end

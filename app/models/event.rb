@@ -24,6 +24,23 @@ class Event < ApplicationRecord
 
   def attach_photo
     return if photos.attached?
+
     self.photos.attach(io: File.open(File.join(Rails.root,'app/assets/images/default-image.jpg')), filename: 'default image')
+  end
+
+  def hours_calcul
+    (end_date.to_time - start_date.to_time) / 1.hours
+  end
+
+  def pending_participants
+    participations.select(&:pending?)
+  end
+
+  def accepted_participants
+    participations.select(&:accepted?)
+  end
+
+  def volunteers_counter
+    (accepted_participants.count.fdiv(number_volunteers) * 100).round
   end
 end

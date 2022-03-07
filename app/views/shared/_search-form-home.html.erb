@@ -1,8 +1,8 @@
 <div class="search-form-control form-group mt-3">
   <%= simple_form_for :search, url: events_path, method: :get do |f| %>
-    <div class="product-search">
+    <div class="product-search home-search">
       <div class="search-element" data-controller='places'>
-        <label class="search-label py-1">Où?</label>
+        <label class="search-label">Où?</label>
         <%#= f.input :address,
               label: false,
               input_html: { data: { geocoder_target: "address" }, class: 'd-none' },
@@ -10,16 +10,17 @@
         <%= f.input :address, label: false, placeholder: "Localisation" %>
       </div>
       <div class="search-element">
-        <label class="search-label py-1">Quand?</label>
+        <label class="search-label">Quand?</label>
         <div class="search-date">
-          <%= f.input :dates, as: :string, required: false, label: false, input_html: {  placeholder: "Vos disponibilités", class: "datepicker" } %>
+          <%= f.input :dates, as: :string, required: false, label: false, input_html: {  placeholder: "Disponibilités", class: "datepicker" } %>
           <%= f.input :range_end, as: :string, input_html: { class: 'd-none' }, label: false %>
           <%#= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"}%>
         </div>
       </div>
-        <div class="button-div">
-        <%= f.submit class:"search-button", value: "GO"%>
-        </div>
+        <%#= f.submit class:"search-button", value: "GO" %>
+      <%= button_tag type: 'submit', class: "search-button", id: "search" do %>
+          <i class="fas fa-search" aria-hidden="true"></i>
+      <% end %>
     </div>
   <% end %>
 </div>

@@ -1,1 +1,159 @@
 // Specific CSS for your home-page
+.sub-title-home {
+  .sub-title-home-content {
+  color: rgba(0,0,0,0.8);
+  font-weight: 700;
+  position:relative;
+  }
+
+  .sub-title-home-under {
+    position: absolute;
+    font-size: 8px;
+    line-height: 1.8;
+    font-weight: 600;
+    color: $c-orange;
+    top: 25px;
+    left: 0;
+    z-index: -1000;
+    background-color: $c-orange;
+    opacity: 0.7;
+  }
+
+  .sub-title-home-under-blue {
+    position: absolute;
+    font-size: 8px;
+    line-height: 1.8;
+    font-weight: 600;
+    color: $c-bluegreen;
+    top: 25px;
+    left: 0;
+    z-index: -1000;
+    background-color: $c-bluegreen;
+    opacity: 0.7;
+  }
+}
+
+.home-key-infos {
+  background: linear-gradient(119deg, #0d3a42 0%, #35858b 50%, #4fbdba 100%);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 240px;
+  padding: 20px 30px;
+  margin: 10px 30px;
+  justify-content: center;
+  color: white;
+  h4 {
+    font-weight:200;
+    color: rgba(250,250,250,0.8);
+    font-size: 1.3rem;
+    .home-key-infos-nb {
+      opacity:1;
+      line-height: 1.8;
+      font-weight:700;
+      color: white;
+      font-size: 1.8rem;
+      margin-right: 0.4rem;
+    }
+  }
+}
+
+.home-key-asso-register {
+  background: #F4F4F4;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 240px;
+  padding: 0px 25px;
+  padding-top: 60px;
+  padding-bottom: 20px;
+  margin: 10px 30px;
+  justify-content: flex-end;
+  align-items: center;
+  color: black;
+  position:relative;
+  img {
+    width: 25%;
+    position: absolute;
+    top: -32px;
+  }
+  p {
+    text-align: center;
+  }
+  h5 {
+    font-size: 0.9rem;
+    color: rgba(0,0,0,0.6);
+    font-weight:700;
+  }
+}
+
+
+.home-key-volunteer-register {
+  background: #F4F4F4;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 240px;
+  padding: 0px 25px;
+  padding-top: 60px;
+  padding-bottom: 20px;
+  margin: 10px 30px;
+  justify-content: flex-end;
+  align-items: center;
+  color: black;
+  position:relative;
+  img {
+    width: 25%;
+    position: absolute;
+    top: -45px;
+  }
+  p {
+    text-align: center;
+  }
+  h5 {
+    font-size: 0.9rem;
+    color: rgba(0,0,0,0.6);
+    font-weight:700;
+  }
+
+}
+
+.raisons-to-contribute {
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.raisons-to-contribute-contain {
+  position: relative;
+  .raisons-to-contribute-content {
+    background: #F4F4F4;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width:80%;
+    padding: 40px 30px;
+    margin-left: -40px;
+    margin-top:20px;
+    color: black;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    ul {
+      list-style: none;
+      li {
+        line-height: 3.5;
+        font-size: 1.2rem;
+        i {
+          padding-right:5px;
+          padding-right: 15px;
+          font-size: 1.2rem;
+          color: $c-bluegreen;
+        }
+        .raisons-to-contribute-content-ajective {
+          font-weight: 800;
+          color: $c-orange;
+        }
+      }
+    }
+  }
+}
