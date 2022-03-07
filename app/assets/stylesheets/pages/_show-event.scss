@@ -139,5 +139,20 @@
 }
 
 .carousel-item img {
-  border-radius: 20px;
+  border-radius: 10px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.carousel-indicators {
+  li {
+    height: 5px;
+    background: white;
+    opacity: 0.6;
+    width: 40px;
+    margin: 10px;
+    z-index: 3;
+    cursor: pointer;
+    &.active {opacity: 1;}
+  }
 }

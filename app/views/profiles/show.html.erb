@@ -58,7 +58,7 @@
                     <div class="user-profile-key-informations-sender">
                       <h6><%= conversation.asso.updated_at.strftime("%d/%m/%y") %> <%= conversation.asso.updated_at.strftime("%H:%M")   %> </h6>
                       <p><%= conversation.asso.user.first_name.capitalize %> | <%= conversation.asso.name.capitalize %></p>
-                      <p class="view-last-message"><%= conversation.messages.last.content %></p>
+                      <p class="view-last-message">Dernier message: <span><%= conversation.messages.last.content %></span></p>
                     </div>
                   </li>
                  <% end %>
