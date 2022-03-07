@@ -7,6 +7,7 @@
   position: sticky;
   top: 0;
   width: 35%;
+  margin-top:15px;
 }
 
 .cards-grid {
@@ -111,7 +112,7 @@
   padding-top: 20px;
 }
 
-.card-event-infos .nb-hours {
+.card-event-infos .nb-hoursindex {
   padding: 10px 8px;
   background-color: $c-orange;
   color: white;

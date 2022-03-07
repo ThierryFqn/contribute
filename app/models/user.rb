@@ -20,4 +20,14 @@ class User < ApplicationRecord
     return if photo.attached?
     self.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/default-avatar.jpg')), filename: 'avatar')
   end
+
+  def participation_rate
+    if participations.select(&:confirmed?).any?
+      accepted_participations = participations.accepted.count
+      confirmed_participations = participations.confirmed.count
+      (confirmed_participations.fdiv(accepted_participations) * 100).round
+    else
+      false
+    end
+  end
 end
