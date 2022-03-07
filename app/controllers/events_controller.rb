@@ -42,6 +42,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @participation = Participation.new
     @participation.event = @event
+    @asso = @event.asso
+    @potential_volunteers = @event.preferences
     authorize @event
     authorize @participation
   end
@@ -61,7 +63,6 @@ class EventsController < ApplicationController
     @event.number_hours = sum_hours(@event)
     @potential_volunteers = @event.preferences
     authorize @event
-    raise
     @event.save ? (redirect_to root_path) : (render :new)
   end
 
