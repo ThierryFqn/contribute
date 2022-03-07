@@ -1,5 +1,8 @@
 .chatroom {
 
+  p {
+    text-align: right
+  }
   h1 {
     border-bottom: 1px solid $gray-200;
     margin-bottom: 0;
@@ -29,7 +32,7 @@
   }
 
   .modal-footer {
-
+    border-top: none;
     height: fit-content;
   }
 }
@@ -42,4 +45,6 @@
   height: 100% !important;
 }
 
-
+.modal-content {
+  border-radius: 12px;
+}

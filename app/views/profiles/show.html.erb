@@ -43,7 +43,7 @@
       </button>
 
 
-  <div class="collapse" id="collapsechatrooms">
+  <div class="collapse chatroom" id="collapsechatrooms">
     <div class="card card-body">
       <% @chatrooms.each_with_index do |chatroom, index| %>
         <div class="messages"
@@ -55,8 +55,7 @@
             <div class="modal-dialog modal-dialog-scrollable">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="chatroomModalLabel"> <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" %>  <%= @event.asso.user.first_name.capitalize %> |
-                  <%= @event.asso.name.capitalize  %></h5>
+                  <h5 class="modal-title" id="chatroomModalLabel"> <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" %>  <%=  chatroom.asso.user.first_name.capitalize %>| <%= chatroom.asso.name.capitalize %> </h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" data-chatroom-subscription-target="modalBody">
@@ -68,7 +67,7 @@
                   </div>
 
                 </div>
-                <div class="modal-footer" style="flex-grow: 0.2;">
+                <div class="modal-footer" >
 
                   <%= simple_form_for [ chatroom, Message.new],
                     remote: true,
@@ -79,7 +78,7 @@
                       placeholder: "Message #{chatroom.name}",
                       wrapper_html: {class: "flex-grow-1"}
                     %>
-                    <%= f.submit "Envoyer", class: "btn btn-outline-success btn-lg" %>
+                    <%= f.submit "Envoyer", class: "btn btn-orange btn-lg" %>
                   <% end %>
 
                 </div>
