@@ -13,7 +13,7 @@
               <%= f.input :number_volunteers, input_html: { min: '0' } %>
             </div>
             <div class="col">
-              <%= f.input :cause %>
+              <%= f.input :cause, collection: Event::EVENT_CAUSES %>
             </div>
           </div>
           <div class="row">
