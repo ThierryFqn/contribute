@@ -40,4 +40,5 @@ class AssosController < ApplicationController
   def asso_params
     params.require(:asso).permit(:name, :description)
   end
+
 end

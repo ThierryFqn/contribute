@@ -61,11 +61,6 @@
         <p class="event-show-discussion-intro">Pour toute question, n'hésite pas à contacter <%= @event.asso.user.first_name.capitalize  %>.</p>
         <%= link_to "Envoyer un message", asso_chatrooms_path(@event.asso), class: "btn-white no-link-deco", method: :post %>
       </div>
-      <% if current_user == @asso.user && @potential_volunteers.any? %>
-        <% @potential_volunteers.each do |potential_volunteer| %>
-          <%= potential_volunteer.first_name %>
-        <% end %>
-      <% end %>
     </div>
   </div>
 </div>
