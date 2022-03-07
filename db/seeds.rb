@@ -34,10 +34,10 @@ end
 
 puts "Creating Assos..."
 
-def assign_photo(asso, url)
+def assign_photo(record, url)
   file = URI.open(url)
-  asso.photo.attach(io: file, filename: "logo#{asso}", content_type: 'image/png')
-  asso.save!
+  record.photo.attach(io: file, filename: "logo#{record}", content_type: 'image/png')
+  record.save!
   puts 'Image asso ajouté'
 end
 
@@ -56,12 +56,9 @@ end
 
 
 puts 'create first user'
-user_1 = User.new(first_name:'Mélissa', last_name:'Gateau', email: 'meli@gmail.com', nickname: 'Mel',causes_preferences: 'Environnement', encrypted_password: "1234567")
+
+user_1 = User.new(first_name:'Mélissa', last_name:'Gateau', email: 'meli@gmail.com', nickname: 'Mel', causes_preferences: 'Environnement', password: "123456")
 assign_photo(user_1, "https://avatars.githubusercontent.com/meligateau")
-
-
-
-
 
 puts 'create fisrt asso'
 asso_1 = Asso.new(name: 'Surfrider', description: 'Association devenue une référence dans le combat pour la protection de l océan et de ses usagers.', user: presidents[0])

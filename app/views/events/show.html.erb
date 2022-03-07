@@ -60,47 +60,52 @@
         <p>Contact: <strong><%= @event.asso.user.first_name.capitalize %></strong></p>
         <p class="event-show-discussion-intro">Pour toute question, n'hésite pas à contacter <%= @event.asso.user.first_name.capitalize  %>.</p>
 
-        <button type="button" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#chatroomModal">
-          Envoyer un message
-        </button>
 
-        <div class="container chatroom"
-          data-controller="chatroom-subscription"
-          data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+        <% if current_user %>
+          <button type="button" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#chatroomModal">
+            Envoyer un message
+          </button>
+          <div class="container chatroom"
+            data-controller="chatroom-subscription"
+            data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
 
-          <div class="modal fade" id="chatroomModal" tabindex="-1" aria-labelledby="chatroomModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="chatroomModalLabel"><%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" %>  <%= @event.asso.user.first_name.capitalize %> |
-                  <%= @event.asso.name.capitalize  %>
-                  </h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div data-chatroom-subscription-target="messages">
-                      <% @chatroom.messages.each do |message| %>
-                        <%= render "messages/message", message: message %>
-                      <% end %>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                  <%= simple_form_for [ @chatroom, Message.new],
-                    remote: true,
-                    html: {data: { "chatroom-subscription-target" => "form" }, class: "d-flex"} do |f| %>
-                    <%= f.input :content,
-                      label: false,
-                      placeholder: "Message #{@chatroom.name}",
-                      wrapper_html: {class: "flex-grow-1"}
-                    %>
-                    <%= f.submit "Envoyer", class: "btn btn-orange btn-lg" %>
-                  <% end %>
+            <div class="modal fade" id="chatroomModal" tabindex="-1" aria-labelledby="chatroomModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="chatroomModalLabel">
+                      <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" %>
+                      <%= @event.asso.user.first_name.capitalize %> |
+                      <%= @event.asso.name.capitalize  %>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <div data-chatroom-subscription-target="messages">
+                        <% @chatroom.messages.each do |message| %>
+                          <%= render "messages/message", message: message %>
+                        <% end %>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <%= simple_form_for [ @chatroom, Message.new ],
+                      remote: true,
+                      html: {data: { "chatroom-subscription-target" => "form" }, class: "d-flex"} do |f| %>
+                      <%= f.input :content,
+                        label: false,
+                        placeholder: "Message #{@chatroom.name}",
+                        wrapper_html: {class: "flex-grow-1"}
+                      %>
+                      <%= f.submit "Envoyer", class: "btn btn-orange btn-lg" %>
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-        </div>
+        <% else %>
+          <%= link_to 'connectez vous pour Chatter !!', new_user_session_path, class: "btn btn-white" %>
+        <% end %>
       </div>
     </div>
   </div>
