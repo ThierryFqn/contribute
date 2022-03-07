@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    attributes = [:first_name, :last_name, :email, :password, :password_confirmation, :day_birth]
+    attributes = [:first_name, :last_name, :email, :password, :password_confirmation, :day_birth, :days_preferences, :causes_preferences]
     # Permit the `subscribe_newsletter` parameter along with the other
     # sign up parameters.
     devise_parameter_sanitizer.permit(:sign_up, keys: attributes)

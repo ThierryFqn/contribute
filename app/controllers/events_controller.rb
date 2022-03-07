@@ -40,8 +40,11 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @chatroom = Chatroom.find_or_create_by(asso: @event.asso, user: current_user)
     @participation = Participation.new
     @participation.event = @event
+    @asso = @event.asso
+    @potential_volunteers = @event.preferences
     authorize @event
     authorize @participation
   end
@@ -59,6 +62,7 @@ class EventsController < ApplicationController
     @asso = Asso.find(params[:asso_id])
     @event.asso = @asso
     @event.number_hours = sum_hours(@event)
+    @potential_volunteers = @event.preferences
     authorize @event
     @event.save ? (redirect_to root_path) : (render :new)
   end
@@ -78,4 +82,5 @@ class EventsController < ApplicationController
   def sum_hours(event)
     ((event.end_date.to_time - event.start_date.to_time) / 1.hours).round
   end
+
 end

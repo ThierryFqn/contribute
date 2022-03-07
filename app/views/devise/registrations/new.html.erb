@@ -14,6 +14,8 @@
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" }%>
+      <%= f.input :causes_preferences, collection: Event::EVENT_CAUSES %>
+      <%= f.input :days_preferences, collection: Event::EVENT_DATES %>
       <%= f.input :password,
                   required: true,
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),

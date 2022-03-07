@@ -9,6 +9,7 @@ class Event < ApplicationRecord
   has_many :participants, through: :participations, source: :user
 
   EVENT_CAUSES = ["la jeunesse", "la protection de l'environnement", "la transmission des savoirs", "l'égalité", "la prévention et la santé", "la pauvreté et l'isolement"]
+  EVENT_DATES = ["Semaine", "Week-End", "Semaine et Week-End"]
 
   validates :name, presence: true
   validates :description, presence: true
@@ -42,5 +43,15 @@ class Event < ApplicationRecord
 
   def volunteers_counter
     (accepted_participants.count.fdiv(number_volunteers) * 100).round
+  end
+
+  def preferences
+    if ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].include?(self.start_date.strftime("%A"))
+      users = User.where(days_preferences: 'Semaine')
+    else
+      users = User.where(days_preferences: 'Week-End')
+    end
+
+    users.where(causes_preferences: self.cause) + User.where(days_preferences: 'Semaine et Week-End').where(causes_preferences: self.cause)
   end
 end
