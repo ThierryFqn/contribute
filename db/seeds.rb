@@ -54,6 +54,15 @@ def sum_hours(event)
   puts "Create #{event.name}"
 end
 
+
+puts 'create first user'
+user_1 = User.new(first_name:'Mélissa', last_name:'Gateau', email: 'meli@gmail.com', nickname: 'Mel',causes_preferences: 'Environnement', encrypted_password: "1234567")
+assign_photo(user_1, "https://avatars.githubusercontent.com/meligateau")
+
+
+
+
+
 puts 'create fisrt asso'
 asso_1 = Asso.new(name: 'Surfrider', description: 'Association devenue une référence dans le combat pour la protection de l océan et de ses usagers.', user: presidents[0])
 assign_photo(asso_1, "https://upload.wikimedia.org/wikipedia/fr/f/ff/Logo_surfrider_fondation2020.png")
