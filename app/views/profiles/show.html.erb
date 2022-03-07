@@ -1,6 +1,6 @@
-<div class="banner-profile" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dlwr1bikm/image/upload/v1646647290/Banner-profil-contribute_saxbbf.jpg')">
+<div class="banner-profile" style="background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('https://res.cloudinary.com/dlwr1bikm/image/upload/v1646647290/Banner-profil-contribute_saxbbf.jpg')">
   <div class="container">
-    <h1>Bienvenue sur ton profil, <span class="user-profil-name"><%= current_user.first_name.capitalize %></span></h1>
+    <h1>👋🏼 Bienvenue sur ton profil, <span class="user-profil-name"><%= current_user.first_name.capitalize %></span></h1>
     <%= cl_image_tag current_user.photo.key, class: "avatar-profil-show img-asso-show" %>
   </div>
 </div>
