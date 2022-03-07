@@ -59,7 +59,46 @@
         <%= cl_image_tag @event.asso.user.photo.key, class: "avatar-large avatar-asso-contact dropdown-toggle img-asso-show mb-2" %>
         <p>Contact: <strong><%= @event.asso.user.first_name.capitalize %></strong></p>
         <p class="event-show-discussion-intro">Pour toute question, n'hésite pas à contacter <%= @event.asso.user.first_name.capitalize  %>.</p>
-        <%= link_to "Envoyer un message", asso_chatrooms_path(@event.asso), class: "btn-white no-link-deco", method: :post %>
+
+        <button type="button" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Envoyer un message
+        </button>
+
+        <div class="container chatroom"
+          data-controller="chatroom-subscription"
+          data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">#OnVousRépond</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div data-chatroom-subscription-target="messages">
+                      <% @chatroom.messages.each do |message| %>
+                        <%= render "messages/message", message: message %>
+                      <% end %>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <%= simple_form_for [ @chatroom, Message.new],
+                    remote: true,
+                    html: {data: { "chatroom-subscription-target" => "form" }, class: "d-flex"} do |f| %>
+                    <%= f.input :content,
+                      label: false,
+                      placeholder: "Message #{@chatroom.name}",
+                      wrapper_html: {class: "flex-grow-1"}
+                    %>
+                    <%= f.submit "Send", class: "btn btn-primary" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
