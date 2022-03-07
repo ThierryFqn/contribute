@@ -40,6 +40,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @chatroom = Chatroom.find_or_create_by(asso: @event.asso, user: current_user)
     @participation = Participation.new
     @participation.event = @event
     authorize @event
