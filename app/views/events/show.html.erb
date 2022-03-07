@@ -60,7 +60,7 @@
         <p>Contact: <strong><%= @event.asso.user.first_name.capitalize %></strong></p>
         <p class="event-show-discussion-intro">Pour toute question, n'hésite pas à contacter <%= @event.asso.user.first_name.capitalize  %>.</p>
 
-        <button type="button" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#chatroomModal">
           Envoyer un message
         </button>
 
@@ -68,11 +68,13 @@
           data-controller="chatroom-subscription"
           data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
 
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="chatroomModal" tabindex="-1" aria-labelledby="chatroomModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">#OnVousRépond</h5>
+                  <h5 class="modal-title" id="chatroomModalLabel"><%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" %>  <%= @event.asso.user.first_name.capitalize %> |
+                  <%= @event.asso.name.capitalize  %>
+                  </h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -91,7 +93,7 @@
                       placeholder: "Message #{@chatroom.name}",
                       wrapper_html: {class: "flex-grow-1"}
                     %>
-                    <%= f.submit "Send", class: "btn btn-primary" %>
+                    <%= f.submit "Envoyer", class: "btn btn-orange btn-lg" %>
                   <% end %>
                 </div>
               </div>
