@@ -1,38 +1,77 @@
-<div class="banner-profile" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('http://www.vsocanada.org/wp-content/uploads/sites/19/2020/03/volunteering-australia-people-linked-together.jpg')">
+<div class="banner-profile" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dlwr1bikm/image/upload/v1646647290/Banner-profil-contribute_saxbbf.jpg')">
   <div class="container">
-    <h1>Bienvenue sur ton profil, <span class="time-title"><%= current_user.first_name.capitalize %></span></h1>
+    <h1>Bienvenue sur ton profil, <span class="user-profil-name"><%= current_user.first_name.capitalize %></span></h1>
+    <%= cl_image_tag current_user.photo.key, class: "avatar-profil-show img-asso-show" %>
   </div>
 </div>
 
-
 <div class="container">
-
-<div class="card-profile">
-  <div class="card-participationprofil text-center" style="width: 18rem;">
-    <div class="card-profil">
-      <h5 class="card-title">Évènement</h5>
-      <p class="card-text">Suivez le statut de votre demande de participation à évènement </p>
-    <% @participations.each do |participation| %>
-      <strong><%= participation.event.name %> :</strong>
-        <%if participation.pending? %>
-           <span> En attente</span>
-        <% elsif participation.accepted? %>
-          <span> Accepté </span>
-        <% elsif participation.cancelled? %>
-        <% else %>
-          <span> Refusé</span>
+  <div class="row my-5">
+    <div class="col-sm-12 col-lg-8 user-profil-events">
+      <div class="user-profil-events-title">
+        <h4 class="user-profil-events-title-content">EVENEMENTS A VENIR<span class="sub-title-user-under">________________________________</span></h4>
+      </div>
+      <h5 class="my-4">En attente (<%= @participations.select(&:pending?).count %>)</h5>
+        <% @participations.select(&:pending?).each do |participation|%>
+          <%= link_to event_path(participation.event), class:"no-link-deco" do %>
+            <div class="card-event-profile mb-3">
+              <img src="<%= cl_image_path participation.event.photos.first.key %>" />
+              <div class="card-event-profile-infos">
+                <h2><%= participation.event.name %></h2>
+                <p><i class="fa-solid fa-calendar user-icons-profile"></i> <%= participation.event.start_date.strftime("%d/%m/%y") %></strong> <span class="spacer-card-user">|</span> <i class="fa-solid fa-clock user-icons-profile"></i> <%= participation.event.start_date.strftime("%H:%M") %></p>
+                <p>Adresse: <strong><%= participation.event.address%></strong></p>
+              </div>
+              <h2 class="nb-hours-card-profil-user"><%= participation.event.hours_calcul.round %>h</h2>
+            </div>
+          <% end %>
         <% end %>
-      <br>
-      <% if participation.pending? %>
-       <button class='annuler-participation'> <%= link_to 'Annuler', cancelled_participation_path(participation), method: :patch %></button>
-      <% end %>
-    <% end %>
-
+      <h5 class="my-4">Approuvés (<%= @participations.select(&:accepted?).count %>)</h5>
+        <% @participations.select(&:accepted?).each do |participation|%>
+          <div class="card-event-profile mb-3">
+            <img src="<%= cl_image_path participation.event.photos.first.key %>" />
+            <div class="card-event-profile-infos">
+              <h2><%= participation.event.name %></h2>
+              <p><i class="fa-solid fa-calendar user-icons-profile"></i> <%= participation.event.start_date.strftime("%d/%m/%y") %></strong> <span class="spacer-card-user">|</span> <i class="fa-solid fa-clock user-icons-profile"></i> <%= participation.event.start_date.strftime("%H:%M") %></p>
+              <p>Adresse: <strong><%= participation.event.address%></strong></p>
+            </div>
+            <h2 class="nb-hours-card-profil-user"><%= participation.event.hours_calcul.round %>h</h2>
+          </div>
+        <% end %>
+    </div>
+     <div class="col-sm-12 col-lg-4">
+        <div class="user-profile-key-informations">
+          <div class="user-profile-key-informations-counter mb-3">
+            <h3><span class="key-informations-counter-number"><%= current_user.counter_missions %></span> Missions réalisées</h3>
+            <h3><span class="key-informations-counter-number"><%= current_user.counter_hours %></span> Heures données</h3>
+            <%= link_to "", class:"no-link-deco" do %>
+              <i class="fa-solid fa-share-nodes"></i>
+            <% end %>
+          </div>
+          <div class="user-profile-key-informations-messages">
+            <i class="fa-solid fa-comments"></i>
+            <h3 class="pt-2 mb-3">Mes messages</h3>
+            <ul>
+              <% @chatrooms.last(3).sort_by(&:updated_at).reverse.each do |conversation| %>
+                <%= link_to chatroom_path(conversation), class:"no-link-deco" do %>
+                  <li class="mb-3">
+                    <%= cl_image_tag conversation.asso.user.photo.key, class: "avatar-asso-message-profile" %>
+                    <div class="user-profile-key-informations-sender">
+                      <h6><%= conversation.asso.updated_at.strftime("%d/%m/%y") %> <%= conversation.asso.updated_at.strftime("%H:%M")   %> </h6>
+                      <p><%= conversation.asso.user.first_name.capitalize %> | <%= conversation.asso.name.capitalize %></p>
+                      <p class="view-last-message"><%= conversation.messages.last.content %></p>
+                    </div>
+                  </li>
+                 <% end %>
+              <% end %>
+            </ul>
+            <%= link_to "", class:"no-link-deco" do %>
+              <p class="user-profile-key-informations-Allmessages text-center">. . .<br>Voir tous mes messages</p>
+            <% end %>
+          </div>
+        </div>
     </div>
   </div>
-
-
-
+</div>
     <div class="card-message text-center" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">Messagerie</h5>
