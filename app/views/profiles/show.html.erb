@@ -1,6 +1,6 @@
-<div class="banner-profile" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dlwr1bikm/image/upload/v1646647290/Banner-profil-contribute_saxbbf.jpg')">
+<div class="banner-profile" style="background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('https://res.cloudinary.com/dlwr1bikm/image/upload/v1646647290/Banner-profil-contribute_saxbbf.jpg')">
   <div class="container">
-    <h1>Bienvenue sur ton profil, <span class="user-profil-name"><%= current_user.first_name.capitalize %></span></h1>
+    <h1>👋🏼 Bienvenue sur ton profil, <span class="user-profil-name"><%= current_user.first_name.capitalize %></span></h1>
     <%= cl_image_tag current_user.photo.key, class: "avatar-profil-show img-asso-show" %>
   </div>
 </div>
@@ -71,70 +71,4 @@
         </div>
     </div>
   </div>
-</div>
-    <div class="card-message text-center" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Messagerie</h5>
-      <p class="card-text">Prenez contact avec les membres de l'association</p>
-
-      <button class="btn-profile" type="button" data-bs-toggle="collapse" data-bs-target="#collapsechatrooms" aria-expanded="false" aria-controls="collapsechatrooms">
-      Messagerie
-      </button>
-
-
-  <div class="collapse" id="collapsechatrooms">
-    <div class="card card-body">
-      <% @chatrooms.each_with_index do |chatroom, index| %>
-        <div class="messages"
-            data-controller="chatroom-subscription"
-            data-chatroom-subscription-chatroom-id-value="<%= chatroom.id %>">
-          <h2 class="row" data-bs-toggle="modal" data-bs-target="#chatroomModal<%= index %>"><%= chatroom.asso.name %></h2>
-
-          <div class="modal fade" id="chatroomModal<%= index %>" tabindex="-1" aria-labelledby="chatroomModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="chatroomModalLabel">Modal title</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" data-chatroom-subscription-target="modalBody">
-
-                  <div data-chatroom-subscription-target="messages">
-                    <% chatroom.messages.each do |message| %>
-                      <%= render "messages/message", message: message %>
-                    <% end %>
-                  </div>
-
-                </div>
-                <div class="modal-footer">
-
-                  <%= simple_form_for [ chatroom, Message.new],
-                    remote: true,
-                    html: {data: { "chatroom-subscription-target" => "form" }, class: "d-flex"} do |f|
-                  %>
-                    <%= f.input :content,
-                      label: false,
-                      placeholder: "Message #{chatroom.name}",
-                      wrapper_html: {class: "flex-grow-1"}
-                    %>
-                    <%= f.submit "Send", class: "btn btn-primary" %>
-                  <% end %>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-
-
-    </div>
-  </div>
-
-</div>
-  <%= link_to 'Back', :back, class:'btn btn-dark ' %>
-
 </div>
