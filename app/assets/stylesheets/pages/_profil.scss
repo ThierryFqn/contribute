@@ -1,22 +1,35 @@
+//BANNER
 .banner-profile {
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
-  height: 40vh;
+  padding: 100px 0;
+  height: 37vh;
+  position: relative;
+  .avatar-profil-show {
+    border-radius: 50%;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    border: white 2px solid;
+    position:absolute;
+    bottom:-40px;
+    left: 14%;
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    object-fit: contain;
+  }
 }
 
 .banner-profile h1 {
   margin: 0;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 42px;
-  font-weight: bold;
+  font-size: 2.2em;
   text-align: center;
   padding-bottom: 25px;
-  & > .time-title {
+  font-weight: 500;
+  & > .user-profil-name {
     background-color: $c-bluegreen;
     padding: 5px;
-    font-weight: 600;
+    font-weight: 700;
   }
 }
 
@@ -25,6 +38,50 @@
   color: white;
   text-align: center;
 }
+
+//EVENTS
+
+.user-profil-events {
+  padding: 20px 70px;
+
+  .user-icons-profile {
+    color: $c-bluegreen;
+    opacity: 0.9;
+    padding-right: 5px;
+
+  }
+
+  .spacer-card-user {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  h5 {
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+
+  .user-profil-events-title-content {
+    color: rgba(0,0,0,0.8);
+    font-weight: 700;
+    position: relative;
+      .sub-title-user-under {
+        position: absolute;
+        left: 0;
+        font-size: 8px;
+        line-height: 1.8;
+        font-weight: 600;
+        color: #ff9c63;
+        top: 17px;
+        left: 0;
+        z-index: -1000;
+        background-color: #ff9c63;
+        opacity: 0.7;
+      }
+  }
+
+}
+
 
 
 .card-participationprofil {
@@ -52,4 +109,167 @@
   background-color: $c-orange;
   color: white;
   border-radius: 10%;
+}
+
+
+//CARDS
+
+
+.card-event-profile {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  // width: 90%;
+  border-radius: 10px;
+  color: black;
+  transition: opacity 0.3 ease;
+
+  .nb-hours-card-profil-user {
+    margin-right: 25px;
+    background-color: $c-orange;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 500;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.card-event-profile img {
+  height: 100%;
+  width: 200px;
+  object-fit: cover;
+}
+
+.card-event-profile h2 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.card-event-profile p {
+  font-size: 13px;
+  line-height: 1.4;
+  opacity: .9;
+  margin-bottom: 0;
+  margin-top: 8px;
+  .volunteers-count {
+    color: white;
+    background-color: $c-green;
+    padding: 5px;
+    font-weight: 600;
+  }
+}
+
+.card-event-profile .card-event-profile-infos {
+  padding: 24px;
+  flex-grow: 3;
+}
+
+
+//KEY-INFORMATIONS
+.user-profile-key-informations {
+  padding: 20px 20px;
+  .user-profile-key-informations-counter {
+    padding: 30px 20px;
+    background: linear-gradient(119deg, #0d3a42 0%, #35858b 50%, #4fbdba 100%);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    position: relative;
+    i {
+      font-size:1.2rem;
+      position: absolute;
+      right: 25px;
+      top: 25px;
+      color: white;
+      &:hover {
+        color: $c-orange;
+      }
+    }
+    h3 {
+      color: rgba(250, 250, 250, 0.8);
+      font-weight: 400;
+      font-size: 1.5rem;
+      line-height: 1.4;
+      .key-informations-counter-number {
+        font-weight: 700;
+        color: white;
+        font-size: 2.1rem;
+      }
+    }
+  }
+
+  .user-profile-key-informations-messages {
+    padding: 30px 20px;
+    background: #F4F4F4;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    i {
+      font-size:1.8rem;
+      color: rgba(0,0,0,0.5);
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      opacity: 0.7;
+    }
+
+    ul {
+      padding-left: 0;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      padding: 20px 20px;
+      border-radius: 40px;
+      .avatar-asso-message-profile {
+        border-radius: 50%;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        border: white 2px solid;
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        object-fit: contain;
+        margin-right:10px;
+      }
+
+      .user-profile-key-informations-sender {
+        h6 {
+          color: rgba(0,0,0,0.6);
+          font-weight: 700;
+          margin-bottom: 0;
+          font-size: 0.7rem;
+        }
+        p {
+          color: black;
+          margin-bottom: 0;
+        }
+
+        .view-last-message {
+          font-weight: 300;
+          font-size: 0.7rem;
+          color: $c-bluegreen;
+        }
+      }
+    }
+
+    .user-profile-key-informations-Allmessages {
+      color:rgba(0,0,0,0.5);
+        }
+  }
 }

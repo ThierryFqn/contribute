@@ -30,4 +30,16 @@ class User < ApplicationRecord
       false
     end
   end
+
+  def counter_hours
+    sum = 0
+    participations.select(&:confirmed?).each do |participation|
+      sum += participation.event.hours_calcul
+    end
+    sum.round
+  end
+
+  def counter_missions
+    participations.select(&:confirmed?).count
+  end
 end
