@@ -24,4 +24,8 @@ class AssoPolicy < ApplicationPolicy
   def dashboard?
     record.user == user
   end
+
+  def index_asso?
+    record.user == user
+  end
 end
