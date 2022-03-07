@@ -1,12 +1,4 @@
 .chatroom {
-  background: rgb(99, 163, 120);
-  margin-top: 30px;
-  height: 10%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-grow: 1;
-
 
   h1 {
     border-bottom: 1px solid $gray-200;
@@ -21,6 +13,7 @@
   }
 
   #new_message {
+    width: 100%;
     border-top: 1px solid $gray-200;
     padding: 1rem;
 
@@ -29,8 +22,24 @@
       height: 40%;
     }
   }
+
   .btn-primary {
     flex-grow: 0.2;
     height: fit-content;
   }
+
+  .modal-footer {
+
+    height: fit-content;
+  }
 }
+
+.message_content {
+  margin-bottom: 0px !important;
+}
+
+#message_content {
+  height: 100% !important;
+}
+
+
