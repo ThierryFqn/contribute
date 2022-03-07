@@ -54,4 +54,10 @@ class Event < ApplicationRecord
 
     users + User.where(days_preferences: 'Semaine et Week-End')
   end
+
+  def causes_preferences
+    if Event::EVENT_CAUSES.include?(self.cause)
+      users = User.where(causes_preferences: self.cause)
+    end
+  end
 end
