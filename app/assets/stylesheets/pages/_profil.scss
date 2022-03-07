@@ -263,7 +263,10 @@
         .view-last-message {
           font-weight: 300;
           font-size: 0.7rem;
+          span {
           color: $c-bluegreen;
+          font-style: italic;
+          }
         }
       }
     }
