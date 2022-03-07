@@ -45,19 +45,13 @@ class Event < ApplicationRecord
     (accepted_participants.count.fdiv(number_volunteers) * 100).round
   end
 
-  def days_preferences
+  def preferences
     if ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].include?(self.start_date.strftime("%A"))
       users = User.where(days_preferences: 'Semaine')
     else
       users = User.where(days_preferences: 'Week-End')
     end
 
-    users + User.where(days_preferences: 'Semaine et Week-End')
-  end
-
-  def causes_preferences
-    if Event::EVENT_CAUSES.include?(self.cause)
-      users = User.where(causes_preferences: self.cause)
-    end
+    users.where(causes_preferences: self.cause) + User.where(days_preferences: 'Semaine et Week-End').where(causes_preferences: self.cause)
   end
 end

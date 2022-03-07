@@ -59,7 +59,9 @@ class EventsController < ApplicationController
     @asso = Asso.find(params[:asso_id])
     @event.asso = @asso
     @event.number_hours = sum_hours(@event)
+    @potential_volunteers = @event.preferences
     authorize @event
+    raise
     @event.save ? (redirect_to root_path) : (render :new)
   end
 
@@ -78,4 +80,5 @@ class EventsController < ApplicationController
   def sum_hours(event)
     ((event.end_date.to_time - event.start_date.to_time) / 1.hours).round
   end
+
 end
