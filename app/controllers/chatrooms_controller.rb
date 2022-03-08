@@ -1,6 +1,12 @@
 class ChatroomsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show]
 
+  def index_asso
+    @asso = Asso.find(params[:id])
+    @chatrooms = Chatroom.select { |chatroom| chatroom.asso_id = @asso.id }
+    authorize @asso
+  end
+
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new

@@ -33,15 +33,18 @@ class EventsController < ApplicationController
         lat: event.latitude,
         lng: event.longitude,
         info_window: render_to_string(partial: "info_window", locals: { event: event }),
-        image_url: helpers.asset_url("mimi.jpg")
+        image_url: helpers.asset_url("marker-contribute.png")
       }
     end
   end
 
   def show
     @event = Event.find(params[:id])
+    @chatroom = Chatroom.find_or_create_by(asso: @event.asso, user: current_user)
     @participation = Participation.new
     @participation.event = @event
+    @asso = @event.asso
+    @potential_volunteers = @event.preferences
     authorize @event
     authorize @participation
   end
@@ -59,6 +62,7 @@ class EventsController < ApplicationController
     @asso = Asso.find(params[:asso_id])
     @event.asso = @asso
     @event.number_hours = sum_hours(@event)
+    @potential_volunteers = @event.preferences
     authorize @event
     @event.save ? (redirect_to root_path) : (render :new)
   end
@@ -72,10 +76,11 @@ class EventsController < ApplicationController
   end
 
   def params_event
-    params.require(:event).permit(:name, :description, :cause, :status, :start_date, :end_date, :address, :number_volunteers)
+    params.require(:event).permit(:name, :description, :cause, :status, :start_date, :end_date, :address, :number_volunteers, photos:[])
   end
 
   def sum_hours(event)
     ((event.end_date.to_time - event.start_date.to_time) / 1.hours).round
   end
+
 end

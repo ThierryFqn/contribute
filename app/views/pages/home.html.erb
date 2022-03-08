@@ -1,5 +1,49 @@
 <%= render 'shared/video-banner' %>
 
-<div class="container">
-
+<div class="container my-4">
+  <div class="sub-title-home">
+    <h2 class="sub-title-home-content">REJOINS L'AVENTURE CONTRIBUTE  <span class="sub-title-home-under">_________________________________________________________________________</span></h2>
+  </div>
+  <div class="row my-5">
+    <div class="col-sm-12 col-lg-4">
+      <div class="home-key-infos">
+      <h4><span class="home-key-infos-nb">1245</span> Associations</h4>
+      <h4><span class="home-key-infos-nb">2784</span> Actions créees</h4>
+      <h4><span class="home-key-infos-nb">22164</span> Volontaires</h4>
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-4">
+      <div class="home-key-asso-register">
+        <%= image_tag "https://res.cloudinary.com/dlwr1bikm/image/upload/v1646259498/Saly-26_zm4frs.png" %>
+        <h5>ASSOCIATIONS</h5>
+        <p> Tu es à la tête d'une association et recherches régulièrement des volontaires ?</p>
+        <%= link_to "Inscription", "", class: "btn-bluegreen no-link-deco" %>
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-4">
+      <div class="home-key-volunteer-register">
+        <%= image_tag "https://res.cloudinary.com/dlwr1bikm/image/upload/v1646259498/Saly-15_yuudxd.png" %>
+        <h5>VOLONTAIRES</h5>
+        <p> Tu souhaites donner de ton temps pour réaliser des missions ponctuelles?</p>
+        <%= link_to "Découvrir", events_path , class: "btn-orange no-link-deco" %>
+      </div>
+    </div>
+  </div>
+  <div class="sub-title-home">
+    <h2 class="sub-title-home-content">POURQUOI CONTRIBUER ?  <span class="sub-title-home-under-blue">_________________________________________________________________________</span></h2>
+  </div>
 </div>
+  <div class="row my-5 align-items-center">
+    <div class="col-sm-12 col-lg-6 raisons-to-contribute" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/dlwr1bikm/image/upload/v1646604247/pexels-anna-shvets-5029929_g9cm5v.jpg')">
+    </div>
+    <div class="col-sm-12 col-lg-6 raisons-to-contribute-contain">
+      <div class="raisons-to-contribute-content">
+        <ul>
+          <li><i class="fa-solid fa-check"></i>Impact <span class="raisons-to-contribute-content-ajective">IMMÉDIAT</span></li>
+          <li><i class="fa-solid fa-check"></i>Action <span class="raisons-to-contribute-content-ajective">LOCALISÉE</span></li>
+          <li><i class="fa-solid fa-check"></i>Investissement <span class="raisons-to-contribute-content-ajective">TEMPOREL</span></li>
+          <li><i class="fa-solid fa-check"></i>Développement <span class="raisons-to-contribute-content-ajective">CONTROLÉ</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>

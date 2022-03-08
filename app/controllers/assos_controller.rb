@@ -23,6 +23,7 @@ class AssosController < ApplicationController
     @asso = Asso.find(params[:id])
     @events = @asso.events
     @pending_participations = @asso.participations.where(status: 0)
+    @chatrooms = Chatroom.select{|chatroom| chatroom.asso_id = @asso.id }
     authorize @asso
     @pending_events = @events.select {|event| event.coming?}
     @done_events = @events.select {|event| event.done?}

@@ -1,7 +1,7 @@
-<div id="message-<%= message.id %>">
+<div id="message-<%= message.id %>" style="display: flex; justify-content: <%= message.user == current_user ? 'end' : 'start' %>">
   <small>
-    <strong><%= message.user.nickname %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+    <i><%= time_ago_in_words(message.created_at) %></i>
+    <strong><%= message.user.first_name.capitalize %> :</strong> <br>
+    <p><%= message.content %> </p>
   </small>
-  <p><%= message.content %></p>
 </div>

@@ -1,10 +1,14 @@
+<div class="banner-sign-in" style="background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('https://res.cloudinary.com/dlwr1bikm/image/upload/v1646647290/Banner-profil-contribute_saxbbf.jpg')">
+  <div class="container">
+    <p>👋🏼</p>
+    <h1><span class="welcome-message">Bienvenue</span></h1>
+  </div>
+</div>
 
-
-
-<div class = "container mt-5">
+<div class = "container my-5 sign-in-container">
 
   <div class = "header" role = "banner">
-    <h2>Log in</h2>
+    <h6>Déja un compte ? Connectez-vous</h6>
   </div>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -19,11 +23,12 @@
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
+    <div class="form-actions mb-3">
+      <%= f.button :submit, "Log in", class: "btn-orange" %>
     </div>
   <% end %>
-
-  <%= render "devise/shared/links" %>
+  <div class="links-device-signin">
+    <%= render "devise/shared/links" %>
+  </div>
 
 </div>

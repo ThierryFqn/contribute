@@ -1,32 +1,108 @@
-<div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @event.photos.first.key, crop: :fill %>')">
+<div class="banner-show">
   <div class="container">
-    <h1><%= @event.name %></h1>
+    <h1 class="banner-event-name"><%= @event.name.upcase %></h1>
     <p>Agir pour <span class="time-title"><%= @event.cause %></span></p>
+    <%= cl_image_tag @event.asso.photo.key, class: "avatar-asso-show dropdown-toggle img-asso-show" %>
   </div>
   <div class="nb-hours">
-    <h2 ><i class="fa-solid fa-hourglass"></i> <%= ((@event.end_date.to_time - @event.start_date.to_time)/ 1.hours).round %>h</h2>
-    <h2 ><i class="fa-solid fa-users"></i> <strong><%= @event.participations.count %></strong> / <strong><%= @event.number_volunteers %></h2>
+    <h2 ><i class="fa-solid fa-hourglass"></i> <%= @event.hours_calcul.round %>h</h2>
   </div>
 </div>
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-sm-12 p-5">
-      <div class="asso-show-intro">
-        <%= cl_image_tag @event.asso.photo.key, class: "avatar-asso-show dropdown-toggle" %>
-        <h6><%= @event.asso.name %></h6>
+      <h6 class="asso-show-intro"><%= @event.asso.name %></h6>
+      <div class="event-show-infos py-2">
+        <p class="event-show-infos-padding-right"><i class="fa-solid fa-calendar"></i> <%= @event.start_date.strftime("%d/%m/%y") %></p>
+        <p class="event-show-infos-padding-right event-show-infos-padding-left"><i class="fa-solid fa-clock"></i> <%= @event.start_date.strftime("%H:%M") %></p>
+        <p class="event-show-infos-padding-left"><i class="fa-solid fa-location-dot"></i> <%= @event.address %></p>
       </div>
-      <div class="event-show-infos py-3">
-        <p><i class="fa-solid fa-calendar"></i> <%= @event.start_date.strftime("%d/%m/%y") %> | <%= @event.start_date.strftime("%H:%M") %></p>
-        <p><i class="fa-solid fa-location-dot"></i> <%= @event.address %></p>
-        <p><i class="fa-solid fa-handshake-angle"></i>  Pourquoi avons-nous besoin de toi ?</p>
-        <h5><%= @event.description.capitalize %></h5>
+      <div class="event-show-description">
+        <p class="event-show-description-title">Pourquoi avons-nous <span class="need-description">besoin de toi ?</span> <span class="interogation-description">______</span> </p>
+        <p class= "event-show-description-content"><%= @event.description.capitalize %></p>
+      </div>
+
+      <div id="eventCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <% @event.photos.each_with_index do |photo, i| %>
+            <li data-target="#eventCarousel" data-slide-to="<%= i %>" class="<%= 'active' if i == 0 %>"></li>
+          <% end %>
+        </ol>
+        <div class="carousel-inner">
+          <% @event.photos.each_with_index do |photo, i| %>
+            <div class="carousel-item <%= 'active' if i == 0 %>">
+              <img class="d-block w-100" src="<%= cl_image_path photo.key %>" alt="First slide">
+            </div>
+          <% end %>
+        </div>
+        <a class="carousel-control-prev" href="#eventCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#eventCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
     </div>
-    <div class="col-lg-4 col-sm-12 p-4 mt-4 CTA-show">
-      <p>Prêt à s'engager?</p>
-      <%= link_to "Je participe !", participations_path(@participation, event_id: @event.id), class: "btn-orange no-link-deco", method: :post %>
-      <p>Des questions?</p>
-      <%= link_to "Envoyer un message", asso_chatrooms_path(@event.asso), class: "btn-bluegreen no-link-deco", method: :post %>
-    <div class="col-lg-8 col-sm-12">
+    <div class="col-lg-4 col-sm-12 p-4">
+      <div class="event-show-participation my-4">
+        <p class="intro-volunteers-counter">Nombre de volontaires</p>
+        <p class="intro-volunteers-nb"><strong><%= @event.accepted_participants.count %></strong>/<%= @event.number_volunteers %></p>
+        <div class="progress progress-volunteers mb-4">
+          <div class="progress-bar progress-bar-main-color" role="progressbar" style="width: <%= @event.volunteers_counter %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+          </div>
+        </div>
+        <p>Prêt à s'engager?</p>
+        <%= link_to "Je participe !", participations_path(@participation, event_id: @event.id), class: "btn-orange no-link-deco", method: :post %>
+      </div>
+      <div class="event-show-discussion my-4">
+        <%= cl_image_tag @event.asso.user.photo.key, class: "avatar-large avatar-asso-contact dropdown-toggle img-asso-show mb-2" %>
+        <p>Contact: <strong><%= @event.asso.user.first_name.capitalize %></strong></p>
+        <p class="event-show-discussion-intro">Pour toute question, n'hésite pas à contacter <%= @event.asso.user.first_name.capitalize  %>.</p>
+
+        <button type="button" class="btn btn-white" data-bs-toggle="modal" data-bs-target="#chatroomModal">
+          Envoyer un message
+        </button>
+
+        <div class="container chatroom"
+          data-controller="chatroom-subscription"
+          data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+
+          <div class="modal fade" id="chatroomModal" tabindex="-1" aria-labelledby="chatroomModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="chatroomModalLabel"><%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" %>  <%= @event.asso.user.first_name.capitalize %> |
+                  <%= @event.asso.name.capitalize  %>
+                  </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div data-chatroom-subscription-target="messages">
+                      <% @chatroom.messages.each do |message| %>
+                        <%= render "messages/message", message: message %>
+                      <% end %>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <%= simple_form_for [ @chatroom, Message.new],
+                    remote: true,
+                    html: {data: { "chatroom-subscription-target" => "form" }, class: "d-flex"} do |f| %>
+                    <%= f.input :content,
+                      label: false,
+                      placeholder: "Message #{@chatroom.name}",
+                      wrapper_html: {class: "flex-grow-1"}
+                    %>
+                    <%= f.submit "Envoyer", class: "btn btn-orange btn-lg" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
 </div>

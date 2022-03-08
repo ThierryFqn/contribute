@@ -38,6 +38,14 @@ def assign_photo(asso, url)
   file = URI.open(url)
   asso.photo.attach(io: file, filename: "logo#{asso}", content_type: 'image/png')
   asso.save!
+  puts 'Image asso ajouté'
+end
+
+def assign_photo_event(event, url)
+  file = URI.open(url)
+  event.photos.attach(io: file, filename: "logo#{event}", content_type: 'image/png')
+  event.save!
+  puts 'Image ajouté'
 end
 
 def sum_hours(event)
@@ -80,23 +88,33 @@ assign_photo(asso_10, "https://upload.wikimedia.org/wikipedia/fr/thumb/8/80/Seco
 puts "Creating Events..."
 
 event_1 = Event.new(name: 'Collecte de déchets', description: 'Nettoyer nos quais, départ depuis le lieu de rdv. Vous pouvez partir dès que votre sac est plein ;)', address:'Pl. Valhubert, 75000 Paris', cause: Event::EVENT_CAUSES[1], start_date:'Sun, 22 May 2022 14:00:00 +0100', end_date:'Sun, 22 May 2022 18:00:00 +0100', number_volunteers: 50, asso: Asso.find_by(name: 'Surfrider'))
+assign_photo_event(event_1, "https://cdn.paris.fr/paris/2020/09/17/huge-41dbf23d558fd523ce69a62c8e3b7cfc.jpg")
 sum_hours(event_1)
 event_2 = Event.new(name: 'Nettoyage Canal Saint-Martin', description: 'Ramasser avec des émants ou à l épuisette les déchets de nos compatriotes qui ont oublié leur éducation le temps d un instant' , address: '1 Bd Jules Ferry, 75011 Paris', cause:  Event::EVENT_CAUSES[1], start_date:'Sat, 16 Apr 2022 09:00:00 +0100', end_date:'Sat, 16 Apr 2022 13:00:00 +0100', number_volunteers: 30, asso: Asso.find_by(name: 'Sea Sheperd'))
+assign_photo_event(event_2, "https://www.parisinsidersguide.com/image-files/canal-saint-martin-bridge-123rf-800-2x1.jpg")
 sum_hours(event_2)
 event_3 = Event.new(name: 'Atelier restauration vélos', description: 'Venez nous aider à remettre en état des vélo', address: '58 Rue Damesme, 75013 Paris', cause:  Event::EVENT_CAUSES[2], start_date: 'Wed, 18 May 2022 10:00:00 +0100', end_date:'Wed, 18 May 2022 17:00:00 +0100', number_volunteers: 10, asso: Asso.find_by(name: 'Le Petit Biclou'))
+assign_photo_event(event_3, "https://www.lenouveleconomiste.fr/wp-content/uploads/2020/12/la-reparation-de-velo-a-paris-en-crise-de-croissance-826x459.jpg")
 sum_hours(event_3)
 event_4 = Event.new(name: 'Cours de français', description: 'Apprendre à parler français à un groupe de 10 personnes', address: '23 Rue Clovis, 75005 Paris', cause:  Event::EVENT_CAUSES[2], start_date:'Fri, 22 Apr 2022 11:00:00 +0100', end_date: 'Fri, 22 Apr 2022 13:00:00 +0100', number_volunteers: 1, asso: Asso.find_by(name: 'Atouts Cours'))
+assign_photo_event(event_4, "https://cdn.paris.fr/paris/2020/03/31/huge-ffafc7d5aa953d87761152c593c462b1.jpg")
 sum_hours(event_4)
 event_5 = Event.new(name: 'Fete de Noël', description: 'Venez distribuer des cadeaux et animer une journée', address: '149 Rue de Sèvres, 75015 Paris', cause:  Event::EVENT_CAUSES[0], start_date:'Wed, 21 Dec 2022 13:00:00 +0100', end_date: 'Wed, 21 Dec 2022 19:00:00 +0100', number_volunteers: 8, asso: Asso.find_by(name: 'Petits Princes'))
+assign_photo_event(event_5, "https://cdn.radiofrance.fr/s3/cruiser-production/2020/12/838e7446-95f9-4e27-aaf4-137287a2cd2b/870x489_maxnewsworldfive333535.jpg")
 sum_hours(event_5)
 event_6 = Event.new(name: 'Fete de fin d année', description: 'Volontaires pour aider au bar à bonbons/boissons/gâteaux de la fête avant les grandes vacances' , address: '5 Pl. Paul Verlaine, 75013 Paris', cause:  Event::EVENT_CAUSES[0], start_date: 'Sat, 21 Jun 2022 18:30:00 +0100' , end_date: 'Sat, 21 Jun 2022 20:30:00 +0100', number_volunteers: 3, asso: Asso.find_by(name: 'Association Sportive et Culturelle de Montsouris'))
+assign_photo_event(event_6, "https://images.lanouvellerepublique.fr/image/upload/t_1020w/f_auto/5a289bf9479a45393f8b45a9.jpg")
 sum_hours(event_6)
 event_7 = Event.new(name: 'Village Odysséa', description:'Besoin de volontaires pour aider dans la team organisation de la vie de l événement de la course Odysséa Paris', address:'2 Rte de la Ferme, 75012 Paris', cause:  Event::EVENT_CAUSES[4], start_date:'Sat, 01 Oct 2022 08:00:00 +0100', end_date:'Sun, 02 Oct 2022 20:00:00 +0100', number_volunteers: 100, asso: Asso.find_by(name: 'Odysséa'))
+assign_photo_event(event_7, "https://www.sortiraparis.com/images/80/1366/62791-odyssea-courses-marches-contre-le-cancer-du-sein-bois-chateau-de-vincennes.jpg")
 sum_hours(event_7)
 event_8 = Event.new(name: 'Animation atelier roller/skate', description: 'Volontaires pour encadrer une journée autour des roulettes à Paris. Au programme des ateliers d apprentissage et de jeux', address: 'Place de la République, 75011 Paris', cause:  Event::EVENT_CAUSES[0], start_date:'Sun, 01 May 2022 09:00:00 +0100', end_date: 'Sun, 01 May 2022 20:00:00 +0100', number_volunteers: 15, asso: Asso.find_by(name: 'RSI - Roller Squad Institut'))
+assign_photo_event(event_8, "https://www.ville-gap.fr/sites/default/files/img_apidae/9619498.jpg")
 sum_hours(event_8)
 event_9 = Event.new(name: 'Atelier de sensibiliation contre les violences', description: 'Venez échanger sur votre expérience et vos démarches judiciaires', address: '2 Rue Aristide Maillol, 75015 Paris', cause:  Event::EVENT_CAUSES[3], start_date:'Sat, 12 Mar 2022 15:00:00 +0100' , end_date: 'Sat, 12 Mar 2022 19:00:00 +0100', number_volunteers: 20, asso: Asso.find_by(name: 'Fondation des Femmes'))
+assign_photo_event(event_9, "https://www.penmarch.fr/wp-content/uploads/2021/03/Espace-jeunes-Atelier-prevention-fevrier-2021.jpg")
 sum_hours(event_9)
 event_10 = Event.new(name: "Maraude", description: 'distribution de repas', address: '10 bis Av. Trudaine, 75009 Paris', cause:  Event::EVENT_CAUSES[5], start_date:'Fri, 25 Mar 2022 18:00:00 +0100', end_date: 'Fri, 25 Mar 2022 23:00:00 +0100', number_volunteers: 20, asso: Asso.find_by(name: 'Secours Populaire de Paris'))
+assign_photo_event(event_10, "https://www.ssvp.fr/wp-content/uploads/2015/05/maraude-1.jpg")
 sum_hours(event_10)
 puts "Finished!"

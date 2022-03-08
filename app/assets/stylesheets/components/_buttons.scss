@@ -65,3 +65,16 @@
   opacity: 0.7;
   color: white;
 }
+
+.btn-white {
+  color: $c-bluegreen;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: white;
+  transition: opacity 0.3s ease;
+}
+
+.btn-white:hover {
+  background-color: $c-turquoise;
+  color: grey;
+}
