@@ -60,7 +60,7 @@
       </div>
       <div class="event-show-discussion my-4">
         <%= cl_image_tag @event.asso.user.photo.key, class: "avatar-large avatar-asso-contact dropdown-toggle img-asso-show mb-2" %>
-        <p>Contact: <strong><%= @event.asso.user.first_name.capitalize %></strong></p>
+        <p class="event-show-discussion-contact">Contact: <strong><%= @event.asso.user.first_name.capitalize %></strong></p>
         <p class="event-show-discussion-intro">Pour toute question, n'hésite pas à contacter <%= @event.asso.user.first_name.capitalize  %>.</p>
 
 

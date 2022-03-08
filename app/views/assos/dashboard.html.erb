@@ -156,13 +156,33 @@
               <% end %>
             </div>
       </div>
-
-
       <h4 class="py-4">Evènements passés </h4>
-      <% @done_events.each do |event| %>
-        <%= event.name %>
-        <%= event.number_volunteers%>
-      <% end %>`
+      <!-- NEW CARD-->
+      <div class="row">
+          <div class="col-sm-12 col-lg-2 dashboard-event">
+            <img src="https://res.cloudinary.com/dlwr1bikm/image/upload/v1646259498/Saly-26_zm4frs.png" class="img-past-event-row" alt="header">
+          </div>
+            <div class="col-sm-12 col-lg-10">
+              <% @done_events.each do |event| %>
+                <div class="mb-3" data-controller="display-participants">
+                <div class="pros">
+                    <div class="card-event-dash">
+                      <img src="<%= cl_image_path event.photos.first.key %>" />
+                      <div class="card-event-dash-infos">
+                        <h2><%= event.name %></h2>
+                        <p>Nombre de volontaires: <span class="volunteers-count"><%= event.accepted_participants.count%>/<%= event.number_volunteers%></strong></p>
+                      </div>
+                      <div class="card-event-dash-arrow">
+                        <i class="fa-solid fa-caret-down drop-validation" data-display-participants-target="down" data-action="click->display-participants#displayDiv"></i>
+                        <i class="fa-solid fa-caret-up up-validation d-none" data-display-participants-target="up" data-action="click->display-participants#hideDiv"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+      </div>
+
     </div>
 </div>
 
