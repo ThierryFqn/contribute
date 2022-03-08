@@ -71,14 +71,14 @@
             data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
 
             <div class="modal fade" id="chatroomModal" tabindex="-1" aria-labelledby="chatroomModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
+              <div class="modal-dialog modal-dialog-scrollable modal-chatroom-discussion">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="chatroomModalLabel">
                       <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" %>
-                      <%= @event.asso.user.first_name.capitalize %> |
-                      <%= @event.asso.name.capitalize  %>
-                    </h5>
+                      <div class="modal-title modal-title-discussions" id="chatroomModalLabel">
+                        <h6><%= @event.asso.user.first_name.capitalize %> | <%= @event.asso.name.capitalize  %></h6>
+                        <i class="fa-solid fa-circle"></i>
+                      </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">

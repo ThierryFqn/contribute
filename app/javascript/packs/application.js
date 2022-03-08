@@ -23,7 +23,7 @@ document.addEventListener('turbolinks:load', () => {
   initFlatpickr();
   initSweetalert('#sweet-alert-demo', {
     title: "Chaque potentiel volontaire a bien reçu un email !",
-    text: "N'hésitez pas à les relancer quelques jours avant l'événement ;) ",
+    text: "N'hésitez pas à les relancer quelques jours avant l'événement 😊 ",
     icon: "success"
   }, (value) => {
     console.log(value);
