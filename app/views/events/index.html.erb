@@ -17,12 +17,10 @@
                   </div>
                 </div>
                 <div class="card-event-infos">
-                  <div>
                     <p><i class="fa-solid fa-calendar"></i> <%= event.start_date.strftime("%d/%m/%y") %> | <%= event.start_date.strftime("%H:%M") %></p>
                     <p><i class="fa-solid fa-location-dot"></i> <%= event.address.match(/\d{5}\s\w*/) %></p>
+                    <h2 class="nb-hoursindex"><i class="fa-solid fa-stopwatch"></i> <%= event.hours_calcul.round %> heures</h2>
                     <p class="cause-card">Action pour <span><%= event.cause %></span></p>
-                  </div>
-                  <h2 class="nb-hoursindex"><%= event.hours_calcul.round %>h</h2>
                   <%= cl_image_tag event.asso.photo.key, class: "card-event-asso avatar-bordered" %>
                 </div>
               </div>
