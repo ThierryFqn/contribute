@@ -11,4 +11,10 @@
     left: -10px;
     border-radius: 50%;
     background-color: $c-orange;
+    transition: background 0.3s ease;
+    cursor: pointer;
+    &:hover {
+      background-color: $c-bluegreen;
+      color: white;
+    }
 }
