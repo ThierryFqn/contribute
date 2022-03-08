@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="description" content="Page description. No longer than 155 characters.">
+  <meta charset="utf-8">
   <title>The change you wanted was rejected (422)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
-    background-color: #EFEFEF;
+    background-image: url("mimi2.jpg");
+    background-size: cover;
     color: #2E2F30;
     text-align: center;
     font-family: arial, sans-serif;
@@ -51,17 +54,57 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+  .noselect {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+		-webkit-tap-highlight-color: transparent;
+}
+
+  button {
+	width: 200px;
+	height: 100px;
+	cursor: pointer;
+	background: #6dd6d1;
+	border: none;
+	border-radius: 10px;
+	box-shadow: 0px 10px 25px #57aba7, 0px -10px 25px #a6fffa, inset 0px -5px 10px #57aba7, inset 0px 5px 10px #a6fffa;
+	font-family: 'Damion', cursive;
+	color: white;
+	font-size: 20px;
+	transition: 500ms;
+}
+
+button:hover {
+		border: 2px solid #6dd6d1;
+	animation: hueRotation 2s linear infinite;
+}
+
+@keyframes hueRotation {
+	to {filter: hue-rotate(360deg);}
+}
+
+button:focus {
+	outline: none;
+}
+.error-logo{
+  text-align: top;
+  position: absolute;
+}
+
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Damion&display=swap" rel="stylesheet">
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/422.html -->
-  <div class="dialog">
-    <div>
-      <h1>The change you wanted was rejected.</h1>
-      <p>Maybe you tried to change something you didn't have access to.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+  <p> Ooups ! erreur 422 🤔 🙀</p>
+  <form method="get" action="/">
+    <button class="noselect">Reviens parmi nous</button>
+</form>
+
 </body>
 </html>
