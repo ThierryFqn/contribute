@@ -1,42 +1,44 @@
-<%= render 'shared/space-navbar' %>
-<%= render 'shared/search-form-index' %>
+<div class="container-index-background">
+  <%= render 'shared/space-navbar' %>
+  <%= render 'shared/search-form-index' %>
 
-<div class="list-container">
-  <% if @events.any? %>
-    <div class="cards-grid ">
-      <% @events.each do |event| %>
-        <% if event.coming? %>
-          <%= link_to event_path(event), class:"no-link-deco" do %>
-            <div class="card-event">
-              <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> %>
-              <div class="card-event-header" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<%= cl_image_path event.photos.first.key %>')">
-                <div>
-                <h2><%= event.name.capitalize %></h2>
-                <p class="pt-3"><i class="fa-solid fa-user-group"></i> <%= event.accepted_participants.count %>/<%= event.number_volunteers %></p>
+  <div class="list-container">
+    <% if @events.any? %>
+      <div class="cards-grid ">
+        <% @events.each do |event| %>
+          <% if event.coming? %>
+            <%= link_to event_path(event), class:"no-link-deco" do %>
+              <div class="card-event">
+                <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> %>
+                <div class="card-event-header" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<%= cl_image_path event.photos.first.key %>')">
+                  <div>
+                  <h2><%= event.name.capitalize %></h2>
+                  <p class="pt-3"><i class="fa-solid fa-user-group"></i> <%= event.accepted_participants.count %>/<%= event.number_volunteers %></p>
+                  </div>
+                </div>
+                <div class="card-event-infos">
+                  <div>
+                    <p><i class="fa-solid fa-calendar"></i> <%= event.start_date.strftime("%d/%m/%y") %> | <%= event.start_date.strftime("%H:%M") %></p>
+                    <p><i class="fa-solid fa-location-dot"></i> <%= event.address.match(/\d{5}\s\w*/) %></p>
+                    <p class="cause-card">Action pour <span><%= event.cause %></span></p>
+                  </div>
+                  <h2 class="nb-hoursindex"><%= event.hours_calcul.round %>h</h2>
+                  <%= cl_image_tag event.asso.photo.key, class: "card-event-asso avatar-bordered" %>
                 </div>
               </div>
-              <div class="card-event-infos">
-                <div>
-                  <p><i class="fa-solid fa-calendar"></i> <%= event.start_date.strftime("%d/%m/%y") %> | <%= event.start_date.strftime("%H:%M") %></p>
-                  <p><i class="fa-solid fa-location-dot"></i> <%= event.address.match(/\d{5}\s\w*/) %></p>
-                  <p class="cause-card">Action pour <span><%= event.cause %></span></p>
-                </div>
-                <h2 class="nb-hoursindex"><%= event.hours_calcul.round %>h</h2>
-                <%= cl_image_tag event.asso.photo.key, class: "card-event-asso avatar-bordered" %>
-              </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
-    </div>
-  <% else %>
-    <div>
-      <p>Malheuresement, il n'y a aucune action...</p>
-    </div>
-  <% end %>
-    <div id="map"
-      data-controller="mapbox"
-      data-mapbox-markers-value="<%= @markers.to_json %>"
-      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
+      </div>
+    <% else %>
+      <div>
+        <p>Malheuresement, il n'y a aucune action...</p>
+      </div>
+    <% end %>
+      <div id="map"
+        data-controller="mapbox"
+        data-mapbox-markers-value="<%= @markers.to_json %>"
+        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+  </div>
 </div>

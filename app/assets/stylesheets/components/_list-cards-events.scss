@@ -1,5 +1,10 @@
+.container-index-background {
+  background: #F9FCFC;
+}
+
 .list-container {
   display:flex;
+  padding-left: 50px;
 }
 
 #map {
@@ -125,6 +130,15 @@
   .cards-grid  {
     grid-template-columns: 1fr;
   }
+
+  #map {
+    display: none;
+  }
+
+  .list-container {
+    padding-left: 0px;
+  }
+
 }
 
 // Small devices (landscape phones, 576px and up)
