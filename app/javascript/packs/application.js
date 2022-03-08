@@ -28,4 +28,11 @@ document.addEventListener('turbolinks:load', () => {
   }, (value) => {
     console.log(value);
   });
+  initSweetalert('#sweet-alert-demo-participation', {
+    title: "Votre demande de participation a bien été prise en compte!",
+    text: "Vous recevrez votre QRcode dès que l'association aura accepté votre demande :) ",
+    icon: "success"
+  }, (value) => {
+    window.location.href='/profiles';
+  });
 })

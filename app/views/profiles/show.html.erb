@@ -52,16 +52,18 @@
             <h3 class="pt-2 mb-3">Mes messages</h3>
             <ul>
               <% @chatrooms.last(3).sort_by(&:updated_at).reverse.each do |conversation| %>
-                <%= link_to chatroom_path(conversation), class:"no-link-deco" do %>
-                  <li class="mb-3">
-                    <%= cl_image_tag conversation.asso.user.photo.key, class: "avatar-asso-message-profile" %>
-                    <div class="user-profile-key-informations-sender">
-                      <h6><%= conversation.asso.updated_at.strftime("%d/%m/%y") %> <%= conversation.asso.updated_at.strftime("%H:%M")   %> </h6>
-                      <p><%= conversation.asso.user.first_name.capitalize %> | <%= conversation.asso.name.capitalize %></p>
-                      <p class="view-last-message">Dernier message: <span><%= conversation.messages.last.content %></span></p>
-                    </div>
-                  </li>
-                 <% end %>
+                <% if conversation.messages.any? %>
+                  <%= link_to chatroom_path(conversation), class:"no-link-deco" do %>
+                    <li class="mb-3">
+                      <%= cl_image_tag conversation.asso.user.photo.key, class: "avatar-asso-message-profile" %>
+                      <div class="user-profile-key-informations-sender">
+                        <h6><%= conversation.asso.updated_at.strftime("%d/%m/%y") %> <%= conversation.asso.updated_at.strftime("%H:%M")   %> </h6>
+                        <p><%= conversation.asso.user.first_name.capitalize %> | <%= conversation.asso.name.capitalize %></p>
+                        <p class="view-last-message">Dernier message: <span><%= conversation.messages.last.content %></span></p>
+                      </div>
+                    </li>
+                  <% end %>
+                <% end %>
               <% end %>
             </ul>
             <%= link_to "", class:"no-link-deco" do %>
