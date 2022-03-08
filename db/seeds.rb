@@ -84,7 +84,7 @@ assign_photo(user_8, "https://avatars.githubusercontent.com/u/30435844?v=4")
 user_9 = User.new(first_name:'Romain', last_name:'Sanson', email: Faker::Internet.email , nickname: 'Romain', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[1], password: "123456" )
 assign_photo(user_9, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1544604383/pnqv3gmdpbtqrstpqgls.jpg")
 
-user_10 = User.new(first_name:'Mimie', last_name:'Mathy', email: Faker::Internet.email , nickname: 'Mimie', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[2], password: "123456" )
+user_10 = User.new(first_name:'Mimie', last_name:'Mathy', email: Faker::Internet.email , nickname: 'Mimie', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
 assign_photo(user_10, "https://i0.wp.com/www.starmag.com/wp-content/uploads/2021/06/mimie-mathy-critiquee-sur-ses-propos-sur-les-gens-de-petite-taille-elle-repond-a-la-polemique.jpg?resize=1200%2C1200&ssl=1")
 
 user_11 = User.new(first_name:'Julie', last_name:'Gastellu', email: Faker::Internet.email , nickname: 'Miaouss', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
@@ -188,7 +188,7 @@ puts '15 participations crées'
 puts '10 participations crées'
 2.times {Participation.create!(user_id: user_11.id, event_id: event_13.id, status: 3) }
 puts '2 participations crées'
-21.times { Participation.create!(user_id: user_4.id, event_id: event_13.id, status: 3) }
+21.times { Participation.create!(user_id: user_4.id, event_id: event_14.id, status: 3) }
 puts '21 participations crées'
 34.times { Participation.create!(user_id: user_1.id, event_id: event_1.id, status: 1) }
 puts 'Add 34 times in collecte de déchet'
@@ -212,7 +212,7 @@ Participation.create!(user_id: user_12.id, event_id: event_12.id, status: 0)
 puts '10 participations crées'
 Participation.create!( user_id: user_11.id, event_id: event_12.id, status: 1)
 puts '1 participations crées'
-Participation.create!( user_id: user_4.id, event_id: event_12.id, status: 1)
+Participation.create!( user_id: user_4.id, event_id: event_14.id, status: 1)
 puts '1 participations crées'
 
 puts "Finished!"
