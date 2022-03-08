@@ -54,7 +54,7 @@
           </div>
         </div>
         <p>Prêt à s'engager?</p>
-        <%= link_to "Je participe !", participations_path(@participation, event_id: @event.id), class: "btn-orange no-link-deco", method: :post %>
+        <button type="submit" id="sweet-alert-demo-participation" class="btn btn-orange no-link-deco" data-dismiss="modal">Je participe!</button>
       </div>
       <div class="event-show-discussion my-4">
         <%= cl_image_tag @event.asso.user.photo.key, class: "avatar-large avatar-asso-contact dropdown-toggle img-asso-show mb-2" %>
