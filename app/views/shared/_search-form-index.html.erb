@@ -12,7 +12,7 @@
           <div>
             <label class="search-label">Distance? </label>
             <label for="search_distance" class="form-label"><span data-search-target="distance" class="distancecounter"></span><span class="distancecounter">km</span></label>
-            <input data-action="input->search#change" type="range" class="form-range mb-3" min="0" max="60" step="1" name="search[distance]" id="search_distance">
+            <input data-action="input->search#change" data-search-target="range" type="range" class="form-range mb-3" min="0" max="60" step="1" name="search[distance]" id="search_distance" value="<%= params.dig(:search, :distance) %>">
           </div>
         </div>
         <div class="searchindexelements col-sm-12 col-lg-2 px-4">
@@ -22,7 +22,7 @@
         </div>
         <div class="col-sm-12 col-lg-5 px-4">
             <label class="search-label pb-1">Agir pour? </label>
-            <%= f.input :cause, as: :check_boxes, collection: Event::EVENT_CAUSES, label_method: lambda { |cause| render 'shared/check_box', cause: cause } %>
+            <%= f.input :cause, as: :check_boxes, collection: Event::EVENT_CAUSES, label_method: lambda { |cause| render 'shared/check_box', cause: cause }, :checked => params.dig(:search, :cause) %>
         </div>
         <div class="col-sm-12 col-lg-1 d-flex justify-content-center align-content-center">
           <%#= f.submit class:"btn-ghost", value: "Rechercher"%>
