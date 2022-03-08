@@ -74,10 +74,10 @@
               <div class="modal-dialog modal-dialog-scrollable modal-chatroom-discussion">
                 <div class="modal-content">
                   <div class="modal-header">
-                      <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" %>
+                      <%= cl_image_tag @event.asso.user.photo.key, class: "avatar dropdown-toggle" %>
                       <div class="modal-title modal-title-discussions" id="chatroomModalLabel">
-                        <h6><%= @event.asso.user.first_name.capitalize %> | <%= @event.asso.name.capitalize  %></h6>
-                        <i class="fa-solid fa-circle"></i>
+                        <h6><%= @event.asso.user.first_name.capitalize %> | <span class="asso-name-discussion"><%= @event.asso.name.capitalize  %></span></h6>
+                        <p><i class="fa-solid fa-circle"></i> En ligne</p>
                       </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
@@ -94,7 +94,7 @@
                       html: {data: { "chatroom-subscription-target" => "form" }, class: "d-flex"} do |f| %>
                       <%= f.input :content,
                         label: false,
-                        placeholder: "Message #{@chatroom.name}",
+                        placeholder: "Ton message #{@chatroom.name}",
                         wrapper_html: {class: "flex-grow-1"}
                       %>
                       <%= f.submit "Envoyer", class: "btn btn-orange btn-lg" %>
