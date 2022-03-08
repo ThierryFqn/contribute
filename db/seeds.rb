@@ -84,10 +84,10 @@ assign_photo(user_8, "https://avatars.githubusercontent.com/u/30435844?v=4")
 user_9 = User.new(first_name:'Romain', last_name:'Sanson', email: Faker::Internet.email , nickname: 'Romain', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[1], password: "123456" )
 assign_photo(user_9, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1544604383/pnqv3gmdpbtqrstpqgls.jpg")
 
-user_10 = User.new(first_name:'Mimie', last_name:'Mathy', email: Faker::Internet.email , nickname: 'Mimie', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
+user_10 = User.new(first_name:'Mimie', last_name:'Mathy', email: 'mimie@mathy.com' , nickname: 'Mimie', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
 assign_photo(user_10, "https://i0.wp.com/www.starmag.com/wp-content/uploads/2021/06/mimie-mathy-critiquee-sur-ses-propos-sur-les-gens-de-petite-taille-elle-repond-a-la-polemique.jpg?resize=1200%2C1200&ssl=1")
 
-user_11 = User.new(first_name:'Julie', last_name:'Gastellu', email: Faker::Internet.email , nickname: 'Miaouss', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
+user_11 = User.new(first_name:'Julie', last_name:'Gastellu', email: 'julie.gastellu@orange.fr' , nickname: 'Miaouss', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
 assign_photo(user_11, 'https://scontent-cdg2-1.xx.fbcdn.net/v/t31.18172-8/26023926_10214926387810463_1329963048430844977_o.jpg?_nc_cat=100&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=UmZ1Bk0SnLEAX_Wun91&_nc_ht=scontent-cdg2-1.xx&oh=00_AT_bqaL2OZ_GoZvYcjb8SbNlUieI4VEq4_yRW8LZ7U53HA&oe=624E4503')
 
 user_12 = User.new(first_name:'Caroline', last_name: 'Dana', email: Faker::Internet.email , nickname: 'Caroline', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
