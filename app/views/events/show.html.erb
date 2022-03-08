@@ -50,11 +50,13 @@
         <p class="intro-volunteers-counter">Nombre de volontaires</p>
         <p class="intro-volunteers-nb"><strong><%= @event.accepted_participants.count %></strong>/<%= @event.number_volunteers %></p>
         <div class="progress progress-volunteers mb-4">
-          <div class="progress-bar progress-bar-main-color" role="progressbar" style="width: <%= @event.volunteers_counter %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar progress-bar-main-color" role="progressbar" style="width: <%= @event.volunteers_counter %>" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
           </div>
         </div>
         <p>Prêt à s'engager?</p>
-        <button type="submit" id="sweet-alert-demo-participation" class="btn btn-orange no-link-deco" data-dismiss="modal">Je participe!</button>
+        <%= link_to participations_path(@participation, event_id: @event.id), method: :post, remote: true do %>
+            <button type="submit" id="sweet-alert-demo-participation" class="btn btn-orange no-link-deco" data-dismiss="modal">Je participe!</button>
+        <% end %>
       </div>
       <div class="event-show-discussion my-4">
         <%= cl_image_tag @event.asso.user.photo.key, class: "avatar-large avatar-asso-contact dropdown-toggle img-asso-show mb-2" %>

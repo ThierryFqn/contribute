@@ -5,7 +5,7 @@ class ParticipationsController < ApplicationController
     @participation.event = @event
     @participation.user = current_user
     authorize @participation
-    @participation.save ? (redirect_to root_path) : (render :new)
+    @participation.save ? () : (render :new)
   end
 
   def accepted
