@@ -70,7 +70,8 @@
           </button>
           <div class="container chatroom"
             data-controller="chatroom-subscription"
-            data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+            data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+            data-chatroom-subscription-user-id-value="<%= current_user.id %>">
 
             <div class="modal fade" id="chatroomModal" tabindex="-1" aria-labelledby="chatroomModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-scrollable modal-chatroom-discussion">
