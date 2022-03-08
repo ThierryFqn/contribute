@@ -113,7 +113,7 @@
 }
 
 .card-event-infos .cause-card {
-  font-style: italic;
+  // font-style: italic;
   padding-top: 10px;
   text-align: right;
 }
@@ -123,9 +123,10 @@
   background-color: $c-orange;
   color: white;
   border-radius: 5px;
-  width: 110px;
+  width: 100px;
   font-weight: 400;
   margin-top: 8px;
+  font-size: 0.9rem;
   i {
     opacity: 0.8;
   }
