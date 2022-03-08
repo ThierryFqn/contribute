@@ -11,10 +11,10 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "distance" ]
+  static targets = [ "distance", "range" ]
 
   connect() {
-    this.distanceTarget.innerText = 30
+    this.distanceTarget.innerText = this.rangeTarget.value
   }
 
   change(evt) {
