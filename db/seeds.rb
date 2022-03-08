@@ -66,7 +66,7 @@ assign_photo(user_2, "https://avatars.githubusercontent.com/u/93684799?v=4")
 user_3 = User.new(first_name:'Oladélé', last_name:'Houessou', email: Faker::Internet.email , nickname: 'Ola', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[2], password: "123456" )
 assign_photo(user_3, "https://avatars.githubusercontent.com/u/95042519?v=4")
 
-user_4 = User.new(first_name:'Thierry', last_name:'Fonquernie', email: Faker::Internet.email , nickname: 'Thierry', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
+user_4 = User.new(first_name:'Thierry', last_name:'Fonquernie', email: 'thierry.fonquernie@gmail.com', nickname: 'Thierry', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
 assign_photo(user_4, "https://avatars.githubusercontent.com/u/90208637?v=4")
 
 user_5 = User.new(first_name:'Nicolas', last_name:'Ollier', email: Faker::Internet.email , nickname: 'Nico', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[2], password: "123456" )
