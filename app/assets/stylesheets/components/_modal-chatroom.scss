@@ -1,0 +1,26 @@
+.modal-chatroom-discussion {
+  .modal-title-discussions {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    i {
+      text-align: left;
+      color: $green;
+      font-size: 0.6rem;
+    }
+
+    h6 {
+      margin-bottom:0;
+      .asso-name-discussion {
+        color: $c-bluegreen;
+        font-weight: 400;
+      }
+    }
+
+    p {
+      text-align: left;
+      font-size: 0.9rem;
+      margin-bottom:0;
+    }
+  }
+}

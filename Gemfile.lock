@@ -294,6 +294,7 @@ DEPENDENCIES
   faker!
   font-awesome-sass
   geocoder
+  i18n (~> 1.10)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)
