@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   def participation_rate
     if participations.select(&:confirmed?).any?
-      accepted_participations = participations.accepted.count
+      accepted_participations = participations.reject(&:pending?).count
       confirmed_participations = participations.confirmed.count
       (confirmed_participations.fdiv(accepted_participations) * 100).round
     else
