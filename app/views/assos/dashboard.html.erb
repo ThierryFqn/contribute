@@ -75,27 +75,33 @@
                         <i class="fa-solid fa-caret-up up-validation d-none" data-display-participants-target="up" data-action="click->display-participants#hideDiv"></i>
                       </div>
                       <% if event.preferences.any? %>
-                        <i class="fas fa-user-plus prospection-plus" data-toggle="modal" data-target="#prospectionModal"></i>                  </i>
+                        <i class="fas fa-user-plus prospection-plus" data-toggle="modal" data-target="#prospectionModal"></i>
                         <!-- Modal -->
                         <div class="modal fade" id="prospectionModal" tabindex="-1" role="dialog" aria-labelledby="prospectionModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
-                            <div class="modal-content">
+                            <div class="modal-content modal-recruit-volunteers">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="prospectionModalLabel">Potentiel volontaire</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <h6 class="modal-title" id="prospectionModalLabel"><span class="counter-recruits"><%= event.preferences.count %></span> potentiels volontaires correspondent à votre action</h6>
+                                <button type="button" class="close close-window" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
                               <div class="modal-body">
                                 <% potential_volunteers = event.preferences %>
-                                  <ul>
-                                    <% potential_volunteers.each do |potential_volunteer| %>
-                                    <li>  <%= potential_volunteer.first_name %> </li>
-                                    <%end%>
-                                  </ul>
+                                  <% potential_volunteers.each do |potential_volunteer| %>
+                                    <div class="card-participants-recruit mt-3">
+                                      <img src="<%= cl_image_path potential_volunteer.photo.key %>" class="avatar-large" />
+                                      <div class="card-participants-recruit-content">
+                                        <p><strong><%= potential_volunteer.first_name.capitalize %></strong></p>
+                                        <p><small>Cause préférentielle: <span class="nb-participation-rate"><%= potential_volunteer.causes_preferences %></span></small></p>
+                                        <p><small>Disponibilités: <span class="nb-participation-rate"><%= potential_volunteer.days_preferences %></span></small></p>
+
+                                      </div>
+                                    </div>
+                                  <%end%>
                               </div>
                               <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Envoyez un email</button>
+                                <button type="button" class="btn btn-orange" data-dismiss="modal">Envoyer un email</button>
                               </div>
                             </div>
                           </div>
@@ -159,6 +165,7 @@
     </div>
 </div>
 
+<!---
 <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapsechatrooms" aria-expanded="false" aria-controls="collapsechatrooms">
     Messagerie
   </button>
@@ -171,9 +178,9 @@
             data-chatroom-subscription-chatroom-id-value="<%= chatroom.id %>">
           <h2 class="row" data-bs-toggle="modal" data-bs-target="#chatroomModal<%= index %>"><%= chatroom.user.first_name %></h2>
 
-          <!--- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chatroomModal<%#= index %>">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chatroomModal<%#= index %>">
             Launch demo modal
-          </button> --->
+          </button>
 
           <div class="modal fade" id="chatroomModal<%= index %>" tabindex="-1" aria-labelledby="chatroomModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
@@ -215,3 +222,4 @@
     </div>
   </div>
 </div>
+--->

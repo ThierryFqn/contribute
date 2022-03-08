@@ -1,0 +1,73 @@
+.modal-recruit-volunteers {
+  .close-window {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .1);
+    border: none;
+  }
+
+  .modal-title {
+    font-weight: 400;
+    font-size: 1rem;
+
+    .counter-recruits {
+      color: #43aab1;
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+  }
+
+  .modal-body {
+    .card-participants-recruit {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      background: white;
+      padding: 8px 16px;
+      border: 1px solid rgb(235,235,235);
+      border-radius: 10px;
+
+      img {
+        width: 56px;
+        border-radius: 50%;
+      }
+    }
+
+    .card-participants-recruit .card-participants-recruit-content {
+      flex-grow: 1;
+      padding: 0 24px;
+      .nb-participation-rate {
+        color: black;
+        font-style: normal;
+      }
+    }
+
+    .card-participants-recruit p {
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .card-participants-recruit small {
+      color: #999999;
+      font-weight: bold;
+      font-size: 0.6rem;
+    }
+    .card-participants-recruit .card-participants-recruit-actions {
+      opacity: 1;
+      display: flex;
+      transition: ease .3s;
+      a {
+        text-decoration:none;
+      }
+    }
+
+    .card-participants-recruit .card-participants-recruit-actions a {
+      color: #999999;
+      margin-left: 16px;
+      font-size: 14px;
+    }
+
+    .card-participants-recruit .card-participants-recruit-actions a:hover {
+      color: #555555;
+    }
+  }
+}
