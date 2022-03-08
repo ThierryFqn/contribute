@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
     if @message.save
       ChatroomChannel.broadcast_to(
         @chatroom,
-        render_to_string(partial: "messages/message", locals: { message: @message })
+        json_response
       )
       head :ok
     else
@@ -19,6 +19,13 @@ class MessagesController < ApplicationController
   end
 
   private
+
+  def json_response
+    {
+      html: render_to_string(partial: "messages/message", locals: { message: @message }),
+      user_id: current_user.id
+    }
+  end
 
   def message_params
     params.require(:message).permit(:content)
