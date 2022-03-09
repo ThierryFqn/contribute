@@ -1,4 +1,4 @@
-<div class="index-container mb-3">
+<div class="index-container">
   <div class="search-form-control form-group" data-controller="search">
     <%= simple_form_for :search, url: events_path, method: :get do |f| %>
      <div class="row search-index my-2">
@@ -8,17 +8,17 @@
             <%= f.input :address, label: false, placeholder: "Localisation", input_html: { value: params.dig(:search, :address) } %>
           </div>
         </div>
+        <div class="searchindexelements col-sm-12 col-lg-2 px-4">
+          <label class="search-label py-1">Quand? </label>
+          <%= f.input :dates, as: :string, required: false, placeholder: "Dates", label: false, input_html: { class: "datepicker", value: params.dig(:search, :dates) } %>
+          <%= f.input :range_end, as: :string, input_html: { class: 'd-none' }, label: false %>
+        </div>
         <div class="searchindexelements col-sm-6 col-lg-2 px-4">
           <div>
             <label class="search-label">Distance? </label>
             <label for="search_distance" class="form-label"><span data-search-target="distance" class="distancecounter"></span><span class="distancecounter">km</span></label>
             <input data-action="input->search#change" data-search-target="range" type="range" class="form-range mb-3" min="0" max="60" step="1" name="search[distance]" id="search_distance" value="<%= params.dig(:search, :distance) %>">
           </div>
-        </div>
-        <div class="searchindexelements col-sm-12 col-lg-2 px-4">
-          <label class="search-label py-1">Quand? </label>
-          <%= f.input :dates, as: :string, required: false, placeholder: "Dates", label: false, input_html: { class: "datepicker", value: params.dig(:search, :dates) } %>
-          <%= f.input :range_end, as: :string, input_html: { class: 'd-none' }, label: false %>
         </div>
         <div class="col-sm-12 col-lg-5 px-4">
             <label class="search-label pb-1">Agir pour? </label>
