@@ -1,0 +1,18 @@
+.swal-button {
+  background-color: $c-orange;
+  &:hover {
+    background-color: $c-bluegreen !important;
+  }
+}
+
+.swal-icon--success__line--long {
+  background-color: $c-bluegreen;
+}
+
+.swal-icon--success__line--tip {
+  background-color: $c-bluegreen;
+}
+
+.swal-icon--success__ring{
+  border: 4px solid $c-bluegreen;
+}
