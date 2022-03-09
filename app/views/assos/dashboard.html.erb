@@ -93,7 +93,7 @@
                                     <div class="card-participants-recruit mt-3">
                                       <img src="<%= cl_image_path potential_volunteer.photo.key %>" class="avatar-large" />
                                       <div class="card-participants-recruit-content">
-                                        <p><strong><%= potential_volunteer.first_name.capitalize %></strong></p>
+                                        <p><strong><%= potential_volunteer.first_name.capitalize %> <%= potential_volunteer.last_name.capitalize %></strong></p>
                                         <p><small>Cause préférentielle: <span class="nb-participation-rate"><%= potential_volunteer.causes_preferences %></span></small></p>
                                         <p><small>Disponibilités: <span class="nb-participation-rate"><%= potential_volunteer.days_preferences %></span></small></p>
 
