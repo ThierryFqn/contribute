@@ -22,7 +22,6 @@
             </li>
         </ul>
     </nav>
-<%# pour titi  %>
     <div class= "container padding_navbar px-5 dashboard-main-content">
       <h3 class="pb-3">Hello <%= @asso.user.first_name%> 👋🏼</h3>
       <div class="row dash-key-infos">
@@ -30,8 +29,8 @@
             <div class ="background-info">
               <div>
                 <p>Depuis le début de l'aventure...</p>
-                <p><strong>44</strong> actions créées</p>
-                <p><strong>123</strong> volontaires recrutés</p>
+                <p><strong>9</strong> actions créées</p>
+                <p><strong>25</strong> volontaires recrutés</p>
               </div>
             </div>
           </div>
@@ -56,20 +55,20 @@
       </div>
       <h4 class="py-4">Evènements à venir (<%= @pending_events.count%>)</h4>
       <div class="row">
-          <div class="col-sm-12 col-lg-2 dashboard-event">
+          <%# <div class="col-sm-12 col-lg-2 dashboard-event">
             <img src="https://res.cloudinary.com/dlwr1bikm/image/upload/v1646259498/development/Saly-42_oi5fwi.png" class="img-header-row" alt="header">
-          </div>
-            <div class="col-sm-12 col-lg-10">
+          </div> %>
+            <div class="col-sm-12 col-lg-12">
               <% @pending_events.each do |event| %>
                 <div class="mb-3" data-controller="display-participants">
                 <div class="pros">
                     <div class="card-event-dash">
                       <img src="<%= cl_image_path event.photos.first.key %>" />
                       <div class="card-event-dash-infos">
-                        <h2><%= event.name %></h2>
+                        <h2><%= event.name %> | <%= event.start_date.strftime("%d/%m/%y")%></h2>
                         <p>Nombre de volontaires: <span class="volunteers-count"><%= event.accepted_participants.count%>/<%= event.number_volunteers%></strong></p>
                         <% if event.pending_participants.any? %>
-                          <p><strong><%= event.pending_participants.count%></strong> volontaire(s) en attente</p>
+                          <p><i class="fa-solid fa-bell"></i> <strong><%= event.pending_participants.count%></strong> volontaire(s) en attente</p>
                         <% end %>
                       </div>
                       <div class="card-event-dash-arrow">
@@ -161,17 +160,17 @@
       <h4 class="py-4">Evènements passés </h4>
       <!-- NEW CARD-->
       <div class="row">
-          <div class="col-sm-12 col-lg-2 dashboard-event">
+          <%# <div class="col-sm-12 col-lg-2 dashboard-event">
             <img src="https://res.cloudinary.com/dlwr1bikm/image/upload/v1646259498/Saly-26_zm4frs.png" class="img-past-event-row" alt="header">
-          </div>
-            <div class="col-sm-12 col-lg-10">
+          </div> %>
+            <div class="col-sm-12 col-lg-12">
               <% @done_events.each do |event| %>
                 <div class="mb-3" data-controller="display-participants">
                 <div class="pros">
                     <div class="card-event-dash">
                       <img src="<%= cl_image_path event.photos.first.key %>" />
                       <div class="card-event-dash-infos">
-                        <h2><%= event.name %></h2>
+                        <h2><%= event.name %> | <%= event.start_date.strftime("%d/%m/%y")%></h2>
                         <p>Nombre de volontaires: <span class="volunteers-count"><%= event.accepted_participants.count%>/<%= event.number_volunteers%></strong></p>
                       </div>
                       <div class="card-event-dash-arrow">

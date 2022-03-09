@@ -113,7 +113,7 @@ input[id="radio-3"] {
 
 .card-event-dash {
   overflow: hidden;
-  height: 120px;
+  height: 130px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -151,6 +151,10 @@ input[id="radio-3"] {
 .card-event-dash .card-event-dash-infos {
   padding: 24px;
   flex-grow: 3;
+  i {
+    color: $c-red;
+    opacity: 0.8;
+  }
 }
 
 .card-event-dash .card-event-dash-arrow {
