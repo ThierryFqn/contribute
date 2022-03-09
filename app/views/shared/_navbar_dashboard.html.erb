@@ -14,7 +14,7 @@
           <li class="nav-item dropdown">
             <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Profile", profiles_path, class: "dropdown-item" %>
+              <%= link_to "Mon profil", profiles_path, class: "dropdown-item" %>
               <% if current_user.assos.any? %>
                 <%= link_to "Tableau de bord", dashboard_asso_path(current_user.asso_ids), class: "dropdown-item" %>
               <% end %>
