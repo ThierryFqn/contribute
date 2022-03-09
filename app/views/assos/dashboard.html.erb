@@ -55,10 +55,10 @@
       </div>
       <h4 class="py-4">Evènements à venir (<%= @pending_events.count%>)</h4>
       <div class="row">
-          <div class="col-sm-12 col-lg-2 dashboard-event">
+          <%# <div class="col-sm-12 col-lg-2 dashboard-event">
             <img src="https://res.cloudinary.com/dlwr1bikm/image/upload/v1646259498/development/Saly-42_oi5fwi.png" class="img-header-row" alt="header">
-          </div>
-            <div class="col-sm-12 col-lg-10">
+          </div> %>
+            <div class="col-sm-12 col-lg-12">
               <% @pending_events.each do |event| %>
                 <div class="mb-3" data-controller="display-participants">
                 <div class="pros">
@@ -160,10 +160,10 @@
       <h4 class="py-4">Evènements passés </h4>
       <!-- NEW CARD-->
       <div class="row">
-          <div class="col-sm-12 col-lg-2 dashboard-event">
+          <%# <div class="col-sm-12 col-lg-2 dashboard-event">
             <img src="https://res.cloudinary.com/dlwr1bikm/image/upload/v1646259498/Saly-26_zm4frs.png" class="img-past-event-row" alt="header">
-          </div>
-            <div class="col-sm-12 col-lg-10">
+          </div> %>
+            <div class="col-sm-12 col-lg-12">
               <% @done_events.each do |event| %>
                 <div class="mb-3" data-controller="display-participants">
                 <div class="pros">
