@@ -41,6 +41,10 @@ class Event < ApplicationRecord
     participations.select(&:accepted?)
   end
 
+  def confirmed_participants
+    participations.select(&:confirmed?)
+  end
+
   def volunteers_counter
     (accepted_participants.count.fdiv(number_volunteers) * 100).round
   end
