@@ -22,7 +22,6 @@
             </li>
         </ul>
     </nav>
-<%# pour titi  %>
     <div class= "container padding_navbar px-5 dashboard-main-content">
       <h3 class="pb-3">Hello <%= @asso.user.first_name%> 👋🏼</h3>
       <div class="row dash-key-infos">
@@ -30,8 +29,8 @@
             <div class ="background-info">
               <div>
                 <p>Depuis le début de l'aventure...</p>
-                <p><strong>44</strong> actions créées</p>
-                <p><strong>123</strong> volontaires recrutés</p>
+                <p><strong>9</strong> actions créées</p>
+                <p><strong>25</strong> volontaires recrutés</p>
               </div>
             </div>
           </div>
@@ -66,7 +65,7 @@
                     <div class="card-event-dash">
                       <img src="<%= cl_image_path event.photos.first.key %>" />
                       <div class="card-event-dash-infos">
-                        <h2><%= event.name %></h2>
+                        <h2><%= event.name %> | <%= event.start_date.strftime("%d/%m/%y")%></h2>
                         <p>Nombre de volontaires: <span class="volunteers-count"><%= event.accepted_participants.count%>/<%= event.number_volunteers%></strong></p>
                         <% if event.pending_participants.any? %>
                           <p><strong><%= event.pending_participants.count%></strong> volontaire(s) en attente</p>
@@ -171,7 +170,7 @@
                     <div class="card-event-dash">
                       <img src="<%= cl_image_path event.photos.first.key %>" />
                       <div class="card-event-dash-infos">
-                        <h2><%= event.name %></h2>
+                        <h2><%= event.name %> | <%= event.start_date.strftime("%d/%m/%y")%></h2>
                         <p>Nombre de volontaires: <span class="volunteers-count"><%= event.accepted_participants.count%>/<%= event.number_volunteers%></strong></p>
                       </div>
                       <div class="card-event-dash-arrow">
