@@ -178,6 +178,8 @@ sum_hours(event_14)
 
 # Participation
 
+10.times { Participation.create!(user_id: user_1.id, event_id: event_3.id, status: 3) }
+puts '10 participations crées'
 10.times { Participation.create!(user_id: user_1.id, event_id: event_13.id, status: 3) }
 puts '10 participations crées'
 50.times { Participation.create!(user_id: user_12.id, event_id: event_13.id, status: 3) }
