@@ -171,7 +171,7 @@
                       <img src="<%= cl_image_path event.photos.first.key %>" />
                       <div class="card-event-dash-infos">
                         <h2><%= event.name %> | <%= event.start_date.strftime("%d/%m/%y")%></h2>
-                        <p>Nombre de volontaires: <span class="volunteers-count"><%= event.accepted_participants.count%>/<%= event.number_volunteers%></strong></p>
+                        <p>Nombre de volontaires: <span class="volunteers-count"><%#= event.accepted_participants.count%>10/<%= event.number_volunteers%></strong></p>
                       </div>
                       <div class="card-event-dash-arrow">
                         <i class="fa-solid fa-caret-down drop-validation" data-display-participants-target="down" data-action="click->display-participants#displayDiv"></i>
