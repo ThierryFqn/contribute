@@ -21,7 +21,7 @@
                 <p><i class="fa-solid fa-calendar user-icons-profile"></i> <%= participation.event.start_date.strftime("%d/%m/%y") %></strong> <span class="spacer-card-user">|</span> <i class="fa-solid fa-clock user-icons-profile"></i> <%= participation.event.start_date.strftime("%H:%M") %></p>
                 <p>Adresse: <strong><%= participation.event.address%></strong></p>
               </div>
-              <h2 class="nb-hours-card-profil-user"><%= participation.event.hours_calcul.round %>h</h2>
+              <h2 class="nb-hours-card-profil-user"><%= participation.event.hours_calcul.round %> heures</h2>
             </div>
           <% end %>
         <% end %>
@@ -34,7 +34,7 @@
               <p><i class="fa-solid fa-calendar user-icons-profile"></i> <%= participation.event.start_date.strftime("%d/%m/%y") %></strong> <span class="spacer-card-user">|</span> <i class="fa-solid fa-clock user-icons-profile"></i> <%= participation.event.start_date.strftime("%H:%M") %></p>
               <p>Adresse: <strong><%= participation.event.address%></strong></p>
             </div>
-            <h2 class="nb-hours-card-profil-user"><%= participation.event.hours_calcul.round %>h</h2>
+            <h2 class="nb-hours-card-profil-user"><%= participation.event.hours_calcul.round %> heures</h2>
           </div>
         <% end %>
     </div>

@@ -1,5 +1,10 @@
+.container-index-background {
+  background: #F9FCFC;
+}
+
 .list-container {
   display:flex;
+  padding-left: 50px;
 }
 
 #map {
@@ -26,7 +31,7 @@
   margin-bottom: 10px;
   border-radius: 5px;
   color: $gray;
-  height: 370px;
+  height: 385px;
   transition: 0.5s opacity ease, 0.5s box-shadow ease;
   &:hover {
     opacity:0.8;
@@ -78,10 +83,10 @@
 
 
 .card-event .card-event-infos {
-  padding: 30px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  padding: 20px 16px;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: flex-end;
   position: relative;
   p {
     font-size: 16px;
@@ -108,8 +113,9 @@
 }
 
 .card-event-infos .cause-card {
-  font-style: italic;
-  padding-top: 20px;
+  // font-style: italic;
+  padding-top: 10px;
+  text-align: right;
 }
 
 .card-event-infos .nb-hoursindex {
@@ -117,6 +123,13 @@
   background-color: $c-orange;
   color: white;
   border-radius: 5px;
+  width: 100px;
+  font-weight: 400;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  i {
+    opacity: 0.8;
+  }
 }
 
 
@@ -125,6 +138,15 @@
   .cards-grid  {
     grid-template-columns: 1fr;
   }
+
+  #map {
+    display: none;
+  }
+
+  .list-container {
+    padding-left: 0px;
+  }
+
 }
 
 // Small devices (landscape phones, 576px and up)

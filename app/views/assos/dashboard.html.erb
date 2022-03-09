@@ -31,7 +31,7 @@
               <div>
                 <p>Depuis le début de l'aventure...</p>
                 <p><strong>44</strong> actions créées</p>
-                <p><strong>123</strong> volontaires recrutées</p>
+                <p><strong>123</strong> volontaires recrutés</p>
               </div>
             </div>
           </div>
@@ -68,7 +68,9 @@
                       <div class="card-event-dash-infos">
                         <h2><%= event.name %></h2>
                         <p>Nombre de volontaires: <span class="volunteers-count"><%= event.accepted_participants.count%>/<%= event.number_volunteers%></strong></p>
-                        <p><strong><%= event.pending_participants.count%></strong> volontaire(s) en attente</p>
+                        <% if event.pending_participants.any? %>
+                          <p><strong><%= event.pending_participants.count%></strong> volontaire(s) en attente</p>
+                        <% end %>
                       </div>
                       <div class="card-event-dash-arrow">
                         <i class="fa-solid fa-caret-down drop-validation" data-display-participants-target="down" data-action="click->display-participants#displayDiv"></i>
