@@ -1,0 +1,5 @@
+meta_product_name: "Contribue"
+meta_title: "Contribute - Rencontre entre volontaires et associations"
+meta_description: "Tu as envie de d'aider des associations pendant ton temps libre sans engagement ? Rejoins Contripbute"
+meta_image: "twitter.jpeg" # should exist in `app/assets/images/`
+twitter_account: "@local_contribute"   # required for Twitter Cards
