@@ -20,9 +20,9 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Profile", profiles_path, class: "dropdown-item" %>
               <% if current_user.assos.any? %>
-                <%= link_to "Dashboard", dashboard_asso_path(current_user.asso_ids), class: "dropdown-item" %>
+                <%= link_to "Tableau de bord", dashboard_asso_path(current_user.asso_ids), class: "dropdown-item" %>
               <% end %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
         <% else %>
