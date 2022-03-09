@@ -8,6 +8,7 @@
 
   .search_dates {
     margin-bottom: 0 !important;
+    width: 100%;
   }
 
   .form-control {
@@ -26,7 +27,7 @@
 
 .product-search {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   background: white;
   margin: 0 auto;
   box-shadow: rgba(0,0,0,.172549) 0 6px 12px 0;
@@ -41,6 +42,7 @@
   padding: 0 1em;
   .search-date {
     display: flex;
+    padding-top: 4px;
   }
 }
 .button-div {
@@ -51,6 +53,7 @@
   font-weight: 700;
   color: $c-green;
   text-align: left;
+  padding-top: 5px;
 }
 
 .search-input {
