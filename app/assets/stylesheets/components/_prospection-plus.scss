@@ -2,19 +2,13 @@
   position: relative;
 }
 .prospection-plus {
-  position: absolute;
-    font-size: 15px;
-    width: 42px;
-    height: 42px;
-    padding: 13px 13px;
-    top: -11px;
-    left: -10px;
-    border-radius: 50%;
-    background-color: $c-orange;
-    transition: background 0.3s ease;
-    cursor: pointer;
-    &:hover {
-      background-color: $c-bluegreen;
-      color: white;
-    }
+  font-size: 14px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 4px;
+  padding-right: 7px;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  color: rgba(250,250,250,0.8);
 }

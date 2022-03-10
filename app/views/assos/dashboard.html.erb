@@ -72,43 +72,43 @@
                         <% end %>
                       </div>
                       <div class="card-event-dash-arrow">
-                        <i class="fa-solid fa-caret-down drop-validation" data-display-participants-target="down" data-action="click->display-participants#displayDiv"></i>
-                        <i class="fa-solid fa-caret-up up-validation d-none" data-display-participants-target="up" data-action="click->display-participants#hideDiv"></i>
-                      </div>
-                      <% if event.preferences.any? %>
-                        <i class="fas fa-user-plus prospection-plus" data-toggle="modal" data-target="#prospectionModal"></i>
-                        <!-- Modal -->
-                        <div class="modal fade" id="prospectionModal" tabindex="-1" role="dialog" aria-labelledby="prospectionModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-scrollable" role="document">
-                            <div class="modal-content modal-recruit-volunteers">
-                              <div class="modal-header">
-                                <h6 class="modal-title" id="prospectionModalLabel"><span class="counter-recruits"><%= event.preferences.count %></span> potentiels volontaires correspondent à votre action</h6>
-                                <button type="button" class="close close-window" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <% potential_volunteers = event.preferences %>
-                                  <% potential_volunteers.each do |potential_volunteer| %>
-                                    <div class="card-participants-recruit mt-3">
-                                      <img src="<%= cl_image_path potential_volunteer.photo.key %>" class="avatar-large" />
-                                      <div class="card-participants-recruit-content">
-                                        <p><strong><%= potential_volunteer.first_name.capitalize %> <%= potential_volunteer.last_name.capitalize %></strong></p>
-                                        <p><small>Cause préférentielle: <span class="nb-participation-rate"><%= potential_volunteer.causes_preferences %></span></small></p>
-                                        <p><small>Disponibilités: <span class="nb-participation-rate"><%= potential_volunteer.days_preferences %></span></small></p>
+                        <% if event.preferences.any? %>
+                          <p class="card-event-dash-buttons-orange mb-2" data-toggle="modal" data-target="#prospectionModal"><i class="fas fa-user-plus prospection-plus"></i>Recruter volontaires</p>
+                          <!-- Modal -->
+                          <div class="modal fade" id="prospectionModal" tabindex="-1" role="dialog" aria-labelledby="prospectionModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                              <div class="modal-content modal-recruit-volunteers">
+                                <div class="modal-header">
+                                  <h6 class="modal-title" id="prospectionModalLabel"><span class="counter-recruits"><%= event.preferences.count %></span> potentiels volontaires correspondent à votre action</h6>
+                                  <button type="button" class="close close-window" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <% potential_volunteers = event.preferences %>
+                                    <% potential_volunteers.each do |potential_volunteer| %>
+                                      <div class="card-participants-recruit mt-3">
+                                        <img src="<%= cl_image_path potential_volunteer.photo.key %>" class="avatar-large" />
+                                        <div class="card-participants-recruit-content">
+                                          <p><strong><%= potential_volunteer.first_name.capitalize %> <%= potential_volunteer.last_name.capitalize %></strong></p>
+                                          <p><small>Cause préférentielle: <span class="nb-participation-rate"><%= potential_volunteer.causes_preferences %></span></small></p>
+                                          <p><small>Disponibilités: <span class="nb-participation-rate"><%= potential_volunteer.days_preferences %></span></small></p>
 
+                                        </div>
                                       </div>
-                                    </div>
-                                  <%end%>
-                              </div>
-                              <div class="modal-footer">
-                                <%# <button type="button" class="btn btn-primary" data-dismiss="modal">Envoyez un email</button> %>
-                                <button id="sweet-alert-demo" class="btn btn-orange" data-dismiss="modal">Envoyer un email</button>
+                                    <%end%>
+                                </div>
+                                <div class="modal-footer">
+                                  <%# <button type="button" class="btn btn-primary" data-dismiss="modal">Envoyez un email</button> %>
+                                  <button id="sweet-alert-demo" class="btn btn-orange" data-dismiss="modal">Envoyer un email</button>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      <% end %>
+                        <% end %>
+                        <p class="card-event-dash-buttons" data-display-participants-target="down" data-action="click->display-participants#displayDiv"><i class="fa-solid fa-caret-down drop-validation"></i><span>Voir tous les volontaires</span></p>
+                        <p data-display-participants-target="up" data-action="click->display-participants#hideDiv" class="d-none card-event-dash-buttons"><i class="fa-solid fa-caret-up up-validation"></i><span>Masquer volontaires</span></p>
+                      </div>
                     </div>
                   </div>
                   <div class="card-event-dash-participations d-none" data-display-participants-target="participants">
@@ -174,8 +174,8 @@
                         <p>Nombre de volontaires: <span class="volunteers-count"><%= event.confirmed_participants.count%>/<%= event.number_volunteers%></strong></p>
                       </div>
                       <div class="card-event-dash-arrow">
-                        <i class="fa-solid fa-caret-down drop-validation" data-display-participants-target="down" data-action="click->display-participants#displayDiv"></i>
-                        <i class="fa-solid fa-caret-up up-validation d-none" data-display-participants-target="up" data-action="click->display-participants#hideDiv"></i>
+                        <p class="card-event-dash-buttons" data-display-participants-target="down" data-action="click->display-participants#displayDiv"><i class="fa-solid fa-caret-down drop-validation"></i><span>Voir tous les volontaires</span></p>
+                        <p data-display-participants-target="up" data-action="click->display-participants#hideDiv" class="d-none card-event-dash-buttons"><i class="fa-solid fa-caret-up up-validation"></i><span>Masquer volontaires</span></p>
                       </div>
                     </div>
                   </div>
