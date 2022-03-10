@@ -1,6 +1,6 @@
 .search-index {
   align-items: center;
-  padding: 20px 40px;
+  padding: 20px 0px;
   background: white;
   border-radius: 20px;
   box-shadow: 0px 8px 20px rgba(30, 50, 51, 0.1);
@@ -8,7 +8,7 @@
   .form-control  {
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 20px;
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     color: rgba(0, 0, 0, 0.5);
     height: 35px;
   }
@@ -30,7 +30,7 @@
    }
 
    .form-check {
-    padding-left: 1.8em;
+    padding-left: 0.5em;
    }
 }
 
