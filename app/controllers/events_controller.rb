@@ -13,7 +13,7 @@ class EventsController < ApplicationController
     end
 
     if params.dig(:search, :dates).present?
-      dates = params.dig(:search, :dates).split('to')
+      dates = params.dig(:search, :dates).split('au')
       start_date = dates.first
       end_date = dates.last
     end
