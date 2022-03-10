@@ -10,7 +10,7 @@
             <%= link_to event_path(event), class:"no-link-deco" do %>
               <div class="card-event">
                 <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> %>
-                <div class="card-event-header" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('<%= cl_image_path event.photos.first.key %>')">
+                <div class="card-event-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('<%= cl_image_path event.photos.first.key %>')">
                   <div>
                   <h2><%= event.name.capitalize %></h2>
                   <p class="pt-3"><i class="fa-solid fa-user-group"></i> <%= event.accepted_participants.count %>/<%= event.number_volunteers %></p>
