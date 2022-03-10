@@ -28,7 +28,7 @@ presidents = []
     day_birth: Faker::Date.birthday(min_age: 18, max_age: 65)
   )
   presidents << user
-  puts 'Create 1 user'
+  puts "Create #{user.first_name}"
 end
 
 def assign_photo(record, url)
