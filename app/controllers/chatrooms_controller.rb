@@ -17,13 +17,10 @@ class ChatroomsController < ApplicationController
     @asso = Asso.find(params[:asso_id])
     @chatroom = Chatroom.find_by(user: current_user, asso: @asso)
 
-    if @chatroom
-      redirect_to chatroom_path(@chatroom)
-    else
+    unless @chatroom
       @chatroom = Chatroom.create(user: current_user, asso: @asso)
-      redirect_to chatroom_path(@chatroom)
     end
-
+    redirect_to chatroom_path(@chatroom)
     skip_authorization
   end
 end

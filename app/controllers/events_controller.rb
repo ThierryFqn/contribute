@@ -1,16 +1,10 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @events = policy_scope(Event).order(created_at: :desc)
-
-    if params.dig(:search, :address).present?
-      @events = @events.near(params.dig(:search, :address), params.dig(:search, :distance) || 30)
-    end
-
-    if params.dig(:search, :cause)&.reject(&:empty?)&.any?
-      @events = @events.where(cause: params.dig(:search, :cause).reject(&:empty?))
-    end
+    @events = @events.near(params.dig(:search, :address), params.dig(:search, :distance) || 30) if params.dig(:search, :address).present?
+    @events = @events.where(cause: params.dig(:search, :cause).reject(&:empty?)) if params.dig(:search, :cause)&.reject(&:empty?)&.any?
 
     if params.dig(:search, :dates).present?
       dates = params.dig(:search, :dates).split('au')
@@ -18,14 +12,8 @@ class EventsController < ApplicationController
       end_date = dates.last
     end
 
-    if start_date
-      @events = @events.where("start_date >= ?", DateTime.parse(start_date))
-    end
-
-    if end_date
-      @events = @events.where("end_date <= ?", DateTime.parse(end_date))
-    end
-
+    @events = @events.where("start_date >= ?", DateTime.parse(start_date)) if start_date
+    @events = @events.where("end_date <= ?", DateTime.parse(end_date)) if end_date
     update_status
 
     @markers = @events.geocoded.map do |event|
@@ -53,7 +41,6 @@ class EventsController < ApplicationController
     @event = Event.new
     @asso = Asso.find(params[:asso_id])
     @event.asso = @asso
-
     authorize @event
   end
 
@@ -70,9 +57,7 @@ class EventsController < ApplicationController
   private
 
   def update_status
-    @events.each do |event|
-      event.done! if event.end_date < DateTime.now
-    end
+    @events.each { |event| event.done! if event.end_date < DateTime.now }
   end
 
   def params_event
@@ -82,5 +67,4 @@ class EventsController < ApplicationController
   def sum_hours(event)
     ((event.end_date.to_time - event.start_date.to_time) / 1.hours).round
   end
-
 end

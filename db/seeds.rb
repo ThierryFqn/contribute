@@ -28,7 +28,7 @@ presidents = []
     day_birth: Faker::Date.birthday(min_age: 18, max_age: 65)
   )
   presidents << user
-  puts 'Create 1 user'
+  puts "Create #{user.first_name}"
 end
 
 def assign_photo(record, url)
@@ -57,41 +57,44 @@ end
 
 puts 'Création des utilisateurs sans association'
 
-user_1 = User.new(first_name:'Mélissa', last_name:'Gateau', email: 'meli@gmail.com', nickname: 'Mel', causes_preferences: 'Environnement', password: "123456")
+user_1 = User.new(first_name: 'Mélissa', last_name: 'Gateau', email: 'meli@gmail.com', nickname: 'Mel', causes_preferences: 'Environnement', password: "123456")
 assign_photo(user_1, "https://avatars.githubusercontent.com/meligateau")
 
-user_2 = User.new(first_name:'Jérôme', last_name:'Tan', email: Faker::Internet.email , nickname: 'Jérôme', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[1], password: "123456" )
+user_2 = User.new(first_name: 'Jérôme', last_name: 'Tan', email: Faker::Internet.email, nickname: 'Jérôme', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[1], password: "123456" )
 assign_photo(user_2, "https://avatars.githubusercontent.com/u/93684799?v=4")
 
-user_3 = User.new(first_name:'Oladélé', last_name:'Houessou', email: Faker::Internet.email , nickname: 'Ola', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[2], password: "123456" )
+user_3 = User.new(first_name: 'Oladélé', last_name:'Houessou', email: Faker::Internet.email, nickname: 'Ola', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[2], password: "123456" )
 assign_photo(user_3, "https://avatars.githubusercontent.com/u/95042519?v=4")
 
-user_4 = User.new(first_name:'Thierry', last_name:'Fonquernie', email: 'thierry.fonquernie@gmail.com', nickname: 'Thierry', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
+user_4 = User.new(first_name: 'Thierry', last_name: 'Fonquernie', email: 'thierry.fonquernie@gmail.com', nickname: 'Thierry', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
 assign_photo(user_4, "https://avatars.githubusercontent.com/u/90208637?v=4")
 
-user_5 = User.new(first_name:'Nicolas', last_name:'Ollier', email: Faker::Internet.email , nickname: 'Nico', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[2], password: "123456" )
+user_5 = User.new(first_name: 'Nicolas', last_name: 'Ollier', email: Faker::Internet.email, nickname: 'Nico', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[2], password: "123456" )
 assign_photo(user_5, "https://avatars.githubusercontent.com/u/91204591?v=4")
 
-user_6 = User.new(first_name:'Marie', last_name:'Zorayan', email: Faker::Internet.email , nickname: 'Marie', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[1], password: "123456" )
+user_6 = User.new(first_name: 'Marie', last_name: 'Zorayan', email: Faker::Internet.email, nickname: 'Marie', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[1], password: "123456" )
 assign_photo(user_6, "https://avatars.githubusercontent.com/u/87484459?v=4")
 
-user_7 = User.new(first_name:'Kevin', last_name:'Leblond', email: Faker::Internet.email , nickname: 'Kevin', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[2], password: "123456" )
+user_7 = User.new(first_name: 'Kevin', last_name: 'Leblond', email: Faker::Internet.email, nickname: 'Kevin', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[2], password: "123456" )
 assign_photo(user_7, "https://avatars.githubusercontent.com/u/94071485?v=4")
 
-user_8 = User.new(first_name:'Thibaud', last_name:'aurel', email: Faker::Internet.email , nickname: 'Thibaud', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[2], password: "123456" )
+user_8 = User.new(first_name: 'Thibaud', last_name: 'Maurel', email: Faker::Internet.email, nickname: 'Thibaud', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[2], password: "123456" )
 assign_photo(user_8, "https://avatars.githubusercontent.com/u/30435844?v=4")
 
-user_9 = User.new(first_name:'Romain', last_name:'Sanson', email: Faker::Internet.email , nickname: 'Romain', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[1], password: "123456" )
+user_9 = User.new(first_name: 'Romain', last_name: 'Sanson', email: Faker::Internet.email, nickname: 'Romain', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[1], password: "123456" )
 assign_photo(user_9, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1544604383/pnqv3gmdpbtqrstpqgls.jpg")
 
-user_10 = User.new(first_name:'Mimie', last_name:'Mathy', email: 'mimie@mathy.com' , nickname: 'Mimie', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
+user_10 = User.new(first_name:'Mimie', last_name: 'Mathy', email: 'mimie@mathy.com', nickname: 'Mimie', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
 assign_photo(user_10, "https://i0.wp.com/www.starmag.com/wp-content/uploads/2021/06/mimie-mathy-critiquee-sur-ses-propos-sur-les-gens-de-petite-taille-elle-repond-a-la-polemique.jpg?resize=1200%2C1200&ssl=1")
 
-user_11 = User.new(first_name:'Julie', last_name:'Gastellu', email: 'julie.gastellu@orange.fr' , nickname: 'Miaouss', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
+user_11 = User.new(first_name: 'Julie', last_name: 'Gastellu', email: 'julie.gastellu@orange.fr', nickname: 'Miaouss', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
 assign_photo(user_11, 'https://scontent-cdg2-1.xx.fbcdn.net/v/t31.18172-8/26023926_10214926387810463_1329963048430844977_o.jpg?_nc_cat=100&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=UmZ1Bk0SnLEAX_Wun91&_nc_ht=scontent-cdg2-1.xx&oh=00_AT_bqaL2OZ_GoZvYcjb8SbNlUieI4VEq4_yRW8LZ7U53HA&oe=624E4503')
 
-user_12 = User.new(first_name:'Caroline', last_name: 'Dana', email: Faker::Internet.email , nickname: 'Caroline', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
+user_12 = User.new(first_name: 'Caroline', last_name: 'Dana', email: Faker::Internet.email, nickname: 'Caroline', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
 assign_photo(user_12, 'https://avatars.githubusercontent.com/u/93728030?v=4')
+
+user_13 = User.new(first_name: 'Agathe', last_name: 'Saint-Frison', email: Faker::Internet.email, nickname: 'Agathe', causes_preferences: Event::EVENT_CAUSES[2], days_preferences: Event::EVENT_DATES[2], password: "123456" )
+assign_photo(user_13, 'https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1630952638/f0manrintdc2vrxpojbl.jpg')
 
 # Creation Asso
 
