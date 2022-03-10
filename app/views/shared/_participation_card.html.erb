@@ -1,0 +1,14 @@
+<div class="card-participants-dashboard mt-3" id="<%= dom_id(participant) %>">
+  <img src="<%= cl_image_path participant.user.photo.key %>" class="avatar-large" />
+  <div class="card-participants-dashboard-content">
+    <p><small>Taux de participation: <span class="nb-participation-rate"><%= participant.user.participation_rate ? "#{participant.user.participation_rate}%" : "aucune participation pour le moment" %></span></small></p>
+    <p><strong><%= participant.user.first_name %> <%= participant.user.last_name %></strong></p>
+  </div>
+
+  <% if participant.pending? %>
+    <div class="card-participants-dashboard-actions">
+          <%= link_to 'Accepter', accepted_participation_path(participant), method: :patch, data: { action:"click->tabs#validate", participation_id: participant.id } %>
+          <%= link_to 'Refuser', denied_participation_path(participant), method: :patch %>
+    </div>
+  <% end %>
+</div>

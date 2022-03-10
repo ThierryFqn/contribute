@@ -111,44 +111,27 @@
                       </div>
                     </div>
                   </div>
-                  <div class="card-event-dash-participations d-none" data-display-participants-target="participants">
+                  <div class="card-event-dash-participations d-none" data-display-participants-target="participants" data-controller="tabs">
                       <div class="container-tab">
                         <div class="tabs">
                           <input type="radio" id="radio-1" name="tabs" checked data-action="click->display-participants#displayPending"/>
-                          <label class="tab" for="radio-1">En attente<span class="notification-part"><%= event.pending_participants.count %></span></label>
+                          <label class="tab" for="radio-1">En attente<span class="notification-part" data-tabs-target="pendingCount"><%= event.pending_participants.count %></span></label>
                           <input type="radio" id="radio-2" name="tabs" data-action="click->display-participants#displayAccepted"/>
-                          <label class="tab" for="radio-2">Validés<span class="notification-part"><%= event.accepted_participants.count %></span></label>
+                          <label class="tab" for="radio-2">Validés<span class="notification-part" data-tabs-target="acceptedCount"><%= event.accepted_participants.count %></span></label>
                           <span class="glider"></span>
                         </div>
                       </div>
                       <div class="participants-pending" data-display-participants-target="pending">
                         <% event.participations.each do |participant|%>
                           <% if participant.pending? %>
-                              <div class="card-participants-dashboard mt-3">
-                                <img src="<%= cl_image_path participant.user.photo.key %>" class="avatar-large" />
-                                <div class="card-participants-dashboard-content">
-                                  <p><small>Taux de participation: <span class="nb-participation-rate"><%= participant.user.participation_rate ? "#{participant.user.participation_rate}%" : "aucune participation pour le moment" %></span></small></p>
-                                  <p><strong><%= participant.user.first_name %> <%= participant.user.last_name %></strong></p>
-                                </div>
-
-                                <div class="card-participants-dashboard-actions">
-                                      <%= link_to 'Accepter', accepted_participation_path(participant), method: :patch %>
-                                      <%= link_to 'Refuser', denied_participation_path(participant), method: :patch %>
-                                </div>
-                              </div>
+                              <%= render 'shared/participation_card', participant: participant %>
                           <% end %>
                         <% end %>
                       </div>
-                      <div class="participants-accepted d-none" data-display-participants-target="accepted">
+                      <div class="participants-accepted d-none" data-display-participants-target="accepted" data-tabs-target="accept">
                         <% event.participations.each do |participant|%>
                           <% if participant.accepted?  %>
-                                <div class="card-participants-dashboard mt-3">
-                                  <img src="<%= cl_image_path participant.user.photo.key %>" class="avatar-large" />
-                                  <div class="card-participants-dashboard-content">
-                                    <p><small>Taux de participation: <span class="nb-participation-rate"><%= participant.user.participation_rate ? "#{participant.user.participation_rate}%" : "aucune participation pour le moment" %></span></small></p>
-                                    <p><strong><%= participant.user.first_name %> <%= participant.user.last_name %></strong></p>
-                                  </div>
-                                </div>
+                            <%= render 'shared/participation_card', participant: participant %>
                           <% end %>
                         <% end %>
                       </div>
