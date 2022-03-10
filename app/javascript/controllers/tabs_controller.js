@@ -20,8 +20,11 @@ export default class extends Controller {
       .then((data) => {
         if (data.pending_count === 0) {
           document.querySelector('.participants-pending').style.display = 'none';
+          document.querySelector('.volunteers-request').remove();
+
         } else {
           document.querySelector('.participants-pending').style.display = 'block';
+          document.querySelector('.volunteers-request').innerHTML = `<p class="volunteers-request"><i class="fa-solid fa-bell"></i><strong>${data.pending_count}</strong> volontaire(s) en attente</p>`
         }
 
         document.querySelector(`#participation_${data.participation_id}`).remove();
