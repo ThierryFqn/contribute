@@ -66,7 +66,7 @@
                       <img src="<%= cl_image_path event.photos.first.key %>" />
                       <div class="card-event-dash-infos">
                         <h2><%= event.name %> | <%= event.start_date.strftime("%d/%m/%y")%></h2>
-                        <p>Nombre de volontaires: <span class="volunteers-count"><%= event.accepted_participants.count%>/<%= event.number_volunteers%></strong></p>
+                        <p>Nombre de volontaires: <span class="volunteers-count"><%= event.accepted_participants.count%>/<%= event.number_volunteers%></span></p>
                         <% if event.pending_participants.any? %>
                           <p class="volunteers-request"><i class="fa-solid fa-bell"></i> <strong><%= event.pending_participants.count%></strong> volontaire(s) en attente</p>
                         <% end %>
