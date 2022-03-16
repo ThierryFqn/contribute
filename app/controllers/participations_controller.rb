@@ -12,8 +12,8 @@ class ParticipationsController < ApplicationController
     @participation = Participation.find(params[:id])
     @participation.accepted!
     authorize @participation
-
     UserMailer.send_confirmation(@participation.user).deliver_now
+    render json: json_response
   end
 
   def denied
@@ -26,5 +26,16 @@ class ParticipationsController < ApplicationController
     @participation = Participation.find(params[:id])
     @participation.cancelled!
     authorize @participation
+  end
+
+  private
+
+  def json_response
+    {
+      html: render_to_string(partial: 'shared/participation_card.html', locals: { participant: @participation }),
+      participation_id: @participation.id,
+      pending_count: @participation.event.pending_participants.count,
+      accepted_count: @participation.event.accepted_participants.count
+    }
   end
 end

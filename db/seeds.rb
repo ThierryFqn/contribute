@@ -117,7 +117,9 @@ asso_5 = Asso.new(name: 'Petits Princes', description: 'Association  qui s est d
 assign_photo(asso_5, "https://upload.wikimedia.org/wikipedia/fr/thumb/2/24/Association_Petits_Princes_-_Logo.png/600px-Association_Petits_Princes_-_Logo.png")
 puts "Create #{asso_5.name}"
 asso_6 = Asso.new(name: 'Association Sportive et Culturelle de Montsouris', description: 'Association familiale qui apprend à nager et à se perfectionner', user: presidents[5])
-assign_photo(asso_6, "https://www.icone-png.com/png/45/44979.png")
+# assign_photo(asso_6, "https://www.icone-png.com/png/45/44979.png")
+asso_6.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/logo-asso-natation.png')), filename: "logo#{asso_6}", content_type: 'image/png')
+asso_6.save!
 puts "Create #{asso_6.name}"
 asso_7 = Asso.new(name: 'Odysséa', description: 'Association qui finance la recherche contre le cancer du sein en organisant des courses en France', user: presidents[6])
 assign_photo(asso_7, "https://images.squarespace-cdn.com/content/v1/5b8c5e20372b96636fb80393/1613480850359-EK0LV8GX4AO3NV2T9JRH/LOGO+ODYSSEA-1.png")
