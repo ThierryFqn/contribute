@@ -118,7 +118,8 @@ assign_photo(asso_5, "https://upload.wikimedia.org/wikipedia/fr/thumb/2/24/Assoc
 puts "Create #{asso_5.name}"
 asso_6 = Asso.new(name: 'Association Sportive et Culturelle de Montsouris', description: 'Association familiale qui apprend à nager et à se perfectionner', user: presidents[5])
 # assign_photo(asso_6, "https://www.icone-png.com/png/45/44979.png")
-photo_6 = asso_6.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/logo-asso-natation.png')), filename: "logo#{asso_6}", content_type: 'image/png')
+asso_6.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/logo-asso-natation.png')), filename: "logo#{asso_6}", content_type: 'image/png')
+asso_6.save!
 puts "Create #{asso_6.name}"
 asso_7 = Asso.new(name: 'Odysséa', description: 'Association qui finance la recherche contre le cancer du sein en organisant des courses en France', user: presidents[6])
 assign_photo(asso_7, "https://images.squarespace-cdn.com/content/v1/5b8c5e20372b96636fb80393/1613480850359-EK0LV8GX4AO3NV2T9JRH/LOGO+ODYSSEA-1.png")
@@ -153,7 +154,7 @@ sum_hours(event_4)
 event_5 = Event.new(name: 'Fete de Noël', description: 'Venez distribuer des cadeaux et animer une journée', address: '149 Rue de Sèvres, 75015 Paris', cause:  Event::EVENT_CAUSES[0], start_date:'Sat, 12 Mar 2022 13:00:00 +0100', end_date: 'Sat, 12 Mar 2022 19:00:00 +0100', number_volunteers: 8, asso: Asso.find_by(name: 'Petits Princes'))
 assign_photo_event(event_5, ["https://cdn.radiofrance.fr/s3/cruiser-production/2020/12/838e7446-95f9-4e27-aaf4-137287a2cd2b/870x489_maxnewsworldfive333535.jpg"])
 sum_hours(event_5)
-event_6 = Event.new(name: 'Fete de fin d année', description: 'Volontaires pour aider au bar à bonbons/boissons/gâteaux de la fête avant les grandes vacances' , address: '5 Pl. Paul Verlaine, 75013 Paris', cause:  Event::EVENT_CAUSES[0], start_date: 'Sat, 12 Apr 2022 18:30:00 +0100' , end_date: 'Sat, 12 Apr 2022 20:30:00 +0100', number_volunteers: 3, asso: Asso.find_by(name: 'Association Sportive et Culturelle de Montsouris'), photo: photo_6)
+event_6 = Event.new(name: 'Fete de fin d année', description: 'Volontaires pour aider au bar à bonbons/boissons/gâteaux de la fête avant les grandes vacances' , address: '5 Pl. Paul Verlaine, 75013 Paris', cause:  Event::EVENT_CAUSES[0], start_date: 'Sat, 12 Apr 2022 18:30:00 +0100' , end_date: 'Sat, 12 Apr 2022 20:30:00 +0100', number_volunteers: 3, asso: Asso.find_by(name: 'Association Sportive et Culturelle de Montsouris'))
 assign_photo_event(event_6, ["https://images.lanouvellerepublique.fr/image/upload/t_1020w/f_auto/5a289bf9479a45393f8b45a9.jpg"])
 sum_hours(event_6)
 event_7 = Event.new(name: 'Village Odysséa', description:'Besoin de volontaires pour aider dans la team organisation de la vie de l événement de la course Odysséa Paris', address:'2 Rte de la Ferme, 75012 Paris', cause:  Event::EVENT_CAUSES[4], start_date:'Sat, 12 Mar 2022 08:00:00 +0100', end_date:'Sat, 12 Mar 2022 20:00:00 +0100', number_volunteers: 100, asso: Asso.find_by(name: 'Odysséa'))
