@@ -88,7 +88,7 @@ user_10 = User.new(first_name:'Mimie', last_name: 'Mathy', email: 'mimie@mathy.c
 assign_photo(user_10, "https://i0.wp.com/www.starmag.com/wp-content/uploads/2021/06/mimie-mathy-critiquee-sur-ses-propos-sur-les-gens-de-petite-taille-elle-repond-a-la-polemique.jpg?resize=1200%2C1200&ssl=1")
 
 user_11 = User.new(first_name: 'Julie', last_name: 'Gastellu', email: 'julie.gastellu@orange.fr', nickname: 'Miaouss', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
-assign_photo(user_11, 'https://scontent-cdg2-1.xx.fbcdn.net/v/t31.18172-8/26023926_10214926387810463_1329963048430844977_o.jpg?_nc_cat=100&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=UmZ1Bk0SnLEAX_Wun91&_nc_ht=scontent-cdg2-1.xx&oh=00_AT_bqaL2OZ_GoZvYcjb8SbNlUieI4VEq4_yRW8LZ7U53HA&oe=624E4503')
+assign_photo(user_11, 'https://www.facebook.com/photo/?fbid=10214926387810463&set=a.1577518395143')
 
 user_12 = User.new(first_name: 'Caroline', last_name: 'Dana', email: Faker::Internet.email, nickname: 'Caroline', causes_preferences: Event::EVENT_CAUSES[1], days_preferences: Event::EVENT_DATES[2], password: "123456" )
 assign_photo(user_12, 'https://avatars.githubusercontent.com/u/93728030?v=4')
@@ -105,7 +105,7 @@ asso_1 = Asso.new(name: 'Surfrider', description: 'Association devenue une réf�
 assign_photo(asso_1, "https://upload.wikimedia.org/wikipedia/fr/f/ff/Logo_surfrider_fondation2020.png")
 puts "Create #{asso_1.name}"
 asso_2 = Asso.new(name: 'Sea Sheperd', description: 'Association vouée à la protection des écosystèmes marins et de la biodiversité', user: presidents[1])
-assign_photo(asso_2, "https://seashepherd.fr/wp-content/uploads/2020/04/logo_sea_shepherd_black.png")
+assign_photo(asso_2, "https://seashepherd.fr/wp-content/uploads/2022/04/favicon.png")
 puts "Create #{asso_2.name}"
 asso_3 = Asso.new(name: 'Le Petit Biclou', description: 'Association d’auto-réparation de vélo participative, autogérée et solidaire qui a pour but d accompagner les cyclistes dans leur pratique du vélo.', user: user_4)
 assign_photo(asso_3, "https://www.lepetitbiclou.fr/assets/img/logo/Cosmonaute_glxy.png")
