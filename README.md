@@ -10,7 +10,7 @@ Final project of Le Wagon. Website to connect volunteers and associations. Imple
 
 ## Tech Stack
 
-**Front:** JavaScript, StimulusJS, Bootstrap
+**Front:** JavaScript, StimulusJS, CSS, Bootstrap
 
 **Back:** Ruby On Rails, PostgreSQL
 
